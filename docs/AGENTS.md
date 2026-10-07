@@ -36,7 +36,7 @@ Cursor (`.cursor/mcp.json`):
 The easiest way to use the server is to let it lead:
 
 1. **Ask.** The agent calls `start_project` and asks the person up to six plain questions. "Defaults" is a fine answer.
-2. **Plan.** It calls `plan_build` with the answers and gets the setup, the parts in order, and a `sandstone.md` brief to save in the project. Later sessions read that file first, so the product stays consistent.
+2. **Plan.** It calls `plan_build` with the answers and gets the setup commands, the setup files to write exactly as given (`sandstone.md`, and for a new Vite app `vite.config.ts`, `index.html` and `src/main.tsx`), and the parts in order. Later sessions read that file first, so the product stays consistent.
 3. **Build.** For each part it calls `get_component`, then writes the code.
 4. **Check.** Before finishing it calls `review_code` on every file and fixes the errors.
 
@@ -47,7 +47,7 @@ In Claude Code the same flow is a ready-made prompt: type `/mcp__sandstone__buil
 | Tool | What it does |
 |---|---|
 | `start_project` | Call first. Returns six short questions for the agent to ask the person (what they are building, framework, colour theme, light or dark, trust behaviours, plan), each with a default. |
-| `plan_build` | Turns the answers into a build plan: setup steps, the parts to use in build order (Pro parts marked), patterns to read, warnings, and a project brief to save as `sandstone.md`. |
+| `plan_build` | Turns the answers into a build plan: setup commands, ready-to-write setup files (including the `sandstone.md` brief), the parts to use in build order (Pro parts marked), patterns to read and warnings. |
 | `review_code` | Checks a file against the Sandstone rules before the agent finishes: hex colours, deep imports, clickable divs, icon buttons without labels, images without alt text, lime used as text, removed focus outlines, vague destructive buttons and parts that do not exist. |
 | `search_components` | Find components by what they are for. Optional category and status filters. |
 | `get_component` | Props, what it is for, what to use instead, do and avoid, accessibility (what is built in and what you must do), import line and an example. |
