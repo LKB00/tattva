@@ -6,6 +6,8 @@ Sandstone is built so an AI coding agent can pick the right part and use it corr
 
 ## Connect the MCP server
 
+Easiest: download `sandstone-mcp.zip` from the Downloads page (or https://lkb00.github.io/sandstone/downloads/sandstone-mcp.zip). It holds the two files below and a plain README, reads its data from the live site, and needs only Node 18+. Pro and Team downloads include an `mcp` folder with the same server and the full code of every Pro part. Step-by-step for each tool: https://lkb00.github.io/sandstone/#connect-ai. Set `SANDSTONE_DATA` to a folder to read the data from disk instead.
+
 The server is one file with no dependencies. It only reads. It never changes your project.
 
 1. Build the data files once: `node scripts/export-assets.mjs` (it also runs in `npm run build` when wired in).
