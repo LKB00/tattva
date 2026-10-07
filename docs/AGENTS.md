@@ -83,9 +83,14 @@ On the live site the same files are at `https://lkb00.github.io/sandstone/`: `ll
 8. **Mobile first.** Layouts work at 360px wide with no sideways scrolling. Touch targets are at least 44px.
 9. **Use the part that exists.** Search first. Do not rebuild a component that is already in the system.
 10. **Reduced motion.** Never animate outside the existing motion tokens.
+11. **Do not guess.** If no part fits, a prop does not exist, or a colour is not a token, stop and tell the person what is missing. Do not build a lookalike from raw HTML, pass a prop that is not listed, or type a hex value. Ask, or use the nearest token and say which. See `GOVERNANCE.md`.
+12. **Respect the stage.** Every part has a stage: experimental, stable, deprecated or retired. Never choose a deprecated or retired part for new work; the entry names its replacement. Tell the person when you use an experimental part, because its details may change.
+13. **Cover the states.** Each part lists its states (loading, empty, error, disabled, and so on) in `components.json` under `states`. Build every state the person's screen can reach; do not leave a loading or error view blank.
 
 ## Checking your work
 
 - `npm run check:atomic` checks the dependency direction.
+- `npm run check:docs` checks that every part documents its states and lifecycle.
+- `npm run check:readiness` runs a fixed set of agent tasks through the MCP server and scores them.
 - `npm run check:a11y` runs an accessibility audit of every page in light and dark (needs a build).
 - `npx tsc --noEmit` checks types.
