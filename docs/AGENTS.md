@@ -1,7 +1,5 @@
 # Using Sandstone with AI agents
 
-> The MCP server and the source files it reads come with **Pro** and **Team**. The website files below (`llms.txt`, `components.json`, the Markdown pages and the tokens) are free for anyone.
-
 Sandstone is built so an AI coding agent can pick the right part and use it correctly. This page says how to connect an agent and what rules it should follow.
 
 ## Connect the MCP server
@@ -54,7 +52,7 @@ In Claude Code the same flow is a ready-made prompt: type `/mcp__sandstone__buil
 | `search_components` | Find components by what they are for. Optional category and status filters. |
 | `get_component` | Props, what it is for, what to use instead, do and avoid, accessibility (what is built in and what you must do), import line and an example. |
 | `list_patterns` | Short answers to common situations, such as asking before an action that cannot be undone. |
-| `get_themes` | The colour themes (lime, teal, indigo, harbor, plum, graphite): each theme's AI color in light and dark, paper and ink, soft wash colors, and how to switch to it. |
+| `get_themes` | The colour themes (lime, teal, indigo, harbor, plum, graphite, terminal): each theme's AI color in light and dark, paper and ink, soft wash colors, and how to switch to it. |
 | `get_tokens` | Colors, timing, sizes and shadows, with what each is for. Light or dark, and optionally for one colour theme. |
 
 Mistakes come back with a fix. Ask for a misspelled component and the server replies with the closest names.
@@ -91,6 +89,8 @@ On the live site the same files are at `https://lkb00.github.io/sandstone/`: `ll
 14. **Direction is not status.** Use `--up` and `--down` (Tailwind `text-up-fg`, `text-down-fg`, `bg-up-soft`) for prices, profit and loss and any number that moves. Use success and danger only for "it worked" and "it failed". Direction always comes with an arrow or a sign, never colour alone. For readers who cannot tell green from red, set `data-direction="cb"` on the root element.
 15. **Reserved colours.** The AI colour marks AI, amber means a person must act, **Unsure** (`--unsure`, Badge tone `unsure`) means "not fully sure" or "partly done" and is not a warning, and **Celebrate** (`--celebrate`, Badge tone `celebrate`) is for exactly one thing in a product: a goal fully reached. Never use any of them as decoration.
 16. **Use the form and overlay parts.** For fields use Field with TextField, NumberField, Select, Checkbox, RadioGroup, Slider, DatePicker or Combobox, not a raw `<input>`. For overlays use Dialog, Sheet, Menu, Tooltip, Toast or CommandPalette, not a hand-built popup. Ask for several missing facts at once with QuestionSet, show the agent's steps with ActivityTrace, and fold answered cards into a Receipt.
+
+17. **Money and markets.** Show every price with Price (or Money), every move with PriceChange so the sign and an arrow always appear, and say how old market data is with DataFreshness. An order an AI drafted goes through ActionDraft so the person edits and presses Confirm; never send an order or any action from code the person did not click. Show limits with RiskLimits and keep exits open when trading is paused. Charts (CandlestickChart, Heatmap, PayoffChart) always ship with their keyboard reading, do not remove it. Draw menus inside lists and side bars with `portal`.
 
 ## Checking your work
 
