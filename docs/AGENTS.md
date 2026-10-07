@@ -38,7 +38,8 @@ Cursor (`.cursor/mcp.json`):
 | `search_components` | Find components by what they are for. Optional category and status filters. |
 | `get_component` | Props, what it is for, what to use instead, do and avoid, accessibility (what is built in and what you must do), import line and an example. |
 | `list_patterns` | Short answers to common situations, such as asking before an action that cannot be undone. |
-| `get_tokens` | Colors, timing, sizes and shadows, with what each is for. Light or dark. |
+| `get_themes` | The colour themes (lime, teal, indigo, harbor, plum, graphite): each theme's AI color in light and dark, paper and ink, soft wash colors, and how to switch to it. |
+| `get_tokens` | Colors, timing, sizes and shadows, with what each is for. Light or dark, and optionally for one colour theme. |
 
 Mistakes come back with a fix. Ask for a misspelled component and the server replies with the closest names.
 
@@ -50,6 +51,7 @@ Mistakes come back with a fix. Ask for a misspelled component and the server rep
 | `public/components.json` | Every component: props, types, defaults, do and avoid, accessibility, import line, tokens, related parts, examples. |
 | `public/docs/<id>.md` | One Markdown page per component. |
 | `public/tokens.dtcg.json` | Tokens in the Design Tokens Community Group format. Light and dark colors are separate groups. |
+| `public/themes.json` | The colour themes: each one's AI color, paper, ink, soft washes and every token that differs from the default. |
 
 On the live site the same files are at `https://lkb00.github.io/sandstone/`: `llms.txt`, `components.json`, `tokens.dtcg.json` and `docs/<id>.md`.
 
@@ -60,7 +62,7 @@ On the live site the same files are at `https://lkb00.github.io/sandstone/`: `ll
 1. **Import from the index.** `import { Button } from "./index"`. Never from a deep path such as `./atoms/Button`.
 2. **Tokens only.** Use `var(--surface)`, `var(--fg)` and the matching Tailwind classes. Never write a hex value, `rgb()` or a raw pixel color.
 3. **Amber means a person has to act.** Use it only for the "needs you" state. Not for warnings, highlights or decoration.
-4. **Lime is a fill, never text.** Text on lime is dark.
+4. **The AI color is a fill, never text.** It is lime by default and changes with the colour theme (`data-palette` on the root element). Always use `var(--lime)`, never the hex. Text on it is dark.
 5. **Every control has an accessible name.** Icon-only buttons need a label. A destructive button says its effect: "Delete project Atlas", not "Delete".
 6. **Status is never color alone.** Pair it with an icon and a word.
 7. **Native elements first.** Use `button`, `a`, `select`, `input` and `dialog` before custom widgets. Give date pickers, comboboxes and multi-selects a typed-text way in.
