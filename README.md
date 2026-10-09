@@ -20,7 +20,7 @@
 
 It connects the Tattva MCP server, teaches Claude to build with the real parts, and adds `/tattva:build`, `/tattva:find`, `/tattva:review` and `/tattva:theme`.
 
-**Figma.** Download [tattva-figma-plugin.zip](https://lkb00.github.io/tattva/downloads/tattva-figma-plugin.zip), unzip it, then in the Figma desktop app choose Plugins > Development > Import plugin from manifest. It adds Tattva's colours, corners, sizes and text styles to a file and checks a design against Tattva's rules.
+**Figma.** Download [tattva-figma-plugin.zip](https://lkb00.github.io/tattva/downloads/tattva-figma-plugin.zip), unzip it, then in the Figma desktop app choose Plugins > Development > Import plugin from manifest. It adds Tattva's parts to a file as Figma components with their variants (the free parts; every part comes with Pro), adds the colours, corners, sizes and text styles, and checks a design against Tattva's rules.
 
 ## Plans
 
