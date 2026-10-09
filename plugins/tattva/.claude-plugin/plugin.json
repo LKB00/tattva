@@ -1,0 +1,21 @@
+{
+  "name": "tattva",
+  "displayName": "Tattva",
+  "version": "0.16.0",
+  "description": "Build AI product screens with the Tattva design system: finds the right React parts, plans the screen, writes it with sources, approvals and undo in place, and reviews the code. Uses the Tattva MCP server.",
+  "author": {
+    "name": "Lokesh Bhatia",
+    "url": "https://www.lokeshbhatia.com/"
+  },
+  "homepage": "https://lkb00.github.io/tattva/",
+  "repository": "https://github.com/LKB00/tattva",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "keywords": [
+    "design-system",
+    "react",
+    "tailwind",
+    "ai",
+    "components",
+    "accessibility"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "tattva",
+  "description": "Tattva, the design system for AI products: plugins for Claude Code.",
+  "owner": { "name": "Lokesh Bhatia", "url": "https://www.lokeshbhatia.com/" },
+  "plugins": [
+    { "name": "tattva", "source": "./plugins/tattva", "description": "Build AI product screens with Tattva's React parts: find, plan, build and review through the Tattva MCP server.", "category": "development" }
+  ]
+}
