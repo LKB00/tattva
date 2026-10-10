@@ -1,0 +1,260 @@
+# Tattva
+
+> A design system for AI products: conversation, agents that act, trust and feedback, and generated content. React, TypeScript and Tailwind CSS v4.
+
+Site: https://lkb00.github.io/tattva/
+Repository: https://github.com/LKB00/tattva
+
+## Patterns
+
+- Ask before acting: The assistant wants to do something that cannot be undone. What now? Stop and ask first. Say exactly what will happen, then wait for a clear yes or no. (https://lkb00.github.io/tattva/#pattern-ask-before-acting)
+- Show your sources: The assistant states a fact. How does a person know it is true? Put a small numbered mark next to each claim, and list where it came from. (https://lkb00.github.io/tattva/#pattern-show-your-sources)
+- Admit uncertainty: The assistant is not sure of its answer. How should it say so? Say it plainly, show how sure it is, and tell the person what to check. (https://lkb00.github.io/tattva/#pattern-admit-uncertainty)
+- Show work as it happens: The assistant takes a while. What does the person see in the meantime? Show each step as it happens, so waiting feels like progress and not a stall. (https://lkb00.github.io/tattva/#pattern-show-work-as-it-happens)
+- Let people steer: The assistant is heading the wrong way. How can a person change course? Give them Stop, Regenerate, edit and a way to go back, always within reach. (https://lkb00.github.io/tattva/#pattern-let-people-steer)
+- Recover from mistakes: Something failed, or the assistant got it wrong. What should the screen say? Say what happened, say that the person's work is safe, and offer a clear next step. (https://lkb00.github.io/tattva/#pattern-recover-from-mistakes)
+- Make AI content obvious: A person is reading text. Can they tell who wrote it, the assistant or a human? Mark what the assistant wrote, mark what a person changed, and let people go back. (https://lkb00.github.io/tattva/#pattern-make-ai-content-obvious)
+- Respect attention: Many things are happening. Which ones should interrupt a person? Only the ones that need a decision. Keep everything else quiet and easy to find later. (https://lkb00.github.io/tattva/#pattern-respect-attention)
+- Watch the screen: The assistant is using a website for you. How do you know what it is doing? Show its screen with a line for the current step. Let people pause or take over, and ask before sensitive steps. (https://lkb00.github.io/tattva/#pattern-watch-the-screen)
+- Share the room: Several people and the assistant are in one chat. Who is it talking to, and what can it see? Show who is speaking, let the assistant speak only when asked, and say what it can see. (https://lkb00.github.io/tattva/#pattern-share-the-room)
+- Mark the area: A person wants to change one part of a picture or page. How do they say which part? Let them mark the area, say the change, then compare before and after, with Undo close by. (https://lkb00.github.io/tattva/#pattern-mark-the-area)
+- Let the agent ask: The assistant is unsure in the middle of a task. Should it guess? No. It asks one clear question with a few choices, and the person can let it decide. (https://lkb00.github.io/tattva/#pattern-let-the-agent-ask)
+- Come back after time away: A person returns after the assistant worked alone. What do they see first? A short summary: what finished, what needs them, what changed, and one tap to the full log. (https://lkb00.github.io/tattva/#pattern-come-back-after-time-away)
+- Set how much it can do: How much should the assistant do on its own, and who decides? Start careful, let people raise it, confirm only what cannot be undone, and keep the rest visible and undoable. (https://lkb00.github.io/tattva/#pattern-set-how-much-it-can-do)
+- Generate screens safely: The assistant wants to build a screen for the person. How do you keep that safe? The assistant picks parts from an approved list. The app draws them in its own look. (https://lkb00.github.io/tattva/#pattern-generate-screens-safely)
+
+## Case studies
+
+- Shop assistant: slow orders: A shop owner asks why orders slowed down last week. (https://lkb00.github.io/tattva/#case-slow-orders)
+- Shop assistant: refunds: A shop owner lets an assistant refund customers for late orders. (https://lkb00.github.io/tattva/#case-refund-approval)
+- Trip planner: A traveler asks for a three day plan for a city. (https://lkb00.github.io/tattva/#case-trip-planner)
+- Search with no results: A shopper searches a store and gets nothing back. (https://lkb00.github.io/tattva/#case-empty-search)
+
+## Components
+
+- [Button](https://lkb00.github.io/tattva/docs/button.md): A rounded button with a text label. It comes in five styles and three sizes, and can hold an icon.
+- [IconButton](https://lkb00.github.io/tattva/docs/icon-button.md): A round button that shows only an icon. It always has a name, and it can show an on or off state.
+- [Badge](https://lkb00.github.io/tattva/docs/badge.md): A small label that shows a status, a count or a category.
+- [Avatar](https://lkb00.github.io/tattva/docs/avatar.md): A round picture that shows who wrote a message: a letter for a person, a dark circle with a lime spark for the assistant.
+- [Spinner](https://lkb00.github.io/tattva/docs/spinner.md): A small spinning ring that shows something is loading.
+- [Skeleton](https://lkb00.github.io/tattva/docs/skeleton.md): A shimmering gray block that holds the place of content while it loads.
+- [Switch](https://lkb00.github.io/tattva/docs/switch.md): An on-off switch with a name for screen readers. It can be disabled and can carry a hidden explanation.
+- [SectionLabel](https://lkb00.github.io/tattva/docs/section-label.md): A tiny capital-letter label that names a group in a list, with room for a small action.
+- [AttentionDot](https://lkb00.github.io/tattva/docs/attention-dot.md): A small amber dot that means a person has to do something.
+- [TypingIndicator](https://lkb00.github.io/tattva/docs/typing-indicator.md): Three pulsing dots that show the assistant is getting ready to reply.
+- [ShimmerText](https://lkb00.github.io/tattva/docs/shimmer-text.md): Status text with a moving shine, for steps like "Searching the web…".
+- [HeroHeading](https://lkb00.github.io/tattva/docs/hero-heading.md): A big centered headline that types itself out once, then stays still.
+- [CitationMarker](https://lkb00.github.io/tattva/docs/citation-marker.md): A small numbered link that points to a source, placed after a claim in a reply.
+- [AIBadge](https://lkb00.github.io/tattva/docs/ai-badge.md): A lime-tinted badge with a sparkle that marks content made by AI.
+- [AIDisclosure](https://lkb00.github.io/tattva/docs/ai-disclosure.md): A small centered note reminding people to check the assistant's answers.
+- [AvatarStack](https://lkb00.github.io/tattva/docs/avatar-stack.md): A few overlapping avatars, a plus, then how many more people there are.
+- [Callout](https://lkb00.github.io/tattva/docs/callout.md): A message box inside the page, with a color for its mood, an optional title and an optional button.
+- [Collapsible](https://lkb00.github.io/tattva/docs/collapsible.md): A heading with an arrow that shows or hides extra content when pressed.
+- [TrayRow](https://lkb00.github.io/tattva/docs/tray-row.md): A compact list row with an icon, a title, a detail line and a hint that shows on hover.
+- [ContextPill](https://lkb00.github.io/tattva/docs/context-pill.md): A small tag near the message box that shows what the chat is about.
+- [SuggestionChips](https://lkb00.github.io/tattva/docs/suggestion-chips.md): A row of ready-made questions a person can pick.
+- [MessageActions](https://lkb00.github.io/tattva/docs/message-actions.md): Copy and retry buttons that sit under an assistant reply.
+- [CodeBlock](https://lkb00.github.io/tattva/docs/code-block.md): A dark box for code, with the language name and a Copy button.
+- [Message](https://lkb00.github.io/tattva/docs/message.md): One turn in a conversation: a bubble for the person, plain text with an avatar for the assistant.
+- [ThinkingBlock](https://lkb00.github.io/tattva/docs/thinking-block.md): A closed note of the assistant's thinking. It shimmers while it works and shows how long it took when done.
+- [ToolCallCard](https://lkb00.github.io/tattva/docs/tool-call-card.md): A card that shows one step the assistant took, with its status, how long it took, and what went in and out.
+- [ChecklistRow](https://lkb00.github.io/tattva/docs/checklist-row.md): A list row with a title, an optional tag and a status on the right. An amber dot marks items that need a person.
+- [ConfidenceIndicator](https://lkb00.github.io/tattva/docs/confidence-indicator.md): Three bars and a label that show how sure the assistant is about an answer.
+- [FeedbackBar](https://lkb00.github.io/tattva/docs/feedback-bar.md): Thumbs up and down buttons, with a short list of reasons after a thumbs down.
+- [SourceCard](https://lkb00.github.io/tattva/docs/source-card.md): A numbered link card for one source.
+- [ErrorState](https://lkb00.github.io/tattva/docs/error-state.md): A red message for a problem that can be fixed, with an optional Try again button.
+- [RefusalNotice](https://lkb00.github.io/tattva/docs/refusal-notice.md): A calm notice for a request the assistant will not do, with an optional alternative.
+- [RateLimitNotice](https://lkb00.github.io/tattva/docs/rate-limit-notice.md): An amber message that says when a usage limit resets, with an optional Upgrade button.
+- [VariantTile](https://lkb00.github.io/tattva/docs/variant-tile.md): A square tile for one AI-made option that a person can pick.
+- [Tray](https://lkb00.github.io/tattva/docs/tray.md): A soft panel with a short list of things to look at, and an optional message box under it.
+- [MessageList](https://lkb00.github.io/tattva/docs/message-list.md): A column that holds a conversation and reads out new messages.
+- [Composer](https://lkb00.github.io/tattva/docs/composer.md): The box where people type a message, with attach, tools and send or stop.
+- [ConversationList](https://lkb00.github.io/tattva/docs/conversation-list.md): Past chats grouped by day, with a New chat button, for the side bar.
+- [Markdown](https://lkb00.github.io/tattva/docs/markdown.md): Turns the assistant's formatted text into headings, lists, links and tables, even while it is still being written.
+- [StepTimeline](https://lkb00.github.io/tattva/docs/step-timeline.md): A list of steps in a task, showing which are done, in progress, waiting or failed.
+- [ApprovalPrompt](https://lkb00.github.io/tattva/docs/approval-prompt.md): A pause that asks a person before the assistant does something important.
+- [Checklist](https://lkb00.github.io/tattva/docs/checklist.md): A list of what is still open, with finished work folded into one line.
+- [SourceList](https://lkb00.github.io/tattva/docs/source-list.md): The numbered sources behind an answer, shown in two columns.
+- [PromptBox](https://lkb00.github.io/tattva/docs/prompt-box.md): A box for describing what you want made, with a Generate button and optional examples.
+- [VariantGrid](https://lkb00.github.io/tattva/docs/variant-grid.md): A set of made options where you pick one, with empty slots held for ones still coming.
+- [CanvasPanel](https://lkb00.github.io/tattva/docs/canvas-panel.md): A side panel for a document, code or design that stays after the chat message.
+- [AppShell](https://lkb00.github.io/tattva/docs/app-shell.md): The outer frame of a screen: a narrow side panel and one main area.
+- [HomeTemplate](https://lkb00.github.io/tattva/docs/home-template.md): The first screen of a new conversation: one greeting and one tray, centered.
+- [ThreadTemplate](https://lkb00.github.io/tattva/docs/thread-template.md): A conversation that scrolls, with the message box fixed at the bottom.
+- [SplitCanvasTemplate](https://lkb00.github.io/tattva/docs/split-canvas-template.md): Chat or controls on the left, and the thing you are making on the right.
+- [HomePage](https://lkb00.github.io/tattva/docs/home-page.md): The first screen: a headline backed up by the list of tasks right below it.
+- [ThreadPage](https://lkb00.github.io/tattva/docs/thread-page.md): A full answer with the assistant's thinking, the steps it took, sources and feedback.
+- [WorkflowPage](https://lkb00.github.io/tattva/docs/workflow-page.md): A task in progress, shown as a conversation: heading, checklist, approval request and steps.
+- [StudioPage](https://lkb00.github.io/tattva/docs/studio-page.md): A creative studio: write a prompt and see options on the left, the one you pick on the right.
+- [ModelPicker](https://lkb00.github.io/tattva/docs/model-picker.md): A small button that opens a list for choosing how the assistant answers, with optional thinking time and limit messages.
+- [ToolChip](https://lkb00.github.io/tattva/docs/tool-chip.md): A small tag in the message box showing a tool that is on, with a Remove button.
+- [ToolMenu](https://lkb00.github.io/tattva/docs/tool-menu.md): The plus menu by the message box, with ways to attach things, tools you can switch on, and connected apps.
+- [AttachmentChip](https://lkb00.github.io/tattva/docs/attachment-chip.md): A tag for an attached file or image, with name, size, upload progress, an error with Retry, and Remove.
+- [VoicePanel](https://lkb00.github.io/tattva/docs/voice-panel.md): A voice conversation (VoiceSession) on the shared AI orb, with every mic, turn and connection state in words, captions, and separate Mute, Hold and End.
+- [MessageQueue](https://lkb00.github.io/tattva/docs/message-queue.md): Messages sent while the assistant is busy, with Send now, reorder and delete.
+- [VersionPager](https://lkb00.github.io/tattva/docs/version-pager.md): Previous and next buttons with a count like 1/3, for the versions of one message.
+- [MemoryNotice](https://lkb00.github.io/tattva/docs/memory-notice.md): A short notice that says what was saved to memory, with Manage, Undo and close.
+- [MemoryList](https://lkb00.github.io/tattva/docs/memory-list.md): A list of what the assistant remembers. Each item can be edited or deleted. Two switches sit on top.
+- [PrivateChatBanner](https://lkb00.github.io/tattva/docs/private-chat-banner.md): A notice that stays visible during a private chat, says how long a copy is kept, and has Exit.
+- [CheckpointList](https://lkb00.github.io/tattva/docs/checkpoint-list.md): A list of earlier steps you can go back to, with restore and summarize buttons and a confirm step.
+- [RevertToggle](https://lkb00.github.io/tattva/docs/revert-toggle.md): Lets people flip between the AI's suggestion and their own edit, with a way back to the original.
+- [ContextMeter](https://lkb00.github.io/tattva/docs/context-meter.md): Shows how full the chat is, with a Summarize button when it is nearly full.
+- [UsageMeter](https://lkb00.github.io/tattva/docs/usage-meter.md): How many credits are left, with an optional cost estimate, reset date and upgrade button.
+- [AgentStatusIcon](https://lkb00.github.io/tattva/docs/agent-status-icon.md): A small icon that shows what an assistant is doing right now, with a different shape for each state.
+- [PermissionModeSwitcher](https://lkb00.github.io/tattva/docs/permission-mode-switcher.md): A button that always shows how much freedom the assistant has, and lets you change it.
+- [DiffFileRow](https://lkb00.github.io/tattva/docs/diff-file-row.md): One changed file in a review, with how much was added and removed, and buttons to keep or reject it.
+- [DiffView](https://lkb00.github.io/tattva/docs/diff-view.md): Review the changes an assistant made to your files, and keep or reject each one.
+- [PlanCard](https://lkb00.github.io/tattva/docs/plan-card.md): Shows what the assistant plans to do before it starts, so you can approve or ask for changes.
+- [PermissionPrompt](https://lkb00.github.io/tattva/docs/permission-prompt.md): Asks you to allow one thing the assistant wants to do, with a choice to always allow it and an optional note.
+- [AgentSessionList](https://lkb00.github.io/tattva/docs/agent-session-list.md): A list of assistant tasks grouped by what they need, with a Peek panel to read the latest and reply.
+- [TaskTree](https://lkb00.github.io/tattva/docs/task-tree.md): A list of tasks and the smaller tasks inside them, each with a status and an Open button.
+- [ProvenancePopover](https://lkb00.github.io/tattva/docs/provenance-popover.md): A label that says content was made with AI, and opens a short note on how.
+- [CitationHoverCard](https://lkb00.github.io/tattva/docs/citation-hover-card.md): A small number in a sentence that shows where a fact came from.
+- [SuggestionBar](https://lkb00.github.io/tattva/docs/suggestion-bar.md): A bar under an AI draft. Nothing changes in your document until you choose.
+- [GhostText](https://lkb00.github.io/tattva/docs/ghost-text.md): Faded suggested text that appears after what you typed, with a Tab key hint.
+- [SelectionToolbar](https://lkb00.github.io/tattva/docs/selection-toolbar.md): A small bar that appears over highlighted text, with quick edits, a menu of more, and a box to ask for your own.
+- [SuggestionCard](https://lkb00.github.io/tattva/docs/suggestion-card.md): One writing suggestion with its type, the before and after, a reason, and Accept and Dismiss buttons.
+- [SummaryCard](https://lkb00.github.io/tattva/docs/summary-card.md): An AI-written overview with its sources, a warning to double-check, and a way to give feedback.
+- [ParameterPanel](https://lkb00.github.io/tattva/docs/parameter-panel.md): A set of choices for making something with AI, with a live cost and a Generate button.
+- [VariationActions](https://lkb00.github.io/tattva/docs/variation-actions.md): A row of things you can do with one AI result, each with a Subtle or Strong choice, and a line saying where it came from.
+- [VersionHistory](https://lkb00.github.io/tattva/docs/version-history.md): A list of earlier versions of your work, with who made each, when, and Preview and Restore buttons.
+- [GenerationProgress](https://lkb00.github.io/tattva/docs/generation-progress.md): Shows how a slow AI task is going: waiting, making it, ready to listen early, finishing, done, failed or cancelled.
+- [StarterGallery](https://lkb00.github.io/tattva/docs/starter-gallery.md): A first screen that says what the assistant can do, and offers ideas to start with.
+- [Popover](https://lkb00.github.io/tattva/docs/popover.md): A small panel that opens beside a button, for menus, pickers and short explanations.
+- [SegmentedControl](https://lkb00.github.io/tattva/docs/segmented-control.md): A row of joined buttons where you pick one option, using clicks or arrow keys.
+- [MeterBar](https://lkb00.github.io/tattva/docs/meter-bar.md): A thin bar that shows how much of something is used, and turns amber past a set point.
+- [KeyHint](https://lkb00.github.io/tattva/docs/key-hint.md): A small key label, such as Tab or Esc, that shows which key to press.
+- [Illustration](https://lkb00.github.io/tattva/docs/illustration.md): A small drawing for empty, error, permission and success screens, in dark lines with one green touch.
+- [Pictogram](https://lkb00.github.io/tattva/docs/pictogram.md): A one-color line icon, larger than a button icon, for small areas and lists of features.
+- [EmptyState](https://lkb00.github.io/tattva/docs/empty-state.md): A message for an area with nothing in it: a drawing, a title that says why, one line, and one button.
+- [MediaFrame](https://lkb00.github.io/tattva/docs/media-frame.md): An image in a fixed shape, with a placeholder while it loads, a message if it fails, and an optional caption and AI label.
+- [MediaGrid](https://lkb00.github.io/tattva/docs/media-grid.md): A gallery of images in even rows that adjusts to the screen, with optional selecting and an empty message.
+- [AIMark](https://lkb00.github.io/tattva/docs/ai-mark.md): A small four-point shape that tells people something was made by AI.
+- [AIPresence](https://lkb00.github.io/tattva/docs/ai-presence.md): A moving orb that shows whether the assistant is waiting, listening, thinking, speaking, or has hit a problem.
+- [AILabel](https://lkb00.github.io/tattva/docs/ai-label.md): A small lime tag that says content was made by AI and explains how. Once a person edits the content, it becomes an undo button.
+- [ChartFrame](https://lkb00.github.io/tattva/docs/chart-frame.md): The box every chart sits in. It adds a title, a short written summary, a table view and clear messages when data is loading or missing.
+- [DataTable](https://lkb00.github.io/tattva/docs/data-table.md): The numbers behind a chart, in a plain table with digits lined up.
+- [StatTile](https://lkb00.github.io/tattva/docs/stat-tile.md): One big number with how it changed, an optional tiny trend line and an optional limit.
+- [Sparkline](https://lkb00.github.io/tattva/docs/sparkline.md): A tiny trend line that highlights the latest value and can be read aloud.
+- [LineChart](https://lkb00.github.io/tattva/docs/line-chart.md): A line chart for change over time. Lines are named at their ends and can be explored with the keyboard.
+- [BarChart](https://lkb00.github.io/tattva/docs/bar-chart.md): Bars that compare amounts. Highlight one bar, or stack up to four parts.
+- [DotPlot](https://lkb00.github.io/tattva/docs/dot-plot.md): Shows a best guess and how sure it is, with a caption that explains the marks.
+- [ChartLegend](https://lkb00.github.io/tattva/docs/chart-legend.md): A key that explains each color, dash and marker in a chart, in the chart's order. It can also switch lines on and off.
+- [Stack](https://lkb00.github.io/tattva/docs/stack.md): Stacks things top to bottom with an even space between them.
+- [Cluster](https://lkb00.github.io/tattva/docs/cluster.md): A row of items that wraps to the next line when it runs out of room.
+- [Grid](https://lkb00.github.io/tattva/docs/grid.md): A grid that changes its number of columns to fit the screen.
+- [Container](https://lkb00.github.io/tattva/docs/container.md): A centered column with a set width and margins on the sides.
+- [Reveal](https://lkb00.github.io/tattva/docs/reveal.md): Makes new content ease into view, one after another.
+- [StreamingReveal](https://lkb00.github.io/tattva/docs/streaming-reveal.md): Text that appears as it is written, with each new word fading in once.
+- [JumpToLatest](https://lkb00.github.io/tattva/docs/jump-to-latest.md): A small floating button that takes you back to the newest message.
+- [KeyTakeaway](https://lkb00.github.io/tattva/docs/key-takeaway.md): A labeled box for the closing point of an answer.
+- [Timeline](https://lkb00.github.io/tattva/docs/timeline.md): A top-to-bottom list of events with times and an optional status.
+- [ComparisonTable](https://lkb00.github.io/tattva/docs/comparison-table.md): Compares 2 to 5 things side by side. On a small screen, it becomes stacked cards.
+- [ProcessDiagram](https://lkb00.github.io/tattva/docs/process-diagram.md): A flow chart of steps and arrows, with a written version for people who cannot see it.
+- [DiagramFigure](https://lkb00.github.io/tattva/docs/diagram-figure.md): Wraps a diagram with a caption, a full description and a way to view its source.
+- [TakeoverBar](https://lkb00.github.io/tattva/docs/takeover-bar.md): A full-width bar that says who is in control: you, or the assistant.
+- [AgentQuestionCard](https://lkb00.github.io/tattva/docs/agent-question-card.md): The assistant asks you a question in the middle of a task, with quick answers.
+- [NeedsYouInbox](https://lkb00.github.io/tattva/docs/needs-you-inbox.md): One list of everything across your runs that is waiting for you.
+- [BackgroundRunChip](https://lkb00.github.io/tattva/docs/background-run-chip.md): A small chip for a run in the background that opens its details.
+- [ReEntryRecap](https://lkb00.github.io/tattva/docs/re-entry-recap.md): A "While you were away" summary shown when you come back to a run.
+- [ApprovedByMark](https://lkb00.github.io/tattva/docs/approved-by-mark.md): A small mark that says who said yes to an action.
+- [ActionLog](https://lkb00.github.io/tattva/docs/action-log.md): A lasting list of what an assistant did, with who approved it and a timed Undo.
+- [BudgetControl](https://lkb00.github.io/tattva/docs/budget-control.md): Shows and sets how much time, money and steps a run may use, and what happens at the limit.
+- [AltitudeToggle](https://lkb00.github.io/tattva/docs/altitude-toggle.md): Switch between a short summary, each step, or every detail of what an assistant did.
+- [GenUIRenderer](https://lkb00.github.io/tattva/docs/gen-ui-renderer.md): Draws a screen an assistant wrote, using only approved parts, and sends what the person does back.
+- [GeneratedSurface](https://lkb00.github.io/tattva/docs/generated-surface.md): The frame around a screen an assistant made: who made it, its spec, pin, redo and report.
+- [SandboxedFrame](https://lkb00.github.io/tattva/docs/sandboxed-frame.md): A locked box for a mini app made by someone else, with clear limits and asks before it does anything.
+- [Field](https://lkb00.github.io/tattva/docs/field.md): Wraps any form control with a visible label, hint text and an error message, and wires them together.
+- [TextField](https://lkb00.github.io/tattva/docs/text-field.md): A single-line text box with room for an icon or unit, two sizes and an invalid state.
+- [NumberField](https://lkb00.github.io/tattva/docs/number-field.md): A number box with minus and plus buttons, keyboard stepping, limits and an optional unit.
+- [Select](https://lkb00.github.io/tattva/docs/select.md): A styled native dropdown with a drawn chevron, a placeholder and an invalid state.
+- [Checkbox](https://lkb00.github.io/tattva/docs/checkbox.md): A tick box with a visible label and hint. It can show a partly selected state.
+- [RadioGroup](https://lkb00.github.io/tattva/docs/radio-group.md): A set of radio buttons for picking exactly one option, with a visible group name.
+- [Slider](https://lkb00.github.io/tattva/docs/slider.md): A single-thumb slider for picking a number in a range, with an optional value readout.
+- [Tabs](https://lkb00.github.io/tattva/docs/tabs.md): A row of tabs that switch between views, with arrow-key movement and optional panels.
+- [Tooltip](https://lkb00.github.io/tattva/docs/tooltip.md): A short text label that appears on hover and on keyboard focus.
+- [Menu](https://lkb00.github.io/tattva/docs/menu.md): A button that opens a list of actions, with full keyboard support.
+- [Splitter](https://lkb00.github.io/tattva/docs/splitter.md): A draggable bar between two panes that people can also move with the keyboard.
+- [Dialog](https://lkb00.github.io/tattva/docs/dialog.md): A modal window on the native dialog element, with a title, a body that scrolls and a footer for buttons.
+- [Toast](https://lkb00.github.io/tattva/docs/toast.md): A short message that appears at the edge of the screen and goes away by itself. Includes the provider and the useToast hook.
+- [CommandPalette](https://lkb00.github.io/tattva/docs/command-palette.md): A search box and a list of actions in a modal window. Type to narrow the list, then press Enter.
+- [DatePicker](https://lkb00.github.io/tattva/docs/date-picker.md): An inline month calendar for recent dates, with day buttons, quick Today and Yesterday, and the choice repeated in words.
+- [Combobox](https://lkb00.github.io/tattva/docs/combobox.md): A search box with suggestions that is never a closed list: whatever is typed can be used.
+- [InlineEdit](https://lkb00.github.io/tattva/docs/inline-edit.md): A labelled value that reads as plain text and turns into an input in place when you press Edit.
+- [QuestionSet](https://lkb00.github.io/tattva/docs/question-set.md): One card that asks every missing fact at once, one question at a time, with a single final button.
+- [ActivityTrace](https://lkb00.github.io/tattva/docs/activity-trace.md): The agent's work shown step by step, each step tagged with who did it, then folded to one line.
+- [Receipt](https://lkb00.github.io/tattva/docs/receipt.md): Collapse a card the person already answered into one line. It opens again to show the full card.
+- [Sheet](https://lkb00.github.io/tattva/docs/sheet.md): A panel that slides over the page from the bottom, right or left edge, with a drag handle on bottom sheets.
+- [DraftPreview](https://lkb00.github.io/tattva/docs/draft-preview.md): A drafted message shown like an email, with headers and a body that opens up to the full text.
+- [Countdown](https://lkb00.github.io/tattva/docs/countdown.md): A deadline as a large date, the days left in words, and an optional bar of time used.
+- [StatusLine](https://lkb00.github.io/tattva/docs/status-line.md): One quiet line of status for the top of a screen, such as Case, Flipkart, an amount and Waiting.
+- [Money](https://lkb00.github.io/tattva/docs/money.md): An amount that code worked out, in mono with tabular figures, in rupees by default.
+- [Price](https://lkb00.github.io/tattva/docs/price.md): A live price that tints briefly and shows an arrow for its last change.
+- [PriceChange](https://lkb00.github.io/tattva/docs/price-change.md): A signed change with an arrow, as an amount, a percent or both.
+- [TickerTape](https://lkb00.github.io/tattva/docs/ticker-tape.md): A looping strip of symbols, prices and changes, with a visible Pause button.
+- [DataFreshness](https://lkb00.github.io/tattva/docs/data-freshness.md): Says how fresh the numbers are, in words and an icon.
+- [CandlestickChart](https://lkb00.github.io/tattva/docs/candlestick-chart.md): Price candles for open, high, low and close. Up and down are told apart by shape and by words, not by colour alone.
+- [Heatmap](https://lkb00.github.io/tattva/docs/heatmap.md): A grid of coloured cells with the number printed in each one. Use it to spot patterns across two things.
+- [PayoffChart](https://lkb00.github.io/tattva/docs/payoff-chart.md): Shows the profit or loss at the end for a position as the price moves, with break-even prices and best and worst outcomes labelled.
+- [OrderTicket](https://lkb00.github.io/tattva/docs/order-ticket.md): A buy or sell form to place a trade: side, quantity, order type, price, product, a review summary and one submit button.
+- [OptionChain](https://lkb00.github.io/tattva/docs/option-chain.md): Calls on the left, puts on the right, strike in the middle, as a real table.
+- [ActionDraft](https://lkb00.github.io/tattva/docs/action-draft.md): The draft an AI proposes, edited in place, confirmed by the person, then shown as progress.
+- [RiskLimits](https://lkb00.github.io/tattva/docs/risk-limits.md): The limits that protect the person, with a kill switch that asks first, in place.
+- [ScrollEdge](https://lkb00.github.io/tattva/docs/scroll-edge.md): A scrolling area whose top and bottom edges blur gradually, so content softens near the edge instead of meeting a hard line.
+- [GlancePanel](https://lkb00.github.io/tattva/docs/glance-panel.md): The case at a glance: the deadline, the facts, the rule and the steps, kept in view beside a chat. GlanceSheet is the phone version.
+- [StatusTicker](https://lkb00.github.io/tattva/docs/status-ticker.md): One line that shows the real current step of an AI run, such as Reading 3 files, and keeps its width so nothing beside it moves.
+- [WorkingEdge](https://lkb00.github.io/tattva/docs/working-edge.md): A calm moving ring in the AI colour around a surface, shown only while the AI is working on it.
+- [PromptIndex](https://lkb00.github.io/tattva/docs/prompt-index.md): A short list of the person's own messages in a long thread, so they can jump back to one.
+- [LiveLog](https://lkb00.github.io/tattva/docs/live-log.md): A streaming, monospaced log of what an agent is doing, with pause and follow.
+- [JsonView](https://lkb00.github.io/tattva/docs/json-view.md): Shows a tool call's input or output as a tree you can open level by level, with a copy button.
+- [InlineConfirm](https://lkb00.github.io/tattva/docs/inline-confirm.md): A button that asks "Delete this?" in its own place, with the safe choice focused, instead of opening a dialog.
+- [ChartRangeBrush](https://lkb00.github.io/tattva/docs/chart-range-brush.md): A strip under a long chart with two handles. The part between them is what the chart above shows.
+- [MicButton](https://lkb00.github.io/tattva/docs/mic-button.md): The one mic control for dictation and starting voice, with every mic state written next to it: recording, locked, turning speech into text, blocked and no mic.
+- [LiveCaptions](https://lkb00.github.io/tattva/docs/live-captions.md): A streaming caption log for voice that marks words still changing, words the assistant never said, and hidden numbers.
+- [Waveform](https://lkb00.github.io/tattva/docs/waveform.md): The loudness of a clip drawn as bars, with the played part filled. Can also be the seek control.
+- [AudioPlayer](https://lkb00.github.io/tattva/docs/audio-player.md): Plays one clip: play and pause, a waveform to seek, time, speed and download.
+- [TranscriptSync](https://lkb00.github.io/tattva/docs/transcript-sync.md): A recording's transcript that follows playback. Press a line to play from there.
+- [LatencyBreakdown](https://lkb00.github.io/tattva/docs/latency-breakdown.md): Shows where the time went in a voice reply or a whole call, names the slowest stage in words and lists the turns that were too slow.
+- [CallRecord](https://lkb00.github.io/tattva/docs/call-record.md): One call at a glance for the people who run a voice agent: status, why it ended, the AI's verdict with evidence, the cost and anything a person must fix.
+- [VoiceCard](https://lkb00.github.io/tattva/docs/voice-card.md): One voice to hear and choose: name, how it sounds, who owns it, whether you can use it, and a sample button.
+- [VoicePicker](https://lkb00.github.io/tattva/docs/voice-picker.md): A list of voices to hear and choose from, with tag filters. Only one sample plays at a time.
+- [VoiceConsentCheck](https://lkb00.github.io/tattva/docs/voice-consent-check.md): A live check that the person whose voice or likeness is being copied is present and agrees, by reading prompted lines aloud.
+- [VideoPlayer](https://lkb00.github.io/tattva/docs/video-player.md): Plays a generated clip and lets you act on the exact frame you paused on.
+- [FrameScrubber](https://lkb00.github.io/tattva/docs/frame-scrubber.md): The seek slider for a video clip: time in words, frame steps and a preview while dragging.
+- [ClipRangeSelector](https://lkb00.github.io/tattva/docs/clip-range-selector.md): Pick the start and end of the part of a clip to extend, edit or re-do, with the longest length built in.
+- [TakeCard](https://lkb00.github.io/tattva/docs/take-card.md): One generated video take, from the queue to the finished clip, with a charge line that says whether credits were taken.
+- [TakeGrid](https://lkb00.github.io/tattva/docs/take-grid.md): A set of video takes where running and finished takes sit together, with one combined announcement, keyboard moves, and empty and loading views.
+- [TakeVersions](https://lkb00.github.io/tattva/docs/take-versions.md): The versions of one video take, each saying what it came from: extend, edit, remix, re-cut or upscale, with preview, make current and undo.
+- [ShotSettings](https://lkb00.github.io/tattva/docs/shot-settings.md): Settings for one video generation, with the cost shown as takes × cost per take before Generate is pressed.
+- [CameraMovePicker](https://lkb00.github.io/tattva/docs/camera-move-picker.md): Pick a camera move such as push in, pan or orbit by name, with a small diagram for each.
+- [LikenessConsent](https://lkb00.github.io/tattva/docs/likeness-consent.md): Ask for, track and control a real person's consent to use their face or voice in avatars.
+- [SceneStrip](https://lkb00.github.io/tattva/docs/scene-strip.md): An ordered storyboard of shots with a status on each, a total length, and reorder by drag, buttons or keyboard.
+- [OutlineEditor](https://lkb00.github.io/tattva/docs/outline-editor.md): The plan of a deck before any slide is built: the AI drafts it, the person edits, reorders and approves it.
+- [EditScopeChip](https://lkb00.github.io/tattva/docs/edit-scope-chip.md): Says exactly what an AI edit will change, such as Slide 3 or Whole deck, and lets the person change it before sending.
+- [SlideRail](https://lkb00.github.io/tattva/docs/slide-rail.md): The list of slide thumbnails: move around, choose slides, reorder, and see each slide's state in words.
+- [SlideStage](https://lkb00.github.io/tattva/docs/slide-stage.md): The large view of one slide at its true shape, scaled to fit, with its state and things to check.
+- [LayoutAlternatives](https://lkb00.github.io/tattva/docs/layout-alternatives.md): Other layouts for one slide, suggested by the AI and compared with the slide as it is. Preview without changing the deck, then apply one or keep the current.
+- [DeckChangeReview](https://lkb00.github.io/tattva/docs/deck-change-review.md): Review an AI edit that changed several slides: before and after for each slide, Keep or Undo each one or all at once, then save the kept changes as one version.
+- [DeckBuildProgress](https://lkb00.github.io/tattva/docs/deck-build-progress.md): Progress for a deck the AI builds slide by slide: slides ready out of the total, the real step, Stop that keeps what is done, and Retry per failed slide.
+- [SpeakerNotes](https://lkb00.github.io/tattva/docs/speaker-notes.md): Notes for one slide: an AI draft held apart until you keep it, "AI draft" or "Edited by you", and the word count and speaking time worked out in code.
+- [ExportSheet](https://lkb00.github.io/tattva/docs/export-sheet.md): Export a deck as PDF, PowerPoint, images or a link: what the file holds, what needs fixing first (amber) and what will change, then progress, the file name, or Retry.
+- [TakePicker](https://lkb00.github.io/tattva/docs/take-picker.md): Compare a few AI-made takes of the same request, hear them at the same moment, and keep one.
+- [EnhanceCompare](https://lkb00.github.io/tattva/docs/enhance-compare.md): Clean up a recording with one strength slider, and switch Before and After at the same moment.
+- [SectionLane](https://lkb00.github.io/tattva/docs/section-lane.md): A song's structure as labelled sections on a timeline: select, regenerate one, extend after it or move it, with staged edits and out-of-date sections in amber words.
+- [StemMixer](https://lkb00.github.io/tattva/docs/stem-mixer.md): One lane per stem of a song with Mute, Solo, a named level slider and a box to pick it for export, plus the separation state in words.
+- [TranscriptAudioEditor](https://lkb00.github.io/tattva/docs/transcript-audio-editor.md): Edit recorded speech by editing its words: remove words to cut the audio, or change words to make new audio in a consented voice.
+
+## For AI agents
+
+- [Every component page in one file](https://lkb00.github.io/tattva/llms-full.txt)
+- [Components as JSON](https://lkb00.github.io/tattva/components.json): every component with props, do and avoid, accessibility, import path and examples
+- [Design tokens in the DTCG format](https://lkb00.github.io/tattva/tokens.dtcg.json): colors for light and dark, timing, sizes and shadows
+- [Colour themes](https://lkb00.github.io/tattva/themes.json): the seven themes (lime, teal, indigo, harbor, plum, graphite, terminal), each with its AI color, washes and every changed token
+- [Agent guide and MCP server](https://github.com/LKB00/tattva/blob/main/docs/AGENTS.md): tools to search and read parts, list patterns, get tokens, plan a build and review code. It never edits your project
+
+## Downloads
+
+- [Design tokens as JSON](https://lkb00.github.io/tattva/downloads/tokens.json)
+- [Design tokens as CSS](https://lkb00.github.io/tattva/downloads/tokens.css)
+- [All icons as SVG](https://lkb00.github.io/tattva/downloads/icons.zip)
+

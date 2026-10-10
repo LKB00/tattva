@@ -1,0 +1,10 @@
+import{j as o}from"./iframe-J6_2PHET.js";import{p as v}from"./proLock-DICmId1O.js";import{A as g}from"./AILabel-BuzGDVfu.js";import"./preload-helper-Dp1pzeXC.js";import"./index-CJcEEXXm.js";import"./index-CaHZvsoO.js";import"./cn-2dOUpm6k.js";import"./icons-DAivRSTR.js";const{fn:f}=__STORYBOOK_MODULE_TEST__,E={title:"Playground/AILabel",component:g,parameters:v("AILabel"),tags:["autodocs"],args:{level:"feature",size:18,text:"AI",placed:!1,edited:!1,overview:"This summary was written from the three documents you attached.",details:"Generated with the assistant. Check names and dates before sharing.",revertLabel:"Revert to AI version",popoverLabel:"About this AI content",onRevert:f()},argTypes:{level:{control:"select",options:["feature","message","field","image"]},size:{control:"radio",options:[16,18,22]},text:{control:"text"},placed:{control:"boolean"},edited:{control:"boolean"},overview:{control:"text"},details:{control:"text"},resources:{control:!1},actions:{control:!1},revertLabel:{control:"text"},popoverLabel:{control:"text"},onRevert:{table:{disable:!0}},className:{table:{disable:!0}}},decorators:[u=>o.jsx("div",{style:{minHeight:240,padding:16},children:o.jsx(u,{})})]},e={},t={args:{edited:!0}},r={args:{overview:void 0,details:void 0}},I=["Playground","Edited","NoDetails"];var a,s,n;e.parameters={...e.parameters,docs:{...(a=e.parameters)==null?void 0:a.docs,source:{originalSource:"{}",...(n=(s=e.parameters)==null?void 0:s.docs)==null?void 0:n.source}}};var i,d,l;t.parameters={...t.parameters,docs:{...(i=t.parameters)==null?void 0:i.docs,source:{originalSource:`{
+  args: {
+    edited: true
+  }
+}`,...(l=(d=t.parameters)==null?void 0:d.docs)==null?void 0:l.source}}};var c,m,p;r.parameters={...r.parameters,docs:{...(c=r.parameters)==null?void 0:c.docs,source:{originalSource:`{
+  args: {
+    overview: undefined,
+    details: undefined
+  }
+}`,...(p=(m=r.parameters)==null?void 0:m.docs)==null?void 0:p.source}}};export{t as Edited,r as NoDetails,e as Playground,I as __namedExportsOrder,E as default};

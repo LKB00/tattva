@@ -1,0 +1,555 @@
+{
+  "note": "Tattva colour themes. Set data-palette on the html element (the default, lime, needs no attribute). A theme changes the greys and the AI color (--lime) in light and dark. Amber (--attention) and the status colors never change. `colors` lists every token that differs from the default theme, as final hex values.",
+  "themes": [
+    {
+      "id": "lime",
+      "name": "Lime",
+      "note": "Warm paper, fresh lime",
+      "default": true,
+      "use": "The default. No attribute needed.",
+      "ai": {
+        "light": "#c2ef72",
+        "dark": "#c2ef72"
+      },
+      "paper": {
+        "light": "#fafaf9",
+        "dark": "#181b1e"
+      },
+      "ink": {
+        "light": "#24282c",
+        "dark": "#f2f1ea"
+      },
+      "wash": {
+        "light": [
+          "#f2f3d1",
+          "#dcf6d6"
+        ],
+        "dark": null
+      },
+      "colors": {
+        "light": {},
+        "dark": {}
+      }
+    },
+    {
+      "id": "teal",
+      "name": "Teal",
+      "note": "Cool paper, calm teal",
+      "default": false,
+      "use": "<html data-palette=\"teal\">",
+      "ai": {
+        "light": "#7ae6e5",
+        "dark": "#77cfcf"
+      },
+      "paper": {
+        "light": "#f4fcfc",
+        "dark": "#151c1d"
+      },
+      "ink": {
+        "light": "#21292a",
+        "dark": "#ebf2f3"
+      },
+      "wash": {
+        "light": [
+          "#d0f9ed",
+          "#d2f6ff"
+        ],
+        "dark": [
+          "#00342a",
+          "#00323c"
+        ]
+      },
+      "colors": {
+        "light": {
+          "--bg": "#f4fcfc",
+          "--surface-sunken": "#eef6f6",
+          "--surface-hover": "#e6eeee",
+          "--border": "#dfe7e7",
+          "--border-strong": "#c2caca",
+          "--fg": "#21292a",
+          "--fg-muted": "#4e5454",
+          "--fg-subtle": "#646b6b",
+          "--accent": "#21292a",
+          "--accent-hover": "#374041",
+          "--accent-fg": "#21292a",
+          "--lime": "#7ae6e5",
+          "--wf-ink": "#3a4040",
+          "--wf-line": "#cbd3d3",
+          "--wf-fill": "#dde5e5",
+          "--wf-soft": "#e9f1f1",
+          "--wf-ai": "#7ae6e5",
+          "--lime-hover": "#69d5d5",
+          "--lime-soft": "#d2f9f8",
+          "--on-lime": "#21292a",
+          "--focus-ring": "#21292a",
+          "--chart-grid": "#dfe7e7",
+          "--chart-axis": "#646b6b",
+          "--ai-wash-1": "#d0f9ed",
+          "--ai-wash-2": "#d2f6ff"
+        },
+        "dark": {
+          "--bg": "#151c1d",
+          "--surface": "#1d2526",
+          "--surface-sunken": "#192021",
+          "--surface-raised": "#262e2f",
+          "--surface-hover": "#293132",
+          "--border": "#2f3738",
+          "--border-strong": "#474f50",
+          "--fg": "#ebf2f3",
+          "--fg-muted": "#b5bebf",
+          "--fg-subtle": "#959f9f",
+          "--accent": "#ebf2f3",
+          "--accent-fg": "#ebf2f3",
+          "--lime": "#77cfcf",
+          "--wf-ink": "#d0dada",
+          "--wf-line": "#495152",
+          "--wf-fill": "#384041",
+          "--wf-soft": "#293132",
+          "--wf-paper": "#21292a",
+          "--wf-ai": "#77cfcf",
+          "--lime-hover": "#69d5d5",
+          "--lime-soft": "#073232",
+          "--on-lime": "#21292a",
+          "--focus-ring": "#ebf2f3",
+          "--chart-grid": "#2f3738",
+          "--chart-axis": "#959f9f",
+          "--ai-wash-1": "#00342a",
+          "--ai-wash-2": "#00323c"
+        }
+      }
+    },
+    {
+      "id": "indigo",
+      "name": "Indigo",
+      "note": "Soft violet-blue",
+      "default": false,
+      "use": "<html data-palette=\"indigo\">",
+      "ai": {
+        "light": "#c1c5ff",
+        "dark": "#b3b6fc"
+      },
+      "paper": {
+        "light": "#f9fafe",
+        "dark": "#1a1a20"
+      },
+      "ink": {
+        "light": "#27272d",
+        "dark": "#f0f0f6"
+      },
+      "wash": {
+        "light": [
+          "#e6efff",
+          "#f2ebfe"
+        ],
+        "dark": [
+          "#1c2b47",
+          "#302442"
+        ]
+      },
+      "colors": {
+        "light": {
+          "--bg": "#f9fafe",
+          "--surface-sunken": "#f3f3f9",
+          "--surface-hover": "#ebebf1",
+          "--border": "#e4e4ea",
+          "--border-strong": "#c7c7cd",
+          "--fg": "#27272d",
+          "--fg-muted": "#525257",
+          "--fg-subtle": "#68696e",
+          "--accent": "#27272d",
+          "--accent-hover": "#3d3e45",
+          "--accent-fg": "#27272d",
+          "--lime": "#c1c5ff",
+          "--wf-ink": "#3e3e43",
+          "--wf-line": "#d0d0d6",
+          "--wf-fill": "#e2e2e8",
+          "--wf-soft": "#eeeef4",
+          "--wf-ai": "#c1c5ff",
+          "--lime-hover": "#afb2ff",
+          "--lime-soft": "#edefff",
+          "--on-lime": "#27272d",
+          "--focus-ring": "#27272d",
+          "--chart-grid": "#e4e4ea",
+          "--chart-axis": "#68696e",
+          "--ai-wash-1": "#e6efff",
+          "--ai-wash-2": "#f2ebfe"
+        },
+        "dark": {
+          "--bg": "#1a1a20",
+          "--surface": "#232329",
+          "--surface-sunken": "#1e1e24",
+          "--surface-raised": "#2c2c33",
+          "--surface-hover": "#2f2f35",
+          "--border": "#35353b",
+          "--border-strong": "#4c4c54",
+          "--fg": "#f0f0f6",
+          "--fg-muted": "#bcbdc5",
+          "--fg-subtle": "#9b9ca4",
+          "--accent": "#f0f0f6",
+          "--accent-fg": "#f0f0f6",
+          "--lime": "#b3b6fc",
+          "--wf-ink": "#d7d7e0",
+          "--wf-line": "#4e4e56",
+          "--wf-fill": "#3e3e45",
+          "--wf-soft": "#2f2f36",
+          "--wf-paper": "#27272d",
+          "--wf-ai": "#b3b6fc",
+          "--lime-hover": "#afb2ff",
+          "--lime-soft": "#282841",
+          "--on-lime": "#27272d",
+          "--focus-ring": "#f0f0f6",
+          "--chart-grid": "#35353b",
+          "--chart-axis": "#9b9ca4",
+          "--ai-wash-1": "#1c2b47",
+          "--ai-wash-2": "#302442"
+        }
+      }
+    },
+    {
+      "id": "harbor",
+      "name": "Harbor",
+      "note": "Steady, trusted blue",
+      "default": false,
+      "use": "<html data-palette=\"harbor\">",
+      "ai": {
+        "light": "#a3cffe",
+        "dark": "#92c3f6"
+      },
+      "paper": {
+        "light": "#f7fafe",
+        "dark": "#171b20"
+      },
+      "ink": {
+        "light": "#24282d",
+        "dark": "#edf1f6"
+      },
+      "wash": {
+        "light": [
+          "#dcf3ff",
+          "#e8eeff"
+        ],
+        "dark": [
+          "#033041",
+          "#212947"
+        ]
+      },
+      "colors": {
+        "light": {
+          "--bg": "#f7fafe",
+          "--surface-sunken": "#f0f4f9",
+          "--surface-hover": "#e8ecf1",
+          "--border": "#e2e5eb",
+          "--border-strong": "#c5c8cd",
+          "--fg": "#24282d",
+          "--fg-muted": "#505357",
+          "--fg-subtle": "#66696e",
+          "--accent": "#24282d",
+          "--accent-hover": "#3a3f45",
+          "--accent-fg": "#24282d",
+          "--lime": "#a3cffe",
+          "--wf-ink": "#3c3f43",
+          "--wf-line": "#cdd1d6",
+          "--wf-fill": "#e0e3e8",
+          "--wf-soft": "#ebeff4",
+          "--wf-ai": "#a3cffe",
+          "--lime-hover": "#86c0fc",
+          "--lime-soft": "#e5f2ff",
+          "--on-lime": "#24282d",
+          "--focus-ring": "#24282d",
+          "--chart-grid": "#e2e5eb",
+          "--chart-axis": "#66696e",
+          "--ai-wash-1": "#dcf3ff",
+          "--ai-wash-2": "#e8eeff"
+        },
+        "dark": {
+          "--bg": "#171b20",
+          "--surface": "#202429",
+          "--surface-sunken": "#1b1f24",
+          "--surface-raised": "#292d33",
+          "--border": "#31363c",
+          "--border-strong": "#494e54",
+          "--fg": "#edf1f6",
+          "--fg-muted": "#b7bdc4",
+          "--fg-subtle": "#989da4",
+          "--accent": "#edf1f6",
+          "--accent-fg": "#edf1f6",
+          "--lime": "#92c3f6",
+          "--wf-ink": "#d3d8e0",
+          "--wf-line": "#4b5056",
+          "--wf-soft": "#2c3036",
+          "--wf-paper": "#24282d",
+          "--wf-ai": "#92c3f6",
+          "--lime-hover": "#86c0fc",
+          "--lime-soft": "#192d41",
+          "--on-lime": "#24282d",
+          "--focus-ring": "#edf1f6",
+          "--chart-grid": "#31363c",
+          "--chart-axis": "#989da4",
+          "--ai-wash-1": "#033041",
+          "--ai-wash-2": "#212947"
+        }
+      }
+    },
+    {
+      "id": "plum",
+      "name": "Plum",
+      "note": "Warm berry pink",
+      "default": false,
+      "use": "<html data-palette=\"plum\">",
+      "ai": {
+        "light": "#fdb1ec",
+        "dark": "#e6a6d7"
+      },
+      "paper": {
+        "light": "#fef8fc",
+        "dark": "#1f191c"
+      },
+      "ink": {
+        "light": "#2c2529",
+        "dark": "#f5eff2"
+      },
+      "wash": {
+        "light": [
+          "#f7e8fe",
+          "#fee7ef"
+        ],
+        "dark": [
+          "#36223e",
+          "#401f2d"
+        ]
+      },
+      "colors": {
+        "light": {
+          "--bg": "#fef8fc",
+          "--surface-sunken": "#f8f2f6",
+          "--surface-hover": "#f0eaee",
+          "--border": "#e9e3e7",
+          "--border-strong": "#ccc6c9",
+          "--fg": "#2c2529",
+          "--fg-muted": "#565154",
+          "--fg-subtle": "#6c676b",
+          "--accent": "#2c2529",
+          "--accent-hover": "#433c40",
+          "--accent-fg": "#2c2529",
+          "--lime": "#fdb1ec",
+          "--wf-ink": "#413d40",
+          "--wf-line": "#d5cfd3",
+          "--wf-fill": "#e7e1e5",
+          "--wf-soft": "#f3edf0",
+          "--wf-ai": "#fdb1ec",
+          "--lime-hover": "#eca1db",
+          "--lime-soft": "#ffe9f9",
+          "--on-lime": "#2c2529",
+          "--focus-ring": "#2c2529",
+          "--chart-grid": "#e9e3e7",
+          "--chart-axis": "#6c676b",
+          "--ai-wash-1": "#f7e8fe",
+          "--ai-wash-2": "#fee7ef"
+        },
+        "dark": {
+          "--bg": "#1f191c",
+          "--surface": "#282125",
+          "--surface-sunken": "#231d21",
+          "--surface-raised": "#312a2e",
+          "--surface-hover": "#342d31",
+          "--border": "#3a3337",
+          "--border-strong": "#524b4f",
+          "--fg": "#f5eff2",
+          "--fg-muted": "#c2b9bf",
+          "--fg-subtle": "#a29a9f",
+          "--accent": "#f5eff2",
+          "--accent-fg": "#f5eff2",
+          "--lime": "#e6a6d7",
+          "--wf-ink": "#ded5da",
+          "--wf-line": "#544d51",
+          "--wf-fill": "#433c40",
+          "--wf-soft": "#342d31",
+          "--wf-paper": "#2c2529",
+          "--wf-ai": "#e6a6d7",
+          "--lime-hover": "#eca1db",
+          "--lime-soft": "#392334",
+          "--on-lime": "#2c2529",
+          "--focus-ring": "#f5eff2",
+          "--chart-grid": "#3a3337",
+          "--chart-axis": "#a29a9f",
+          "--ai-wash-1": "#36223e",
+          "--ai-wash-2": "#401f2d"
+        }
+      }
+    },
+    {
+      "id": "graphite",
+      "name": "Graphite",
+      "note": "No colour, all label",
+      "default": false,
+      "use": "<html data-palette=\"graphite\">",
+      "ai": {
+        "light": "#e0deda",
+        "dark": "#bfbdba"
+      },
+      "paper": {
+        "light": "#fbfaf8",
+        "dark": "#1c1a19"
+      },
+      "ink": {
+        "light": "#292724",
+        "dark": "#f4f0eb"
+      },
+      "wash": {
+        "light": [
+          "#eeeeee",
+          "#eeeeee"
+        ],
+        "dark": [
+          "#2b2b2b",
+          "#2b2b2b"
+        ]
+      },
+      "colors": {
+        "light": {
+          "--bg": "#fbfaf8",
+          "--surface-sunken": "#f5f4f2",
+          "--surface-hover": "#edecea",
+          "--border": "#e6e5e3",
+          "--border-strong": "#c9c8c6",
+          "--fg": "#292724",
+          "--fg-muted": "#545352",
+          "--fg-subtle": "#6a6967",
+          "--accent": "#292724",
+          "--accent-hover": "#403e3a",
+          "--accent-fg": "#292724",
+          "--lime": "#e0deda",
+          "--wf-ink": "#3f3e3d",
+          "--wf-line": "#d2d1cf",
+          "--wf-fill": "#e4e3e1",
+          "--wf-soft": "#f0efed",
+          "--wf-ai": "#e0deda",
+          "--lime-hover": "#d0cdc9",
+          "--lime-soft": "#ffeed3",
+          "--on-lime": "#292724",
+          "--focus-ring": "#292724",
+          "--chart-grid": "#e6e5e3",
+          "--chart-axis": "#6a6967",
+          "--ai-wash-1": "#eeeeee",
+          "--ai-wash-2": "#eeeeee"
+        },
+        "dark": {
+          "--bg": "#1c1a19",
+          "--surface": "#242321",
+          "--surface-sunken": "#201f1d",
+          "--surface-raised": "#2e2c2a",
+          "--surface-hover": "#312f2d",
+          "--border": "#363533",
+          "--border-strong": "#4e4d4b",
+          "--fg": "#f4f0eb",
+          "--fg-muted": "#bdbcb9",
+          "--fg-subtle": "#9e9c9a",
+          "--accent": "#f4f0eb",
+          "--accent-fg": "#f4f0eb",
+          "--lime": "#bfbdba",
+          "--wf-ink": "#d9d7d5",
+          "--wf-line": "#504f4d",
+          "--wf-fill": "#403e3c",
+          "--wf-soft": "#312f2d",
+          "--wf-paper": "#292725",
+          "--wf-ai": "#bfbdba",
+          "--lime-hover": "#d0cdc9",
+          "--lime-soft": "#37290f",
+          "--on-lime": "#292724",
+          "--focus-ring": "#f4f0eb",
+          "--chart-grid": "#363533",
+          "--chart-axis": "#9e9c9a",
+          "--ai-wash-1": "#2b2b2b",
+          "--ai-wash-2": "#2b2b2b"
+        }
+      }
+    },
+    {
+      "id": "terminal",
+      "name": "Terminal",
+      "note": "Near-black, dense, sky blue",
+      "default": false,
+      "use": "<html data-palette=\"terminal\">",
+      "ai": {
+        "light": "#81c5fe",
+        "dark": "#87c5f9"
+      },
+      "paper": {
+        "light": "#fafafa",
+        "dark": "#0e0e0e"
+      },
+      "ink": {
+        "light": "#262829",
+        "dark": "#e5e9ee"
+      },
+      "wash": {
+        "light": [
+          "#daf3fe",
+          "#e7efff"
+        ],
+        "dark": [
+          "#003140",
+          "#1e2a47"
+        ]
+      },
+      "colors": {
+        "light": {
+          "--bg": "#fafafa",
+          "--surface-sunken": "#f4f4f4",
+          "--surface-hover": "#ececec",
+          "--border": "#e5e5e5",
+          "--border-strong": "#c8c8c8",
+          "--fg": "#262829",
+          "--fg-muted": "#525252",
+          "--fg-subtle": "#696969",
+          "--accent": "#262829",
+          "--accent-hover": "#3d3e40",
+          "--accent-fg": "#262829",
+          "--lime": "#81c5fe",
+          "--wf-ink": "#3e3e3e",
+          "--wf-line": "#d1d1d1",
+          "--wf-fill": "#e3e3e3",
+          "--wf-soft": "#efefef",
+          "--wf-ai": "#81c5fe",
+          "--lime-hover": "#6bb5f2",
+          "--lime-soft": "#e4f2fe",
+          "--on-lime": "#262829",
+          "--focus-ring": "#262829",
+          "--chart-grid": "#e5e5e5",
+          "--chart-axis": "#696969",
+          "--ai-wash-1": "#daf3fe",
+          "--ai-wash-2": "#e7efff"
+        },
+        "dark": {
+          "--bg": "#0e0e0e",
+          "--surface": "#141414",
+          "--surface-sunken": "#101010",
+          "--surface-raised": "#1b1b1b",
+          "--surface-hover": "#242424",
+          "--border": "#2a2a2a",
+          "--border-strong": "#3d3d3d",
+          "--fg": "#e5e9ee",
+          "--fg-muted": "#b3b3b3",
+          "--fg-subtle": "#8f8f8f",
+          "--accent": "#e5e9ee",
+          "--accent-fg": "#e5e9ee",
+          "--lime": "#87c5f9",
+          "--wf-ink": "#d8d8d8",
+          "--wf-line": "#4f4f4f",
+          "--wf-fill": "#3e3e3e",
+          "--wf-soft": "#303030",
+          "--wf-paper": "#272727",
+          "--wf-ai": "#87c5f9",
+          "--lime-hover": "#6bb5f2",
+          "--lime-soft": "#172e40",
+          "--on-lime": "#262829",
+          "--focus-ring": "#e5e9ee",
+          "--chart-grid": "#2a2a2a",
+          "--chart-axis": "#8f8f8f",
+          "--ai-wash-1": "#003140",
+          "--ai-wash-2": "#1e2a47"
+        }
+      }
+    }
+  ]
+}

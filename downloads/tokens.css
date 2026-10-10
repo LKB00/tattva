@@ -1,0 +1,698 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Design tokens
+   Layer 1: raw scales (--ref-*)      never used directly in components
+   Layer 2: semantic roles (--*)      what components consume
+   Layer 3: Tailwind theme mapping    utilities like bg-surface, text-fg-muted
+   Dark mode: add class "dark" (or data-theme="dark") on <html>.
+------------------------------------------------------------------- */
+
+@custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
+
+:root, [data-theme="light"] {
+  /* ---- Raw palette: warm paper, charcoal ink, one lime, one amber ---- */
+  --ref-charcoal: #24282c;
+  --ref-charcoal-soft: #5b5e61;
+  --ref-charcoal-mute: #686c6f;      /* 4.55:1 or better on paper, sand, white and hover surfaces */
+  /* ---- Type families. Components use these through font-sans and font-mono. ---- */
+  --ds-font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ds-font-mono: "Geist Mono", ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+  /* The display voice: headings and the assistant's own words. Sans by default; set data-voice="serif" on the root for a literary serif. */
+  --ds-font-display: var(--ds-font-sans);
+  --ds-display-weight: 600;      /* h1 to h3 */
+  --ds-display-tracking: -0.02em;
+  --ds-voice-weight: 500;        /* the .font-serif class (kept as a name; it is the display voice) */
+  --ds-voice-tracking: -0.01em;
+  --ref-paper: #fafaf9;
+  --ref-sand: #f4f4f2;
+  --ref-sand-deep: #ececea;
+  --ref-line: #e6e5e2;
+  --ref-line-strong: #c9c8c3;
+  --ref-lime: #c2ef72;
+  --ref-lime-deep: #b2e255;
+  --ref-lime-wash: #eaf5cc;
+  --ref-amber: #c97b4a;
+  --ref-amber-wash: #f8ebe1;
+  --ref-amber-ink: #8f4f26;
+
+  /* ---- Semantic roles (light) ---- */
+  --bg: var(--ref-paper);
+  --surface: #ffffff;
+  --surface-sunken: var(--ref-sand);
+  --surface-raised: #ffffff;
+  --surface-hover: var(--ref-sand-deep);
+  --border: var(--ref-line);
+  --border-strong: var(--ref-line-strong);
+
+  --fg: var(--ref-charcoal);
+  --fg-muted: var(--ref-charcoal-soft);
+  --fg-subtle: var(--ref-charcoal-mute);
+  --fg-on-accent: #ffffff;
+  --on-danger: #ffffff;
+
+  /* Accent = ink. Primary actions are charcoal; lime is a highlight, never a text color. */
+  --accent: var(--ref-charcoal);
+  --accent-hover: #3a3f44;
+  /* The accent is ink, never the AI colour: lime marks AI only. Its soft tint is a light wash of that ink. */
+  --accent-soft: color-mix(in oklab, var(--accent) 7%, var(--bg));
+  --accent-soft-border: color-mix(in oklab, var(--accent) 22%, var(--bg));
+  --accent-fg: var(--ref-charcoal);
+
+  --lime: var(--ref-lime);
+  /* Wireframe drawings in the parts index */
+  --wf-ink: #3a3f44; --wf-line: #d2d1cc; --wf-fill: #e4e3df; --wf-soft: #efefec; --wf-paper: #ffffff; --wf-ai: var(--ref-lime);
+  --lime-hover: var(--ref-lime-deep);
+  --lime-soft: var(--ref-lime-wash);
+  --on-lime: var(--ref-charcoal);
+
+  /* Amber is reserved for "this needs a person". Same slot as warning. */
+  --attention: var(--ref-amber);
+  --attention-soft: var(--ref-amber-wash);
+  --attention-fg: var(--ref-amber-ink);
+
+  --success: #5f9a14;  --success-soft: #eef6da;  --success-fg: #3f6a0b;
+  --warning: var(--attention);  --warning-soft: var(--attention-soft);  --warning-fg: var(--attention-fg);
+  --danger: #b84a42;   --danger-soft: #f9e9e7;   --danger-fg: #8e2f28;
+  --info: #5a7691;     --info-soft: #e9eef3;     --info-fg: #35506a;
+
+  /* Direction: up and down for prices, P&L and changes in anything that moves. Separate from success and danger,
+     which mean "worked" and "failed". Always pair with an arrow or a sign, never colour alone. */
+  --up: #0b8a6f;   --up-soft: #e4f4f0;   --up-fg: #0b7a63;
+  --down: #d6303f; --down-soft: #fdeaec; --down-fg: #c4283a;
+  /* The veil behind a modal. */
+  --scrim: rgb(24 26 29 / 0.4);
+
+  /* Unsure: a neutral for "not fully sure" and "partly done". Not a warning: nothing is wrong, there is just no strong read yet. */
+  --unsure: #6b6b7d;     --unsure-soft: #eeedf5;     --unsure-fg: #575768;
+  /* Celebrate: reserved for exactly one thing, a goal fully reached (a refund returned in full, a project shipped). Never decoration. */
+  --celebrate: #b6832f;  --celebrate-soft: #f7efdc;  --celebrate-fg: #85590f;
+
+  --focus-ring: var(--ref-charcoal);
+
+  --code-bg: #1f2326;
+  --code-fg: #ecebe4;
+  --code-muted: #9a9d9a;
+  --code-line: rgb(255 255 255 / 0.1);  --code-line-strong: rgb(255 255 255 / 0.3);  --code-hover: rgb(255 255 255 / 0.1);  --code-hover-strong: rgb(255 255 255 / 0.2);
+  --on-success: #ffffff;
+  --thumb: #ffffff;
+
+  --hair: 1px;
+
+  /* ---- Data visualization (validated with the dataviz palette checks) ----
+     Categorical colors are assigned in fixed order and never cycled. Amber is not a series color.
+     Neutral is for "Other" and context data. Status colors stay separate (success, danger, attention). */
+  --chart-1: #2a6fbf;
+  --chart-2: #c2455f;
+  --chart-3: #008c9e;
+  --chart-4: #6f8f10;
+  --chart-5: #8a3d93;
+  --chart-neutral: #9a9d98;
+  /* Sequential: one hue, low to high. Diverging: two poles and a gray midpoint. */
+  --chart-seq-1: #94b6df;
+  --chart-seq-2: #6693cb;
+  --chart-seq-3: #3a74b8;
+  --chart-seq-4: #235a9a;
+  --chart-seq-5: #14406d;
+  --chart-div-neg: #c2455f;
+  --chart-div-mid: #e4e1d6;
+  --chart-div-pos: #2a6fbf;
+  --chart-grid: var(--border);
+  --chart-axis: var(--fg-subtle);
+
+  /* ---- Layout ---- */
+  --w-chat: 768px;     /* thread and composer reading width */
+  --w-home: 680px;     /* empty-thread column */
+  --w-page: 1120px;    /* documentation and settings pages */
+  --margin: 16px;      /* page margin, steps up at md and lg */
+  --gutter: 16px;
+  --density: 1;        /* 1 comfortable, 0.8 compact (data-density="compact") */
+
+  /* ---- Type (fluid, with a rem floor so 200% zoom still scales) ---- */
+  --text-display: clamp(2.25rem, 2vw + 1.5rem, 3.25rem);
+  --text-headline: clamp(1.625rem, 1vw + 1.25rem, 2rem);
+  --text-title: clamp(1.25rem, 0.5vw + 1.1rem, 1.5rem);
+  --measure: 72ch;
+
+  --shadow-sm: 0 1px 2px rgb(36 40 44 / 0.05);
+  --shadow-md: 0 6px 20px rgb(36 40 44 / 0.07), 0 1px 2px rgb(36 40 44 / 0.04);
+  --shadow-lg: 0 16px 40px rgb(36 40 44 / 0.12), 0 2px 6px rgb(36 40 44 / 0.05);
+
+  /* Motion: enter decelerates, exit accelerates, moves on screen use the standard curve. */
+  --ease-out: cubic-bezier(0.2, 0, 0, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-standard: cubic-bezier(0.2, 0, 0.38, 0.9);
+  --ease-sheet: cubic-bezier(0.32, 0.72, 0, 1); /* a surface sliding over the page: a sheet, a drawer, a side panel */
+  --ease-arrive: cubic-bezier(0.16, 1, 0.3, 1);  /* a card or view arriving: fast start, long soft landing */
+  --dur-instant: 70ms;   /* press, toggle */
+  --dur-fast: 150ms;     /* hover, feedback, exits */
+  --dur-base: 220ms;     /* enter */
+  --dur-slow: 380ms;     /* panels and sheets. Nothing in the UI exceeds 400ms */
+  --dur-page: 520ms;     /* the one navigation exception: a whole page or view arriving. Never for a control */
+  --dur-ambient: 2.4s;   /* the one exception: a slow loop tied to real work (WorkingEdge). Never for decoration */
+  --press-scale: 0.98;   /* how far a pressed control sinks. Release takes longer than the press */
+  --blur-arrive: 2px;    /* text or a row that arrives settles out of this blur */
+  --stagger: 40ms;       /* gap between items arriving in a list; keep the whole list under about 300ms */
+}
+
+@media (min-width: 52.5rem) { :root { --margin: 24px; --gutter: 24px; } }
+@media (min-width: 75rem) { :root { --margin: 32px; } }
+[data-density="compact"] { --density: 0.8; }
+
+/* Colour-blind-safe direction: blue for up, orange for down. Set data-direction="cb" on the root element. */
+[data-direction="cb"] {
+  --up: #2a6fbf;   --up-soft: #e6eefb;   --up-fg: #1f5fbf;
+  --down: #c46a14; --down-soft: #fcefe1; --down-fg: #a64d08;
+}
+.dark[data-direction="cb"], [data-direction="cb"] .dark, [data-direction="cb"][data-theme="dark"], [data-direction="cb"] [data-theme="dark"] {
+  --up: #4a8cd8;   --up-soft: #14233b;   --up-fg: #6aa5f5;
+  --down: #e0904a; --down-soft: #3a2810; --down-fg: #f0a45a;
+}
+
+.dark, [data-theme="dark"] {
+  --bg: #181b1e;
+  --surface: #202428;
+  --surface-sunken: #1c1f23;
+  --surface-raised: #292d32;
+  --surface-hover: #2b3036;
+  --border: #31363b;
+  --border-strong: #484e54;
+
+  --fg: #f2f1ea;
+  --fg-muted: #b4b5b2;
+  --fg-subtle: #9a9d9f;              /* 4.9:1 or better on the dark surfaces */
+  --fg-on-accent: #24282c;
+  --on-danger: #24282c;
+
+  /* Dark mode: the accent is light ink (primary buttons, the selected tab), the AI colour stays for AI. */
+  --accent: var(--fg);
+  --accent-hover: color-mix(in oklab, var(--fg) 86%, var(--bg));
+  --accent-soft: color-mix(in oklab, var(--fg) 9%, var(--bg));
+  --accent-soft-border: color-mix(in oklab, var(--fg) 24%, var(--bg));
+  --accent-fg: var(--fg);
+
+  --lime-soft: #2a3320;
+  --wf-ink: #d9d8d0; --wf-line: #4a5056; --wf-fill: #3a3f45; --wf-soft: #2c3035; --wf-paper: #24282c; --wf-ai: var(--ref-lime);
+
+  --attention: #e09468;
+  --attention-soft: #3a281c;
+  --attention-fg: #efb28c;
+  /* Aliases are declared again here so a dark wrapper inside a light page (data-theme="dark" on any element) gets the dark values too. */
+  --warning: var(--attention);  --warning-soft: var(--attention-soft);  --warning-fg: var(--attention-fg);
+  --chart-grid: var(--border);  --chart-axis: var(--fg-subtle);
+
+  --success: #8cc63f;  --success-soft: #232e17;  --success-fg: #b4de78;
+  --danger: #ea7a72;   --danger-soft: #3a1f1d;   --danger-fg: #f3a7a1;
+  --info: #86a5c0;     --info-soft: #1f2a34;     --info-fg: #aac3d8;
+
+  --up: #2fb594;   --up-soft: #0e2b26;   --up-fg: #3ed3b0;
+  --down: #f0525f; --down-soft: #3a1a1f; --down-fg: #ff7480;
+  --scrim: rgb(0 0 0 / 0.6);
+  --unsure: #a9a9bd;     --unsure-soft: #25252f;     --unsure-fg: #c4c4d6;
+  --celebrate: #d4a24f;  --celebrate-soft: #2f2614;  --celebrate-fg: #e6c07a;
+
+  --focus-ring: var(--fg); /* light ink, like the accent: the AI colour is not a focus colour */
+  --code-bg: #121416;
+  --on-success: #24282c;
+
+  --chart-1: #4a8cd8;
+  --chart-2: #d85874;
+  --chart-3: #12a0a8;
+  --chart-4: #82a420;
+  --chart-5: #a862b8;
+  --chart-neutral: #7d8185;
+  /* In dark themes lighter means more. */
+  --chart-seq-1: #3a64a0;
+  --chart-seq-2: #4f7fc0;
+  --chart-seq-3: #6e9ed8;
+  --chart-seq-4: #98bdec;
+  --chart-seq-5: #c4daf6;
+  --chart-div-neg: #d85874;
+  --chart-div-mid: #3a3f45;
+  --chart-div-pos: #4a8cd8;
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 6px 20px rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 16px 40px rgb(0 0 0 / 0.5);
+}
+
+/* ---- Voice: data-voice="serif" on <html> swaps the display voice to a serif (load Newsreader yourself). ---- */
+[data-voice="serif"] {
+  --ds-font-display: "Newsreader", ui-serif, Georgia, "Times New Roman", serif;
+  --ds-display-weight: 400; --ds-display-tracking: 0;
+  --ds-voice-weight: 400; --ds-voice-tracking: 0;
+}
+
+/* ---- Colour themes: set data-palette on <html> to teal, indigo, harbor, plum or graphite; the default (lime) needs no attribute. A theme changes the greys and the AI colour in light and dark, and adds two soft wash colours (--ai-wash-1, --ai-wash-2). ---- */
+/* Theme: teal. Greys and the AI colour change; amber (needs a person) and the status colours stay. */
+[data-palette="teal"], [data-palette="teal"] [data-theme="light"] {
+  --ref-paper: #f4fcfc; --ref-sand: #eef6f6; --ref-sand-deep: #e6eeee; --ref-line: #dfe7e7; --ref-line-strong: #c2caca;
+  --ref-charcoal: #21292a; --ref-charcoal-soft: #4e5454; --ref-charcoal-mute: #646b6b;
+  --ref-lime: #7ae6e5; --ref-lime-deep: #69d5d5; --ref-lime-wash: #d2f9f8;
+  --accent-hover: #374041;
+  --ai-wash-1: #d0f9ed; --ai-wash-2: #d2f6ff;
+  --wf-ink: #3a4040; --wf-line: #cbd3d3; --wf-fill: #dde5e5; --wf-soft: #e9f1f1;
+}
+[data-palette="teal"].dark, [data-palette="teal"][data-theme="dark"], [data-palette="teal"] .dark, [data-palette="teal"] [data-theme="dark"] {
+  --bg: #151c1d; --surface: #1d2526; --surface-sunken: #192021; --surface-raised: #262e2f; --surface-hover: #293132;
+  --ref-lime: #77cfcf; --lime-soft: #073232;
+  --ai-wash-1: #00342a; --ai-wash-2: #00323c;
+  --border: #2f3738; --border-strong: #474f50; --fg: #ebf2f3; --fg-muted: #b5bebf; --fg-subtle: #959f9f;
+  --wf-ink: #d0dada; --wf-line: #495152; --wf-fill: #384041; --wf-soft: #293132; --wf-paper: #21292a;
+}
+html[data-palette="teal"], html[data-palette="teal"].dark { --pastel-lilac: var(--ai-wash-1); --pastel-sky: var(--ai-wash-2); --pastel-mint: color-mix(in oklab, var(--ai-wash-1) 50%, var(--ai-wash-2)); --pastel-rose: color-mix(in oklab, var(--ai-wash-2) 55%, var(--bg)); }
+
+/* Theme: indigo. Greys and the AI colour change; amber (needs a person) and the status colours stay. */
+[data-palette="indigo"], [data-palette="indigo"] [data-theme="light"] {
+  --ref-paper: #f9fafe; --ref-sand: #f3f3f9; --ref-sand-deep: #ebebf1; --ref-line: #e4e4ea; --ref-line-strong: #c7c7cd;
+  --ref-charcoal: #27272d; --ref-charcoal-soft: #525257; --ref-charcoal-mute: #68696e;
+  --ref-lime: #c1c5ff; --ref-lime-deep: #afb2ff; --ref-lime-wash: #edefff;
+  --accent-hover: #3d3e45;
+  --ai-wash-1: #e6efff; --ai-wash-2: #f2ebfe;
+  --wf-ink: #3e3e43; --wf-line: #d0d0d6; --wf-fill: #e2e2e8; --wf-soft: #eeeef4;
+}
+[data-palette="indigo"].dark, [data-palette="indigo"][data-theme="dark"], [data-palette="indigo"] .dark, [data-palette="indigo"] [data-theme="dark"] {
+  --bg: #1a1a20; --surface: #232329; --surface-sunken: #1e1e24; --surface-raised: #2c2c33; --surface-hover: #2f2f35;
+  --ref-lime: #b3b6fc; --lime-soft: #282841;
+  --ai-wash-1: #1c2b47; --ai-wash-2: #302442;
+  --border: #35353b; --border-strong: #4c4c54; --fg: #f0f0f6; --fg-muted: #bcbdc5; --fg-subtle: #9b9ca4;
+  --wf-ink: #d7d7e0; --wf-line: #4e4e56; --wf-fill: #3e3e45; --wf-soft: #2f2f36; --wf-paper: #27272d;
+}
+html[data-palette="indigo"], html[data-palette="indigo"].dark { --pastel-lilac: var(--ai-wash-1); --pastel-sky: var(--ai-wash-2); --pastel-mint: color-mix(in oklab, var(--ai-wash-1) 50%, var(--ai-wash-2)); --pastel-rose: color-mix(in oklab, var(--ai-wash-2) 55%, var(--bg)); }
+
+/* Theme: harbor. Greys and the AI colour change; amber (needs a person) and the status colours stay. */
+[data-palette="harbor"], [data-palette="harbor"] [data-theme="light"] {
+  --ref-paper: #f7fafe; --ref-sand: #f0f4f9; --ref-sand-deep: #e8ecf1; --ref-line: #e2e5eb; --ref-line-strong: #c5c8cd;
+  --ref-charcoal: #24282d; --ref-charcoal-soft: #505357; --ref-charcoal-mute: #66696e;
+  --ref-lime: #a3cffe; --ref-lime-deep: #86c0fc; --ref-lime-wash: #e5f2ff;
+  --accent-hover: #3a3f45;
+  --ai-wash-1: #dcf3ff; --ai-wash-2: #e8eeff;
+  --wf-ink: #3c3f43; --wf-line: #cdd1d6; --wf-fill: #e0e3e8; --wf-soft: #ebeff4;
+}
+[data-palette="harbor"].dark, [data-palette="harbor"][data-theme="dark"], [data-palette="harbor"] .dark, [data-palette="harbor"] [data-theme="dark"] {
+  --bg: #171b20; --surface: #202429; --surface-sunken: #1b1f24; --surface-raised: #292d33; --surface-hover: #2b3036;
+  --ref-lime: #92c3f6; --lime-soft: #192d41;
+  --ai-wash-1: #033041; --ai-wash-2: #212947;
+  --border: #31363c; --border-strong: #494e54; --fg: #edf1f6; --fg-muted: #b7bdc4; --fg-subtle: #989da4;
+  --wf-ink: #d3d8e0; --wf-line: #4b5056; --wf-fill: #3a3f45; --wf-soft: #2c3036; --wf-paper: #24282d;
+}
+html[data-palette="harbor"], html[data-palette="harbor"].dark { --pastel-lilac: var(--ai-wash-1); --pastel-sky: var(--ai-wash-2); --pastel-mint: color-mix(in oklab, var(--ai-wash-1) 50%, var(--ai-wash-2)); --pastel-rose: color-mix(in oklab, var(--ai-wash-2) 55%, var(--bg)); }
+
+/* Theme: plum. Greys and the AI colour change; amber (needs a person) and the status colours stay. */
+[data-palette="plum"], [data-palette="plum"] [data-theme="light"] {
+  --ref-paper: #fef8fc; --ref-sand: #f8f2f6; --ref-sand-deep: #f0eaee; --ref-line: #e9e3e7; --ref-line-strong: #ccc6c9;
+  --ref-charcoal: #2c2529; --ref-charcoal-soft: #565154; --ref-charcoal-mute: #6c676b;
+  --ref-lime: #fdb1ec; --ref-lime-deep: #eca1db; --ref-lime-wash: #ffe9f9;
+  --accent-hover: #433c40;
+  --ai-wash-1: #f7e8fe; --ai-wash-2: #fee7ef;
+  --wf-ink: #413d40; --wf-line: #d5cfd3; --wf-fill: #e7e1e5; --wf-soft: #f3edf0;
+}
+[data-palette="plum"].dark, [data-palette="plum"][data-theme="dark"], [data-palette="plum"] .dark, [data-palette="plum"] [data-theme="dark"] {
+  --bg: #1f191c; --surface: #282125; --surface-sunken: #231d21; --surface-raised: #312a2e; --surface-hover: #342d31;
+  --ref-lime: #e6a6d7; --lime-soft: #392334;
+  --ai-wash-1: #36223e; --ai-wash-2: #401f2d;
+  --border: #3a3337; --border-strong: #524b4f; --fg: #f5eff2; --fg-muted: #c2b9bf; --fg-subtle: #a29a9f;
+  --wf-ink: #ded5da; --wf-line: #544d51; --wf-fill: #433c40; --wf-soft: #342d31; --wf-paper: #2c2529;
+}
+html[data-palette="plum"], html[data-palette="plum"].dark { --pastel-lilac: var(--ai-wash-1); --pastel-sky: var(--ai-wash-2); --pastel-mint: color-mix(in oklab, var(--ai-wash-1) 50%, var(--ai-wash-2)); --pastel-rose: color-mix(in oklab, var(--ai-wash-2) 55%, var(--bg)); }
+
+/* Theme: graphite. Greys and the AI colour change; amber (needs a person) and the status colours stay. */
+[data-palette="graphite"], [data-palette="graphite"] [data-theme="light"] {
+  --ref-paper: #fbfaf8; --ref-sand: #f5f4f2; --ref-sand-deep: #edecea; --ref-line: #e6e5e3; --ref-line-strong: #c9c8c6;
+  --ref-charcoal: #292724; --ref-charcoal-soft: #545352; --ref-charcoal-mute: #6a6967;
+  --ref-lime: #e0deda; --ref-lime-deep: #d0cdc9; --ref-lime-wash: #ffeed3;
+  --accent-hover: #403e3a;
+  --ai-wash-1: #eeeeee; --ai-wash-2: #eeeeee;
+  --wf-ink: #3f3e3d; --wf-line: #d2d1cf; --wf-fill: #e4e3e1; --wf-soft: #f0efed;
+}
+[data-palette="graphite"].dark, [data-palette="graphite"][data-theme="dark"], [data-palette="graphite"] .dark, [data-palette="graphite"] [data-theme="dark"] {
+  --bg: #1c1a19; --surface: #242321; --surface-sunken: #201f1d; --surface-raised: #2e2c2a; --surface-hover: #312f2d;
+  --ref-lime: #bfbdba; --lime-soft: #37290f;
+  --ai-wash-1: #2b2b2b; --ai-wash-2: #2b2b2b;
+  --border: #363533; --border-strong: #4e4d4b; --fg: #f4f0eb; --fg-muted: #bdbcb9; --fg-subtle: #9e9c9a;
+  --wf-ink: #d9d7d5; --wf-line: #504f4d; --wf-fill: #403e3c; --wf-soft: #312f2d; --wf-paper: #292725;
+}
+html[data-palette="graphite"], html[data-palette="graphite"].dark { --pastel-lilac: var(--ai-wash-1); --pastel-sky: var(--ai-wash-2); --pastel-mint: color-mix(in oklab, var(--ai-wash-1) 50%, var(--ai-wash-2)); --pastel-rose: color-mix(in oklab, var(--ai-wash-2) 55%, var(--bg)); }
+
+/* Theme: terminal. Greys and the AI colour change; amber (needs a person) and the status colours stay. */
+[data-palette="terminal"], [data-palette="terminal"] [data-theme="light"] {
+  --ref-paper: #fafafa; --ref-sand: #f4f4f4; --ref-sand-deep: #ececec; --ref-line: #e5e5e5; --ref-line-strong: #c8c8c8;
+  --ref-charcoal: #262829; --ref-charcoal-soft: #525252; --ref-charcoal-mute: #696969;
+  --ref-lime: #81c5fe; --ref-lime-deep: #6bb5f2; --ref-lime-wash: #e4f2fe;
+  --accent-hover: #3d3e40;
+  --ai-wash-1: #daf3fe; --ai-wash-2: #e7efff;
+  --wf-ink: #3e3e3e; --wf-line: #d1d1d1; --wf-fill: #e3e3e3; --wf-soft: #efefef;
+}
+[data-palette="terminal"].dark, [data-palette="terminal"][data-theme="dark"], [data-palette="terminal"] .dark, [data-palette="terminal"] [data-theme="dark"] {
+  --bg: #0e0e0e; --surface: #141414; --surface-sunken: #101010; --surface-raised: #1b1b1b; --surface-hover: #242424;
+  --ref-lime: #87c5f9; --lime-soft: #172e40;
+  --ai-wash-1: #003140; --ai-wash-2: #1e2a47;
+  --border: #2a2a2a; --border-strong: #3d3d3d; --fg: #e5e9ee; --fg-muted: #b3b3b3; --fg-subtle: #8f8f8f;
+  --wf-ink: #d8d8d8; --wf-line: #4f4f4f; --wf-fill: #3e3e3e; --wf-soft: #303030; --wf-paper: #272727;
+}
+html[data-palette="terminal"], html[data-palette="terminal"].dark { --pastel-lilac: var(--ai-wash-1); --pastel-sky: var(--ai-wash-2); --pastel-mint: color-mix(in oklab, var(--ai-wash-1) 50%, var(--ai-wash-2)); --pastel-rose: color-mix(in oklab, var(--ai-wash-2) 55%, var(--bg)); }
+
+/* ---- Text roles for app screens (chat, forms, cards). Floors are 12px so nothing is smaller than the site allows. ----
+   label 12/16 small captions and footnotes     note 12/18 helper and secondary text    row 13/18 buttons, list rows, step titles
+   input 14/22 fields and the composer          answer 14/24 the assistant's prose      panel 16/24 card and section titles
+   hero 24/32 a card's headline value           turn 19/30 what the person said (serif)  turn-first 26/40 the opening message */
+/* State, border and inverse colours, worked out from each theme's own colours, so every theme and dark mode get them
+   with no values to keep in step. Re-declared on every element that can change the theme (a nested light or dark preview,
+   a palette wrapper), because a mixed colour is worked out where it is declared. */
+:root, [data-theme], .dark, [data-palette], [data-direction] {
+  /* Borders for status, AI and attention boxes: softer than the full colour, stronger than the soft fill. */
+  --success-border: color-mix(in oklab, var(--success) 40%, var(--surface));
+  --warning-border: color-mix(in oklab, var(--warning) 45%, var(--surface));
+  --danger-border: color-mix(in oklab, var(--danger) 40%, var(--surface));
+  --info-border: color-mix(in oklab, var(--info) 40%, var(--surface));
+  --attention-border: color-mix(in oklab, var(--attention) 45%, var(--surface));
+  --lime-border: color-mix(in oklab, var(--lime) 60%, var(--surface));
+  /* AI tints beside --lime-soft: a fainter wash for a whole column or area, and the soft fill's hover. */
+  --lime-faint: color-mix(in oklab, var(--lime) 12%, var(--surface));
+  --lime-soft-hover: color-mix(in oklab, var(--lime) 42%, var(--surface));
+  /* Selected is not hover: a chosen row, option or range keeps this fill (with its own border when it needs one). */
+  --selected: color-mix(in oklab, var(--accent) 10%, var(--surface));
+  --selected-border: color-mix(in oklab, var(--accent) 45%, var(--surface));
+  --pressed: color-mix(in oklab, var(--fg) 13%, var(--surface));
+  /* Disabled: one look everywhere instead of fading by different amounts. Disabled controls are exempt from contrast rules,
+     but this text stays readable (about 3:1) so people can still see what the control is. */
+  --disabled-bg: var(--surface-sunken);
+  --disabled-fg: color-mix(in oklab, var(--fg) 46%, var(--surface));
+  --disabled-border: var(--border);
+  /* For a whole disabled row or card that holds several colours (a menu item, a model option): one shared amount. */
+  --disabled-opacity: 0.5;
+  /* Inverse: a dark surface on a light page (and the reverse in dark mode), for tooltips, value labels and badges. */
+  --inverse: var(--fg);
+  --inverse-fg: var(--bg);
+  --inverse-muted: color-mix(in oklab, var(--bg) 70%, var(--fg));
+  /* On top of pictures and video: a see-through inverse surface for controls and captions, and frosted surface for labels. */
+  --overlay: color-mix(in oklab, var(--fg) 78%, transparent);
+  --glass: color-mix(in oklab, var(--surface) 88%, transparent);
+}
+
+/* ---- Old role sizes, kept only so code written for 0.14 and earlier still works. Do not use them in new code:
+   pick a step from the one scale below and set the line height with leading-*. check:docs rejects them in parts.
+   label = small + leading-4, note = small + leading-4.5, row = compact + leading-4.5, input = body + leading-5.5,
+   answer = body + leading-6, panel = lead + leading-6, hero = title-sm + leading-8.
+   text-turn and text-turn-first stay: they are the serif size of what the person said, not a general size. ---- */
+@theme {
+  --text-label: 0.75rem;      --text-label--line-height: 1rem;
+  --text-note: 0.75rem;       --text-note--line-height: 1.125rem;
+  --text-row: 0.8125rem;      --text-row--line-height: 1.125rem;
+  --text-input: 0.875rem;     --text-input--line-height: 1.375rem;
+  --text-answer: 0.875rem;    --text-answer--line-height: 1.5rem;
+  --text-panel: 1rem;         --text-panel--line-height: 1.5rem;
+  --text-hero: 1.5rem;        --text-hero--line-height: 2rem;
+  --text-turn: 1.1875rem;     --text-turn--line-height: 1.875rem;
+  --text-turn-first: 1.625rem; --text-turn-first--line-height: 2.5rem;
+}
+
+/* ---- Scale tokens. Nothing in a component or page may hard-code a size: every font size, line height, letter spacing,
+   corner, container width, blur and layer comes from here, so one change here changes the whole system.
+   Type: this is the one size scale. Sizes carry no line height on purpose (set one with leading-*), in rem so they follow
+   the reader's text-size setting. Tailwind's own sizes (text-xs, text-sm, text-base, text-lg, text-xl...) are not used.
+   Spacing, widths and heights use the Tailwind scale (1 = 0.25rem), never a raw px. ---- */
+@theme {
+  --text-nano: 0.625rem;     --text-micro: 0.6875rem;   --text-small: 0.75rem;     --text-compact: 0.8125rem;
+  --text-body: 0.875rem;     --text-body-lg: 0.9375rem; --text-lead: 1rem;         --text-lead-lg: 1.0625rem;
+  --text-subhead: 1.125rem;  --text-title-xs: 1.25rem;  --text-title-sm: 1.375rem; --text-title-md: 1.625rem; --text-title-lg: 1.875rem;
+  --text-head-sm: 2rem;      --text-head-md: 2.5rem;    --text-banner: 2.625rem;   --text-display-sm: 3rem;
+  --text-display-md: 3.5rem; --text-banner-lg: 3.875rem; --text-display-lg: 4.5rem; --text-display-xl: 6rem;
+
+  --leading-chip: 1.125rem;  --leading-chip-lg: 1.375rem; --leading-headline: 2.75rem; --leading-banner: 2.875rem;
+  --leading-page-title: 3rem; --leading-display: 3.75rem; --leading-banner-lg: 4rem;
+
+  --tracking-snug: -0.01em;  --tracking-heading: -0.025em; --tracking-subtitle: -0.03em; --tracking-title: -0.035em;
+  --tracking-banner: -0.045em; --tracking-caps: 0.08em;
+
+  --radius-2xs: 2px; --radius-xs: 4px; --radius-inset: 18px; --radius-5xl: 28px; --radius-6xl: 32px;
+
+  --container-read: 42.5rem;  --container-form: 35rem;  --container-narrow: 40rem;  --container-phone: 26.875rem;  --container-wide: 95rem;
+
+  --blur-scrim: 2px;
+}
+:root {
+  --focus-width: 1.5px;
+  /* Layers above the Tailwind 10 to 50 steps: drawers, the details inspector, menus drawn on the page */
+  /* Colour-theme swatch cards sit on a light wash in every mode, so their ink does not follow dark mode */
+  --swatch-ink: #24282c; --swatch-ink-muted: #4e5154; --swatch-edge: rgb(0 0 0 / 0.06);
+  /* Notches and home bars. Only non-zero when the page uses viewport-fit=cover. */
+  --safe-top: env(safe-area-inset-top, 0px); --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px); --safe-left: env(safe-area-inset-left, 0px);
+  /* Shape presets. Round is the default; set data-shape="soft" or "sharp" on <html> (or any wrapper), or set one of these yourself. */
+  --shape-control: 9999px; --shape-field: 12px; --shape-card: 16px; --shape-overlay: 16px;
+  --touch-target: 44px;  /* the smallest tap area on a touch screen (WCAG 2.5.5) */
+  --edge-fade: 1.75rem;  /* the soft fade on a row that scrolls sideways */
+  --z-above: 1; --z-drawer: 60; --z-inspector: 70; --z-menu: 80;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-sunken: var(--surface-sunken);
+  --color-raised: var(--surface-raised);
+  --color-hover: var(--surface-hover);
+  --color-line: var(--border);
+  --color-line-strong: var(--border-strong);
+
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-on-accent: var(--fg-on-accent);
+  --color-on-danger: var(--on-danger);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-line: var(--accent-soft-border);
+  --color-accent-fg: var(--accent-fg);
+
+  --color-lime: var(--lime);
+  --color-lime-hover: var(--lime-hover);
+  --color-lime-soft: var(--lime-soft);
+  --color-on-lime: var(--on-lime);
+  --color-attention: var(--attention);
+  --color-attention-soft: var(--attention-soft);
+  --color-attention-fg: var(--attention-fg);
+
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-success-fg: var(--success-fg);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-warning-fg: var(--warning-fg);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-danger-fg: var(--danger-fg);
+  --color-up: var(--up);
+  --color-up-soft: var(--up-soft);
+  --color-up-fg: var(--up-fg);
+  --color-down: var(--down);
+  --color-down-soft: var(--down-soft);
+  --color-down-fg: var(--down-fg);
+  --color-scrim: var(--scrim);
+  --color-unsure: var(--unsure);
+  --color-unsure-soft: var(--unsure-soft);
+  --color-unsure-fg: var(--unsure-fg);
+  --color-celebrate: var(--celebrate);
+  --color-celebrate-soft: var(--celebrate-soft);
+  --color-celebrate-fg: var(--celebrate-fg);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-info-fg: var(--info-fg);
+
+  --color-success-line: var(--success-border);
+  --color-warning-line: var(--warning-border);
+  --color-danger-line: var(--danger-border);
+  --color-info-line: var(--info-border);
+  --color-attention-line: var(--attention-border);
+  --color-lime-line: var(--lime-border);
+  --color-lime-faint: var(--lime-faint);
+  --color-lime-soft-hover: var(--lime-soft-hover);
+  --color-selected: var(--selected);
+  --color-selected-line: var(--selected-border);
+  --color-pressed: var(--pressed);
+  --color-disabled: var(--disabled-bg);
+  --color-disabled-fg: var(--disabled-fg);
+  --color-disabled-line: var(--disabled-border);
+  --color-inverse: var(--inverse);
+  --color-inverse-fg: var(--inverse-fg);
+  --color-inverse-muted: var(--inverse-muted);
+  --color-overlay: var(--overlay);
+  --color-glass: var(--glass);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-chart-neutral: var(--chart-neutral);
+  --color-chart-seq-1: var(--chart-seq-1);
+  --color-chart-seq-2: var(--chart-seq-2);
+  --color-chart-seq-3: var(--chart-seq-3);
+  --color-chart-seq-4: var(--chart-seq-4);
+  --color-chart-seq-5: var(--chart-seq-5);
+
+  --color-code: var(--code-bg);
+  --color-code-fg: var(--code-fg);
+  --color-code-muted: var(--code-muted);
+  --color-code-line: var(--code-line);
+  --color-code-line-strong: var(--code-line-strong);
+  --color-code-hover: var(--code-hover);
+  --color-code-hover-strong: var(--code-hover-strong);
+  --color-on-success: var(--on-success);
+  --color-thumb: var(--thumb);
+  --color-swatch-ink: var(--swatch-ink);
+  --color-swatch-ink-muted: var(--swatch-ink-muted);
+
+  --font-sans: var(--ds-font-sans);
+  --font-serif: var(--ds-font-display);
+  --font-mono: var(--ds-font-mono);
+
+  /* One scale. Pills for controls, 12 for rows inside cards, 16 for cards, 20 for panels, 24 for outer frames. */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 20px;
+  --radius-4xl: 24px;
+
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+
+  --animate-caret: caret 1s steps(1) infinite;
+  --animate-shimmer: shimmer 1.8s linear infinite;
+  --animate-pulse-dot: pulse-dot 1.2s var(--ease-standard) infinite;
+  --animate-rise: rise var(--dur-base) var(--ease-out) both;
+  --animate-fade: fade var(--dur-fast) var(--ease-out) both;
+  /* Leaving is faster than arriving and is a plain fade: no overshoot, never delayed */
+  --animate-fade-out: fade-out var(--dur-fast) var(--ease-in) both;
+  --animate-blur-in: blur-in var(--dur-base) var(--ease-arrive) both;
+  --animate-sheet: sheet var(--dur-slow) var(--ease-out) both;
+  --animate-word-in: word-in var(--dur-base) var(--ease-arrive) both;
+  /* Something arrived or was confirmed: a citation, a label, a copied check */
+  --animate-pop: pop var(--dur-base) var(--ease-out) both;
+  /* A quantity fills to its value: meters, confidence bars */
+  --animate-grow-x: grow-x var(--dur-slow) var(--ease-out) both;
+  --animate-grow-y: grow-y var(--dur-base) var(--ease-out) both;
+  /* A tab panel or swapped view settles in: rises a little out of a faint blur */
+  --animate-panel-in: panel-in var(--dur-slow) var(--ease-arrive) both;
+  /* Hover, colour and border changes ease softly instead of snapping. Presses still use --dur-instant */
+  --default-transition-duration: var(--dur-base);
+  --default-transition-timing-function: var(--ease-out);
+}
+
+/* Breakpoints follow the size classes of the layout system: compact, medium, expanded, large, extra large.
+   sm 600, md 840, lg 1200, xl 1600. Phone is 4 columns, tablet 8, desktop 12. */
+@theme {
+  --breakpoint-sm: 37.5rem;
+  --breakpoint-md: 52.5rem;
+  --breakpoint-lg: 75rem;
+  --breakpoint-xl: 100rem;
+  --breakpoint-2xl: 120rem;
+}
+
+/* Lines: crisp 1px borders everywhere, in a light neutral. */
+@utility border { border-style: solid; border-width: var(--hair); }
+@utility border-t { border-top-style: solid; border-top-width: var(--hair); }
+@utility border-b { border-bottom-style: solid; border-bottom-width: var(--hair); }
+
+@keyframes caret { 50% { opacity: 0; } }
+@keyframes shimmer { to { background-position: -200% 0; } }
+@keyframes pulse-dot { 0%, 80%, 100% { opacity: 0.25; transform: scale(0.8); } 40% { opacity: 1; transform: scale(1); } }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes sheet { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes word-in { from { opacity: 0; filter: blur(calc(var(--blur-arrive) / 2)); } to { opacity: 1; filter: none; } }
+@keyframes pop { 0% { opacity: 0; transform: scale(0.6); } 60% { opacity: 1; transform: scale(1.08); } 100% { opacity: 1; transform: none; } }
+@keyframes grow-x { from { transform: scaleX(0); } to { transform: none; } }
+@keyframes shrink-x { from { transform: none; } to { transform: scaleX(0); } }
+@keyframes grow-y { from { transform: scaleY(0); } to { transform: none; } }
+@keyframes panel-in { from { opacity: 0; transform: translateY(8px); filter: blur(var(--blur-arrive)); } to { opacity: 1; transform: none; filter: none; } }
+@keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes blur-in { from { opacity: 0; filter: blur(var(--blur-arrive)); } to { opacity: 1; filter: none; } }
+
+@layer base {
+  html, body { background: var(--bg); }
+  html { color: var(--fg); font-family: var(--ds-font-sans); -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { font-family: var(--ds-font-display); font-weight: var(--ds-display-weight); letter-spacing: var(--ds-display-tracking); }
+  .font-serif { font-family: var(--ds-font-display); font-weight: var(--ds-voice-weight); letter-spacing: var(--ds-voice-tracking); }
+  
+  :focus-visible { outline: var(--focus-width) solid var(--focus-ring); outline-offset: 2px; }
+  ::selection { background: var(--ref-lime); color: var(--ref-charcoal); }
+}
+
+/* Respect reduced motion: streaming and shimmer degrade to static states */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+/* Moving between pages: the header stays put. The old page fades away, then the new one rises a little out of a faint
+   blur on a long, soft landing. The old page is gone before the new one shows, so the two never overlap. */
+::view-transition-old(root) { animation: vt-out var(--dur-fast) var(--ease-out) both; }
+::view-transition-new(root) { animation: vt-in var(--dur-page) var(--ease-out) var(--dur-instant) both; }
+::view-transition-group(site-header), ::view-transition-group(site-tabs) { animation-duration: 0s; }
+/* The side menu never fades: it stays put while only the page changes, so moving around never feels like a reload. */
+[data-side-nav] { view-transition-name: side-nav; }
+::view-transition-group(side-nav) { animation-duration: 0s; }
+html.vt-morph [data-morph-target] { view-transition-name: morph; }
+::view-transition-group(morph) { animation-duration: var(--dur-slow); animation-timing-function: var(--ease-out); }
+@keyframes vt-out { to { opacity: 0; } }
+@keyframes vt-in { from { opacity: 0; transform: translateY(14px); filter: blur(var(--blur-arrive)); } }
+@keyframes sheet-out { to { opacity: 0; transform: translateX(24px); } }
+@keyframes fade-out { to { opacity: 0; } }
+html { scroll-padding-top: 4.5rem; }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+}
+
+/* Touch screens. Rows and fields grow to 44px, which is normal on a phone. Buttons, choice pills and checkboxes keep the
+   size they are drawn at and gain an invisible tap area of at least 44px around them, so a small button never turns into
+   a tall blob. The tap area is in the base layer, so a part that positions its button itself still wins. */
+@layer base {
+  @media (pointer: coarse) {
+    :where(summary, select, [role="tab"], [role="option"], [role="menuitem"], [role="menuitemradio"], [role="menuitemcheckbox"]):not([data-compact]) { min-height: 44px; }
+    :where(input:not([type="radio"], [type="checkbox"], [type="range"], [type="hidden"]), textarea) { min-height: 44px; }
+    :where(button, [role="radio"], [role="checkbox"]):not([role="switch"], [role="tab"], [role="option"], [role^="menuitem"], [data-compact]) { position: relative; }
+    :where(button, [role="radio"], [role="checkbox"]):not([role="switch"], [role="tab"], [role="option"], [role^="menuitem"], [data-compact])::after {
+      content: ""; position: absolute;
+      inset-block: min(0px, calc((100% - var(--touch-target)) / 2));
+      inset-inline: min(0px, calc((100% - var(--touch-target)) / 2));
+    }
+    /* Small inline links keep their look and gain a larger invisible tap area. */
+    a[aria-label^="Source "] { position: relative; }
+    a[aria-label^="Source "]::after { content: ""; position: absolute; inset-block: calc(var(--spacing) * -2); inset-inline: calc(var(--spacing) * -1.5); }
+  }
+}
+
+/* `tap`: keep a small control's drawn size and give it an invisible tap area of at least 44px on touch screens
+   (half a pixel over on each side, because browsers round the edges and 43.98px would fall short).
+   Use it on pills, chips and small links. Buttons already get this from the base rule above. */
+@utility tap {
+  @media (pointer: coarse) {
+    position: relative;
+    &::after { content: ""; position: absolute; inset-block: min(0px, calc((100% - var(--touch-target)) / 2 - 0.5px)); inset-inline: min(0px, calc((100% - var(--touch-target)) / 2 - 0.5px)); }
+  }
+}
+
+/* Corners by role. Parts use these, never a raw radius, so one shape setting changes the whole product.
+   control: buttons, chips, segmented controls, tags. field: text fields and selects. card: cards, panels, frames.
+   overlay: dialogs, sheets, menus, popovers, toasts. Circles (avatars, dots, switches) stay round in every shape.
+   "inline" so a data-shape on any wrapper, not only <html>, changes the parts inside it. */
+@theme inline {
+  --radius-control: var(--shape-control); --radius-field: var(--shape-field);
+  --radius-card: var(--shape-card); --radius-overlay: var(--shape-overlay);
+}
+[data-shape="round"] { --shape-control: 9999px; --shape-field: 12px; --shape-card: 16px; --shape-overlay: 16px; }
+[data-shape="soft"] { --shape-control: 10px; --shape-field: 10px; --shape-card: 14px; --shape-overlay: 16px; }
+[data-shape="sharp"] { --shape-control: 4px; --shape-field: 4px; --shape-card: 6px; --shape-overlay: 8px; }
+
+/* ---- On a touch screen ----
+   Text never goes under 12px, and form fields are 16px or larger: iPhones zoom the whole page when a smaller field takes focus.
+   This is one rule for every field, present and future, so it uses !important on purpose to beat a part's own size class. */
+@media (pointer: coarse) {
+  :root { --text-nano: 0.75rem; --text-micro: 0.75rem; }
+  input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="color"], [type="button"], [type="submit"]),
+  textarea, select { font-size: max(1rem, 1em) !important; }
+}

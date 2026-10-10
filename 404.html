@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" class="site-chrome">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
+    <title>Tattva Design System</title>
+    <meta name="description" content="Tattva is a design system for AI products: documented components for chat, agents, trust, forms and generative tools, with accessibility checks in light and dark." />
+    <meta name="google-site-verification" content="di8NDIazcKqmbirjBCEZzaHcPWYXPm6ePUYti5ePLBI" />
+    <meta name="theme-color" content="#fbfbf7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#181b1e" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Tattva Design System" />
+    <meta property="og:description" content="AI interfaces that stay calm, honest and in your control. A design system for chat, agents, trust and generative tools." />
+    <meta property="og:url" content="https://lkb00.github.io/tattva/" />
+    <meta property="og:site_name" content="Tattva" />
+    <meta property="og:image" content="https://lkb00.github.io/tattva/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Tattva: the design system for AI products." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://lkb00.github.io/tattva/" />
+    <link rel="icon" href="/tattva/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/tattva/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&family=Caveat:wght@500..600&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet" />
+    <!-- A prebuilt page (/tattva/component-button/, see scripts/prerender.mjs) becomes the app's own address
+         (/tattva/#component-button) before the app starts; a #section on it becomes component-button~section. -->
+    <script>
+      (function () {
+        var b = "/tattva/", p = location.pathname;
+        if (p.indexOf(b) !== 0) return;
+        var r = p.slice(b.length).replace(/index\.html$/, "").replace(/\/$/, "");
+        if (!r) return;
+        var h = location.hash.replace(/^#/, "");
+        try { history.replaceState(null, "", b + "#" + r + (h ? "~" + h : "")); } catch (e) {}
+      })();
+    </script>
+    <!-- Set the theme before the first paint, so dark mode never flashes light text on a dark page. Mirrors the logic in Site.tsx. -->
+    <script>
+      (function () {
+        var d = document.documentElement, t = d.dataset.theme, saved = null;
+        try { saved = localStorage.getItem("theme"); } catch (e) {}
+        if (t ? t === "dark" : saved ? saved === "dark" : matchMedia("(prefers-color-scheme: dark)").matches) d.classList.add("dark");
+        // The site opens in Indigo with Sharp corners. A saved choice (including Lime or Round) wins. The design system's
+        // own defaults stay Lime and Round: that is what tokens.css gives a product that sets nothing.
+        var p = "indigo", sh = "sharp";
+        try { p = localStorage.getItem("palette") || p; sh = localStorage.getItem("shape") || sh; } catch (e) {}
+        if (p !== "lime" && p !== "sandstone") d.dataset.palette = p;
+        if (sh === "soft" || sh === "sharp") d.dataset.shape = sh;
+      })();
+    </script>
+    <script type="module" crossorigin src="/tattva/assets/index-CQHWUlSx.js"></script>
+    <link rel="stylesheet" crossorigin href="/tattva/assets/index-CBeHvuiS.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
