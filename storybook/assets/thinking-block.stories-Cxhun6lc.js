@@ -1,0 +1,27 @@
+import{j as n}from"./iframe-DSdOWv-_.js";import{bT as d,b as p}from"./registry-DcbxQlzK.js";import"./TakeoverBar-BFylOAVd.js";import"./AILabel-DIryw_X_.js";import"./Avatar-DEi7tpoL.js";import"./Badge-CNtJmipZ.js";import"./Button-B2T4qG1k.js";import"./EmptyState-CCWqabG1.js";import"./PermissionPrompt-BiRqq7vA.js";import"./MeterBar-BMetz_pC.js";import"./SegmentedControl-BgMVExEr.js";import"./AltitudeToggle-Cb9IRtUJ.js";import"./Callout-A4UqfUFK.js";import"./ConfidenceIndicator-Dl0vhYCA.js";import"./StatTile-D1qbPF0f.js";import"./UsageMeter-IsJk8RBz.js";import"./AgentQuestionCard-DCBV90iq.js";import"./BudgetControl-DSEWE3rC.js";import"./PlanCard-BDiFLneA.js";import"./icons-B_WjQLVo.js";import"./preload-helper-Dp1pzeXC.js";import"./cn-2dOUpm6k.js";import"./useFocusAfter-CdDkLuxs.js";import"./index-BGPQXF9A.js";import"./index-OqG60wSS.js";const o=p.get("thinking-block"),q={title:"Conversation/ThinkingBlock",component:d,tags:["autodocs"],parameters:{docs:{description:{component:o.summary+" "+o.description}}}},e={name:"Active",render:()=>n.jsx(n.Fragment,{children:o.examples[0].render()}),parameters:{docs:{description:{story:"Use while the assistant is still thinking."},source:{code:"<ThinkingBlock active>Comparing the two schedules against the team calendar.</ThinkingBlock>"}}}},t={name:"Finished",render:()=>n.jsx(n.Fragment,{children:o.examples[1].render()}),parameters:{docs:{description:{story:"When done, give the time taken. It shows 0 seconds if you leave it out."},source:{code:"<ThinkingBlock seconds={8}>Comparing the two schedules against the team calendar.</ThinkingBlock>"}}}},z=["Active","Finished"];var i,r,s;e.parameters={...e.parameters,docs:{...(i=e.parameters)==null?void 0:i.docs,source:{originalSource:`{
+  name: "Active",
+  render: () => <>{doc.examples[0].render()}</>,
+  parameters: {
+    docs: {
+      description: {
+        story: "Use while the assistant is still thinking."
+      },
+      source: {
+        code: "<ThinkingBlock active>Comparing the two schedules against the team calendar.</ThinkingBlock>"
+      }
+    }
+  }
+}`,...(s=(r=e.parameters)==null?void 0:r.docs)==null?void 0:s.source}}};var a,c,m;t.parameters={...t.parameters,docs:{...(a=t.parameters)==null?void 0:a.docs,source:{originalSource:`{
+  name: "Finished",
+  render: () => <>{doc.examples[1].render()}</>,
+  parameters: {
+    docs: {
+      description: {
+        story: "When done, give the time taken. It shows 0 seconds if you leave it out."
+      },
+      source: {
+        code: "<ThinkingBlock seconds={8}>Comparing the two schedules against the team calendar.</ThinkingBlock>"
+      }
+    }
+  }
+}`,...(m=(c=t.parameters)==null?void 0:c.docs)==null?void 0:m.source}}};export{e as Active,t as Finished,z as __namedExportsOrder,q as default};

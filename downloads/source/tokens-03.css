@@ -1,0 +1,149 @@
+  --font-mono: var(--ds-font-mono);
+
+  /* One scale. Pills for controls, 12 for rows inside cards, 16 for cards, 20 for panels, 24 for outer frames. */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 20px;
+  --radius-4xl: 24px;
+
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+
+  --animate-caret: caret 1s steps(1) infinite;
+  --animate-shimmer: shimmer 1.8s linear infinite;
+  --animate-pulse-dot: pulse-dot 1.2s var(--ease-standard) infinite;
+  --animate-rise: rise var(--dur-base) var(--ease-out) both;
+  --animate-fade: fade var(--dur-fast) var(--ease-out) both;
+  /* Leaving is faster than arriving and is a plain fade: no overshoot, never delayed */
+  --animate-fade-out: fade-out var(--dur-fast) var(--ease-in) both;
+  --animate-blur-in: blur-in var(--dur-base) var(--ease-arrive) both;
+  --animate-sheet: sheet var(--dur-slow) var(--ease-out) both;
+  --animate-word-in: word-in var(--dur-base) var(--ease-arrive) both;
+  /* Something arrived or was confirmed: a citation, a label, a copied check */
+  --animate-pop: pop var(--dur-base) var(--ease-out) both;
+  /* A quantity fills to its value: meters, confidence bars */
+  --animate-grow-x: grow-x var(--dur-slow) var(--ease-out) both;
+  --animate-grow-y: grow-y var(--dur-base) var(--ease-out) both;
+  /* A tab panel or swapped view settles in: rises a little out of a faint blur */
+  --animate-panel-in: panel-in var(--dur-slow) var(--ease-arrive) both;
+  /* Hover, colour and border changes ease softly instead of snapping. Presses still use --dur-instant */
+  --default-transition-duration: var(--dur-base);
+  --default-transition-timing-function: var(--ease-out);
+}
+
+/* Breakpoints follow the size classes of the layout system: compact, medium, expanded, large, extra large.
+   sm 600, md 840, lg 1200, xl 1600. Phone is 4 columns, tablet 8, desktop 12. */
+@theme {
+  --breakpoint-sm: 37.5rem;
+  --breakpoint-md: 52.5rem;
+  --breakpoint-lg: 75rem;
+  --breakpoint-xl: 100rem;
+  --breakpoint-2xl: 120rem;
+}
+
+/* Lines: crisp 1px borders everywhere, in a light neutral. */
+@utility border { border-style: solid; border-width: var(--hair); }
+@utility border-t { border-top-style: solid; border-top-width: var(--hair); }
+@utility border-b { border-bottom-style: solid; border-bottom-width: var(--hair); }
+
+@keyframes caret { 50% { opacity: 0; } }
+@keyframes shimmer { to { background-position: -200% 0; } }
+@keyframes pulse-dot { 0%, 80%, 100% { opacity: 0.25; transform: scale(0.8); } 40% { opacity: 1; transform: scale(1); } }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes sheet { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes word-in { from { opacity: 0; filter: blur(calc(var(--blur-arrive) / 2)); } to { opacity: 1; filter: none; } }
+@keyframes pop { 0% { opacity: 0; transform: scale(0.6); } 60% { opacity: 1; transform: scale(1.08); } 100% { opacity: 1; transform: none; } }
+@keyframes grow-x { from { transform: scaleX(0); } to { transform: none; } }
+@keyframes shrink-x { from { transform: none; } to { transform: scaleX(0); } }
+@keyframes grow-y { from { transform: scaleY(0); } to { transform: none; } }
+@keyframes panel-in { from { opacity: 0; transform: translateY(8px); filter: blur(var(--blur-arrive)); } to { opacity: 1; transform: none; filter: none; } }
+@keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes blur-in { from { opacity: 0; filter: blur(var(--blur-arrive)); } to { opacity: 1; filter: none; } }
+
+@layer base {
+  html, body { background: var(--bg); }
+  html { color: var(--fg); font-family: var(--ds-font-sans); -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { font-family: var(--ds-font-display); font-weight: var(--ds-display-weight); letter-spacing: var(--ds-display-tracking); }
+  .font-serif { font-family: var(--ds-font-display); font-weight: var(--ds-voice-weight); letter-spacing: var(--ds-voice-tracking); }
+  
+  :focus-visible { outline: var(--focus-width) solid var(--focus-ring); outline-offset: 2px; }
+  ::selection { background: var(--ref-lime); color: var(--ref-charcoal); }
+}
+
+/* Respect reduced motion: streaming and shimmer degrade to static states */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+/* Moving between pages: the header stays put. The old page fades away, then the new one rises a little out of a faint
+   blur on a long, soft landing. The old page is gone before the new one shows, so the two never overlap. */
+::view-transition-old(root) { animation: vt-out var(--dur-fast) var(--ease-out) both; }
+::view-transition-new(root) { animation: vt-in var(--dur-page) var(--ease-out) var(--dur-instant) both; }
+::view-transition-group(site-header), ::view-transition-group(site-tabs) { animation-duration: 0s; }
+/* The side menu never fades: it stays put while only the page changes, so moving around never feels like a reload. */
+[data-side-nav] { view-transition-name: side-nav; }
+::view-transition-group(side-nav) { animation-duration: 0s; }
+html.vt-morph [data-morph-target] { view-transition-name: morph; }
+::view-transition-group(morph) { animation-duration: var(--dur-slow); animation-timing-function: var(--ease-out); }
+@keyframes vt-out { to { opacity: 0; } }
+@keyframes vt-in { from { opacity: 0; transform: translateY(14px); filter: blur(var(--blur-arrive)); } }
+@keyframes sheet-out { to { opacity: 0; transform: translateX(24px); } }
+@keyframes fade-out { to { opacity: 0; } }
+html { scroll-padding-top: 4.5rem; }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+}
+
+/* Touch screens. Rows and fields grow to 44px, which is normal on a phone. Buttons, choice pills and checkboxes keep the
+   size they are drawn at and gain an invisible tap area of at least 44px around them, so a small button never turns into
+   a tall blob. The tap area is in the base layer, so a part that positions its button itself still wins. */
+@layer base {
+  @media (pointer: coarse) {
+    :where(summary, select, [role="tab"], [role="option"], [role="menuitem"], [role="menuitemradio"], [role="menuitemcheckbox"]):not([data-compact]) { min-height: 44px; }
+    :where(input:not([type="radio"], [type="checkbox"], [type="range"], [type="hidden"]), textarea) { min-height: 44px; }
+    :where(button, [role="radio"], [role="checkbox"]):not([role="switch"], [role="tab"], [role="option"], [role^="menuitem"], [data-compact]) { position: relative; }
+    :where(button, [role="radio"], [role="checkbox"]):not([role="switch"], [role="tab"], [role="option"], [role^="menuitem"], [data-compact])::after {
+      content: ""; position: absolute;
+      inset-block: min(0px, calc((100% - var(--touch-target)) / 2));
+      inset-inline: min(0px, calc((100% - var(--touch-target)) / 2));
+    }
+    /* Small inline links keep their look and gain a larger invisible tap area. */
+    a[aria-label^="Source "] { position: relative; }
+    a[aria-label^="Source "]::after { content: ""; position: absolute; inset-block: calc(var(--spacing) * -2); inset-inline: calc(var(--spacing) * -1.5); }
+  }
+}
+
+/* `tap`: keep a small control's drawn size and give it an invisible tap area of at least 44px on touch screens
+   (half a pixel over on each side, because browsers round the edges and 43.98px would fall short).
+   Use it on pills, chips and small links. Buttons already get this from the base rule above. */
+@utility tap {
+  @media (pointer: coarse) {
+    position: relative;
+    &::after { content: ""; position: absolute; inset-block: min(0px, calc((100% - var(--touch-target)) / 2 - 0.5px)); inset-inline: min(0px, calc((100% - var(--touch-target)) / 2 - 0.5px)); }
+  }
+}
+
+/* Corners by role. Parts use these, never a raw radius, so one shape setting changes the whole product.
+   control: buttons, chips, segmented controls, tags. field: text fields and selects. card: cards, panels, frames.
+   overlay: dialogs, sheets, menus, popovers, toasts. Circles (avatars, dots, switches) stay round in every shape.
+   "inline" so a data-shape on any wrapper, not only <html>, changes the parts inside it. */
+@theme inline {
+  --radius-control: var(--shape-control); --radius-field: var(--shape-field);
+  --radius-card: var(--shape-card); --radius-overlay: var(--shape-overlay);
+}
+[data-shape="round"] { --shape-control: 9999px; --shape-field: 12px; --shape-card: 16px; --shape-overlay: 16px; }
+[data-shape="soft"] { --shape-control: 10px; --shape-field: 10px; --shape-card: 14px; --shape-overlay: 16px; }
+[data-shape="sharp"] { --shape-control: 4px; --shape-field: 4px; --shape-card: 6px; --shape-overlay: 8px; }
+
+/* ---- On a touch screen ----
+   Text never goes under 12px, and form fields are 16px or larger: iPhones zoom the whole page when a smaller field takes focus.
+   This is one rule for every field, present and future, so it uses !important on purpose to beat a part's own size class. */
+@media (pointer: coarse) {
+  :root { --text-nano: 0.75rem; --text-micro: 0.75rem; }
+  input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="color"], [type="button"], [type="submit"]),
+  textarea, select { font-size: max(1rem, 1em) !important; }
+}
