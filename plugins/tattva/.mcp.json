@@ -2,11 +2,7 @@
   "mcpServers": {
     "tattva": {
       "command": "npx",
-      "args": ["-y", "@tattva/mcp"],
-      "env": {
-        "TATTVA_LICENSE_KEY": "${TATTVA_LICENSE_KEY:-}",
-        "TATTVA_API": "${TATTVA_API:-}"
-      }
+      "args": ["-y", "@tattva/mcp"]
     }
   }
 }

@@ -13,12 +13,13 @@ The plugin connects the **tattva** MCP server. Its tools are the source of truth
 | Tool | Use it to |
 |---|---|
 | `search_components` | find parts for a need in plain words ("ask before acting", "show sources") |
-| `get_component` | read one part: props, examples, when to use it, what to avoid, accessibility |
+| `get_component` | read a part: props, examples, when to use it, what to avoid, accessibility. Pass `ids` for several at once and `brief: true` for props and import only |
 | `list_patterns` | see the 15 patterns, such as Ask before acting or Show your sources |
-| `start_project` | ask the six questions for a new product |
-| `plan_build` | turn the answers into parts in order, with setup steps and a `tattva.md` brief |
-| `review_code` | check finished code against Tattva's rules |
-| `get_themes`, `get_tokens` | colour themes, light and dark tokens, sizes and timing |
+| `start_project` | ask the questions for a new product |
+| `plan_build` | turn the answers and the idea in the person's words into parts in order, with setup steps and a `tattva.md` brief |
+| `review_code` | check finished code against Tattva's rules, props included. Pass `paths` so it reads whole files itself |
+| `get_themes`, `get_tokens` | colour themes, light and dark tokens, sizes and timing; `query` finds a token by what it is for |
+| `whats_new` | what changed since a version, before upgrading `@tattva/ui` |
 
 ## Steps
 
@@ -27,7 +28,7 @@ The plugin connects the **tattva** MCP server. Its tools are the source of truth
 3. **Read before using.** `get_component` for every part you will use. Copy its example, then change it. Respect required props and the listed variants.
 4. **Check the stage.** `stable` is safe. `experimental` rests on design reasoning only: tell the user. Never use `deprecated` or `retired` parts; use the `replacedBy` part.
 5. **Build bottom up**: smaller parts inside larger ones; check `composedOf` and `related`.
-6. **Review.** Run `review_code` on what you wrote, fix every finding, then type-check (`npx tsc --noEmit`).
+6. **Review.** Run `review_code` with `paths` on every file you wrote (never a shortened copy), fix every finding, then type-check (`npx tsc --noEmit`). A `needs-upgrade` finding means the installed `@tattva/ui` is older than the part: run `npm install @tattva/ui@latest`.
 
 ## Setup in a new project
 
@@ -43,11 +44,7 @@ In the main CSS file, after Tailwind:
 @source "../node_modules/@tattva/ui/dist";
 ```
 
-Then `import { Composer, Message, ApprovalPrompt } from "@tattva/ui";`. The npm package holds the free parts. Pro parts come with a Pro licence (see below).
-
-## Pro parts
-
-Some parts are Pro. When `get_component` says **Code: locked**, do not write your own version of that part. Offer the free alternative it names, or tell the user the part comes with Tattva Pro. Pro buyers can set `TATTVA_LICENSE_KEY` and `TATTVA_API` in their shell before starting Claude Code; the server then unlocks the code.
+Then `import { Composer, Message, ApprovalPrompt } from "@tattva/ui";`. The npm package holds every part, free.
 
 ## Rules
 

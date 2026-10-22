@@ -1,14 +1,14 @@
-# How Sandstone is run
+# How Tattva is run
 
-This page says what Sandstone is for, who decides, how a part is born and retired, and what an AI must do when the system has no answer. People and AI tools read it. If a rule here and a rule elsewhere disagree, this page wins.
+This page says what Tattva is for, who decides, how a part is born and retired, and what an AI must do when the system has no answer. People and AI tools read it. If a rule here and a rule elsewhere disagree, this page wins.
 
-## What Sandstone is, and is not
+## What Tattva is, and is not
 
 **Is:** a design system for products where an AI model talks to people, works for them, or builds screens for them. Chat, agents, trust, approvals, generated screens, and the data views around them.
 
 **Is not:**
-- A general-purpose UI kit. It has no date picker, calendar, rich-text editor or file manager. Use native elements or another library for those, and style them with Sandstone tokens.
-- A brand. It ships six colour themes; your brand colour is not one of them. Change the greys and the AI colour through a theme, nothing else.
+- A general-purpose UI kit. It has no date picker, calendar, rich-text editor or file manager. Use native elements or another library for those, and style them with Tattva tokens.
+- A brand. It ships seven colour themes; your brand colour is not one of them. Change the greys and the AI colour through a theme, nothing else.
 - A set of marketing page templates.
 - A place for one-off screens. If one product needs it and nobody else will, it stays in that product.
 
@@ -27,8 +27,7 @@ When a request falls outside this, say so. Do not stretch a part to cover it.
 | Add or remove a part, change a token role, change a principle | Owner (`@LKB00`) | Pull request; owner approval required (see `.github/CODEOWNERS`) |
 | Bug fix, wording fix, a missing example or state | Any contributor | Pull request; owner review |
 | Deprecate or retire a part | Owner | Pull request that sets `lifecycle` (below) and adds a changelog line |
-| Bend a rule in one product | The product team | Write down why in that product; do not change Sandstone |
-| Add a Pro part | Owner | Pull request that also updates `src/site/pricing.ts` |
+| Bend a rule in one product | The product team | Write down why in that product; do not change Tattva |
 
 When the owner role has more than one person, split `.github/CODEOWNERS` by area (tokens, AI parts, data views, site).
 
@@ -59,7 +58,7 @@ lifecycle: { stage: "deprecated", since: "0.6", removeIn: "0.8", replacedBy: "ot
 
 ## When the system has no answer
 
-An AI tool (or a person) building with Sandstone must **stop and say so** instead of inventing. In particular:
+An AI tool (or a person) building with Tattva must **stop and say so** instead of inventing. In particular:
 
 - No part fits the request → say which need is uncovered and ask. Do not build a lookalike from raw HTML, and do not rename a part to stretch it.
 - A prop you want does not exist → say so. Do not pass it anyway.
@@ -84,4 +83,4 @@ The success measure is: **where would an AI have to guess?** Every failed readin
 Direction, in order. Move an item only by editing this list in a pull request.
 
 1. Real-agent trial: run the MCP server inside Claude Code and Cursor on three small builds, record where it guessed.
-2. Hosted MCP for Pro and Team licence holders.
+2. A hosted MCP server.
