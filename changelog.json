@@ -1,0 +1,1801 @@
+{
+ "note": "Tattva releases, newest first.",
+ "releases": [
+  {
+   "version": "0.29.1",
+   "title": "Questions the way agents ask them",
+   "items": [
+    {
+     "text": "QuestionSet asks an agent's clarifying questions the way agent tools do: a visible Question 2 of 3, a suggested option marked Recommended and listed first, questions that take several answers, You decide and Skip, Use the defaults to end the questions, Back, number keys to pick an option, and a last look at every answer with a Change link before the final button. Every addition is optional, so existing code is unchanged.",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": [
+    "question-set"
+   ]
+  },
+  {
+   "version": "0.29.0",
+   "title": "The names other design systems use",
+   "items": [
+    {
+     "text": "Every part lists what other design systems call it, such as accordion for Sections, description list for FactList and KPI for StatTile. Search on the site, the MCP server and the Figma plugin find a part by any of these names, and each part's page shows them.",
+     "tag": "new"
+    },
+    {
+     "text": "Six parts take the industry name: AltitudeToggle is now AutonomyLevel, ContextPill is ContextChip, MeterBar is Meter, KeyHint is Kbd, ReEntryRecap is CatchUpSummary and NeedsYouInbox is ApprovalInbox. The old names still work until 0.31.0, old page addresses open the new page, and review_code says what to change.",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": [
+    "autonomy-level",
+    "context-chip",
+    "meter",
+    "kbd",
+    "catch-up-summary",
+    "approval-inbox"
+   ]
+  },
+  {
+   "version": "0.28.0",
+   "title": "Results, facts and sections for answers",
+   "items": [
+    {
+     "text": "ResultCard shows one thing an answer recommends, such as a hotel, a product or a plan: a picture, the name, two to four facts, a price, a tag and one action. While the answer is still streaming the card shows, but its action waits until the answer is complete.",
+     "tag": "new"
+    },
+    {
+     "text": "CardRow lays out results of the same kind: a grid on wide screens, and a row that swipes sideways on a phone with the next card peeking in.",
+     "tag": "new"
+    },
+    {
+     "text": "FactList shows short label and value pairs, such as Check-in: 3pm. It is a description list, so each value is read with its label, and it can show placeholder rows while the facts arrive.",
+     "tag": "new"
+    },
+    {
+     "text": "Sections shows a long answer in foldable sections. Each new section opens as it streams in, and when the answer ends it folds back to the first, unless the person has already opened or closed one.",
+     "tag": "new"
+    },
+    {
+     "text": "Collapsible can be controlled (open and onOpenChange) and can wrap its header in a heading (headingLevel), so screen reader users can jump between sections.",
+     "tag": "updated"
+    },
+    {
+     "text": "Connected through MCP, your AI tool now asks the build questions itself, one at a time, with clickable choices where the tool has them (Claude Code does). It skips what you already said, and \"defaults\" ends the questions. The Build brief page stays, for tools that cannot connect.",
+     "tag": "updated"
+    },
+    {
+     "text": "In Next.js, a page can now import Tattva parts directly. The package marks itself as client code, so a server page no longer fails with \"createContext is not a function\".",
+     "tag": "updated"
+    },
+    {
+     "text": "MediaFrame has a flush option for a picture that runs edge to edge inside a card, so its corners follow the card's. ResultCard uses it.",
+     "tag": "updated"
+    },
+    {
+     "text": "AIPresence is now a flat lime disc with the AI mark, on a soft halo. The dark glass, bezel and glow are gone, so it uses only theme colours and changes with the theme like the other parts. Its states, sizes and props are the same.",
+     "tag": "updated"
+    },
+    {
+     "text": "The MCP server's code check now finds a plain button with only an icon and no name, a deep import from inside @tattva/ui, and typed pixel sizes. Its fix for a deep import names the real package. An unknown part name now suggests the part you likely meant, such as ResultCard for hotel-card, and the server reports its real version. plan_build takes the idea in the person's words and adds result cards when the answers recommend things, such as hotels. Started by hand in a terminal, the server now says it is working and how to connect it, instead of waiting in silence.",
+     "tag": "updated"
+    },
+    {
+     "text": "The MCP server knows which version each part arrived in. Inside a project it reads the installed @tattva/ui and warns before suggesting a part that would not import, and review_code flags it. review_code now checks props too: names a part does not have, missing required props, values outside a part's options and placeholder text such as \"...\". It can read files by path, so long files are checked whole. get_component reads several parts at once, with a brief form. Search keeps only the strong matches and says why each matched. get_tokens finds a token by what it is for, a new whats_new tool lists what changed since a version, and plan_build explains how to connect a real AI safely.",
+     "tag": "updated"
+    }
+   ],
+   "added": [
+    "result-card",
+    "card-row",
+    "fact-list",
+    "sections"
+   ],
+   "updated": [
+    "collapsible",
+    "ai-presence",
+    "media-frame"
+   ]
+  },
+  {
+   "version": "0.27.1",
+   "title": "Corners inside corners",
+   "items": [
+    {
+     "text": "LayoutAlternatives: each layout's thumbnail takes its card's corner minus the gap around it, so in Round and Soft the two curves run side by side instead of a sharp thumbnail sitting in a round card.",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": []
+  },
+  {
+   "version": "0.27.0",
+   "title": "Inter, and themes that colour the parts",
+   "items": [
+    {
+     "text": "The interface and headings now use Inter, with its cleaner alternate letters. Code and technical labels stay in Geist Mono. Load Inter from Google Fonts; the Getting started guide has the line.",
+     "tag": "updated"
+    },
+    {
+     "text": "A colour theme now reaches parts inside any element marked ds-scope, so a page can keep its own colours around the parts. The Tattva site uses this: the site stays neutral, and the theme picker recolours the parts.",
+     "tag": "new"
+    }
+   ],
+   "added": [],
+   "updated": []
+  },
+  {
+   "version": "0.26.0",
+   "title": "Animated scenes",
+   "items": [
+    {
+     "text": "SceneIllustration plays 35 animated scenes for empty screens, waiting, trust, assistants, creating, data and the site. Each tells a small story with objects, and its lime shape shows part of that story.",
+     "tag": "new"
+    },
+    {
+     "text": "Every scene is a Lottie file. It plays a short entrance, then a calm loop that carries the meaning, pauses while off screen, follows light and dark mode, and holds still when someone asks for less motion.",
+     "tag": "new"
+    },
+    {
+     "text": "The scene files ship in the npm package as @tattva/ui/scenes/<name>.json and are served on the site at scenes/<name>.json.",
+     "tag": "new"
+    },
+    {
+     "text": "Each family page opens with a scene, and the parts search shows one when nothing matches.",
+     "tag": "updated"
+    }
+   ],
+   "added": [
+    "scene-illustration"
+   ],
+   "updated": []
+  },
+  {
+   "version": "0.25.0",
+   "title": "Everything is free",
+   "items": [
+    {
+     "text": "All 223 components are free, with their full code. There is no Pro, no licence key and no paid plan.",
+     "tag": "new"
+    },
+    {
+     "text": "The npm package, the download, the AI-tools kit and the Figma plugin now hold every component. The Claude Code plugin and MCP server give the full code of every part.",
+     "tag": "updated"
+    },
+    {
+     "text": "The Pricing page, the Pro tags and locks, and the Redeem page are gone. Old links to them open Downloads.",
+     "tag": "updated"
+    },
+    {
+     "text": "The licence now says plainly that you may use Tattva in any project, personal or commercial, and change it as you like.",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": [
+    "avatar-stack",
+    "tray-row",
+    "context-chip",
+    "suggestion-chips",
+    "message-actions",
+    "tool-call-card",
+    "checklist-row",
+    "confidence-indicator",
+    "feedback-bar",
+    "source-card",
+    "error-state",
+    "refusal-notice",
+    "rate-limit-notice",
+    "variant-tile",
+    "tray",
+    "conversation-list",
+    "step-timeline",
+    "approval-prompt",
+    "checklist",
+    "source-list",
+    "prompt-box",
+    "variant-grid",
+    "canvas-panel",
+    "app-shell",
+    "home-template",
+    "thread-template",
+    "split-canvas-template",
+    "home-page",
+    "thread-page",
+    "workflow-page",
+    "studio-page",
+    "model-picker",
+    "tool-chip",
+    "tool-menu",
+    "attachment-chip",
+    "voice-panel",
+    "message-queue",
+    "version-pager",
+    "memory-notice",
+    "memory-list",
+    "private-chat-banner",
+    "checkpoint-list",
+    "revert-toggle",
+    "context-meter",
+    "usage-meter",
+    "permission-mode-switcher",
+    "diff-file-row",
+    "diff-view",
+    "plan-card",
+    "permission-prompt",
+    "agent-session-list",
+    "task-tree",
+    "provenance-popover",
+    "citation-hover-card",
+    "suggestion-bar",
+    "selection-toolbar",
+    "suggestion-card",
+    "summary-card",
+    "parameter-panel",
+    "variation-actions",
+    "version-history",
+    "generation-progress",
+    "starter-gallery",
+    "empty-state",
+    "media-frame",
+    "media-grid",
+    "ai-label",
+    "chart-frame",
+    "data-table",
+    "stat-tile",
+    "sparkline",
+    "line-chart",
+    "bar-chart",
+    "dot-plot",
+    "chart-legend",
+    "streaming-reveal",
+    "jump-to-latest",
+    "key-takeaway",
+    "timeline",
+    "comparison-table",
+    "process-diagram",
+    "diagram-figure",
+    "takeover-bar",
+    "agent-question-card",
+    "approval-inbox",
+    "background-run-chip",
+    "catch-up-summary",
+    "action-log",
+    "budget-control",
+    "autonomy-level",
+    "gen-ui-renderer",
+    "generated-surface",
+    "sandboxed-frame",
+    "menu",
+    "splitter",
+    "toast",
+    "command-palette",
+    "inline-edit",
+    "question-set",
+    "activity-trace",
+    "receipt",
+    "sheet",
+    "draft-preview",
+    "countdown",
+    "ticker-tape",
+    "candlestick-chart",
+    "heatmap",
+    "payoff-chart",
+    "order-ticket",
+    "option-chain",
+    "action-draft",
+    "risk-limits",
+    "glance-panel",
+    "prompt-index",
+    "live-log",
+    "json-view",
+    "inline-confirm",
+    "chart-range-brush",
+    "live-captions",
+    "audio-player",
+    "transcript-sync",
+    "latency-breakdown",
+    "call-record",
+    "voice-card",
+    "voice-picker",
+    "voice-consent-check",
+    "video-player",
+    "clip-range-selector",
+    "take-card",
+    "take-grid",
+    "take-versions",
+    "shot-settings",
+    "camera-move-picker",
+    "likeness-consent",
+    "scene-strip",
+    "outline-editor",
+    "slide-rail",
+    "slide-stage",
+    "layout-alternatives",
+    "deck-change-review",
+    "deck-build-progress",
+    "speaker-notes",
+    "export-sheet",
+    "take-picker",
+    "enhance-compare",
+    "section-lane",
+    "stem-mixer",
+    "transcript-audio-editor",
+    "response-compare",
+    "claim-check",
+    "sensitive-data-guard",
+    "connector-permission",
+    "context-panel",
+    "editable-turn",
+    "file-result-card",
+    "share-panel",
+    "continue-notice",
+    "project-panel",
+    "research-run",
+    "file-drop-zone"
+   ]
+  },
+  {
+   "version": "0.24.0",
+   "title": "In Figma, every part resizes like the code",
+   "items": [
+    {
+     "text": "All 223 parts now use auto layout set to Hug, Fill or Fixed the way the code sizes them, with the same max widths. Long words wrap inside their box, grids become wrapping rows so a row grows when one tile does, table cells grow with their words, and pills grow sideways.",
+     "tag": "updated"
+    },
+    {
+     "text": "IconButton and Badge are masters like Button: the plugin adds each once, on the Tattva parts page, and every icon button and badge inside a part is a linked copy with its icon swapped or its words set. 29 parts use IconButton copies and 48 use Badge copies. Change the master and every part follows.",
+     "tag": "updated"
+    },
+    {
+     "text": "Every part is now tried in a real browser with three times the words and a frame half as wide again, and compared with the code. 37 of 1,914 variants still spill under that test where Figma has no answer yet (scaled slide previews, table columns that cannot widen, pager rows); they are listed as known limits and everything else holds.",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": [
+    "icon-button",
+    "badge",
+    "icon-button",
+    "badge",
+    "avatar",
+    "spinner",
+    "skeleton",
+    "switch",
+    "section-label",
+    "attention-dot",
+    "typing-indicator",
+    "shimmer-text",
+    "hero-heading",
+    "citation-marker",
+    "ai-badge",
+    "ai-disclosure",
+    "avatar-stack",
+    "callout",
+    "collapsible",
+    "tray-row",
+    "context-chip",
+    "suggestion-chips",
+    "message-actions",
+    "code-block",
+    "thinking-block",
+    "tool-call-card",
+    "checklist-row",
+    "confidence-indicator",
+    "feedback-bar",
+    "source-card",
+    "error-state",
+    "refusal-notice",
+    "rate-limit-notice",
+    "variant-tile",
+    "tray",
+    "message-list",
+    "composer",
+    "conversation-list",
+    "markdown",
+    "step-timeline",
+    "approval-prompt",
+    "checklist",
+    "source-list",
+    "prompt-box",
+    "variant-grid",
+    "canvas-panel",
+    "app-shell",
+    "home-template",
+    "thread-template",
+    "split-canvas-template",
+    "home-page",
+    "thread-page",
+    "workflow-page",
+    "studio-page",
+    "model-picker",
+    "tool-chip",
+    "tool-menu",
+    "attachment-chip",
+    "voice-panel",
+    "message-queue",
+    "version-pager",
+    "memory-notice",
+    "memory-list",
+    "private-chat-banner",
+    "checkpoint-list",
+    "revert-toggle",
+    "context-meter",
+    "usage-meter",
+    "agent-status-icon",
+    "permission-mode-switcher",
+    "diff-file-row",
+    "diff-view",
+    "plan-card",
+    "permission-prompt",
+    "agent-session-list",
+    "task-tree",
+    "provenance-popover",
+    "citation-hover-card",
+    "suggestion-bar",
+    "ghost-text",
+    "selection-toolbar",
+    "suggestion-card",
+    "summary-card",
+    "parameter-panel",
+    "variation-actions",
+    "version-history",
+    "generation-progress",
+    "starter-gallery",
+    "popover",
+    "segmented-control",
+    "meter",
+    "kbd",
+    "illustration",
+    "pictogram",
+    "empty-state",
+    "media-frame",
+    "media-grid",
+    "ai-mark",
+    "ai-presence",
+    "ai-label",
+    "chart-frame",
+    "data-table",
+    "stat-tile",
+    "sparkline",
+    "line-chart",
+    "bar-chart",
+    "dot-plot",
+    "chart-legend",
+    "stack",
+    "cluster",
+    "grid",
+    "container",
+    "reveal",
+    "streaming-reveal",
+    "jump-to-latest",
+    "key-takeaway",
+    "timeline",
+    "comparison-table",
+    "process-diagram",
+    "diagram-figure",
+    "takeover-bar",
+    "agent-question-card",
+    "approval-inbox",
+    "background-run-chip",
+    "catch-up-summary",
+    "approved-by-mark",
+    "action-log",
+    "budget-control",
+    "autonomy-level",
+    "gen-ui-renderer",
+    "generated-surface",
+    "sandboxed-frame",
+    "field",
+    "text-field",
+    "number-field",
+    "select",
+    "checkbox",
+    "radio-group",
+    "slider",
+    "tabs",
+    "tooltip",
+    "menu",
+    "splitter",
+    "dialog",
+    "toast",
+    "command-palette",
+    "date-picker",
+    "combobox",
+    "inline-edit",
+    "question-set",
+    "activity-trace",
+    "receipt",
+    "sheet",
+    "draft-preview",
+    "countdown",
+    "status-line",
+    "money",
+    "price",
+    "price-change",
+    "ticker-tape",
+    "data-freshness",
+    "candlestick-chart",
+    "heatmap",
+    "payoff-chart",
+    "order-ticket",
+    "option-chain",
+    "action-draft",
+    "risk-limits",
+    "scroll-edge",
+    "glance-panel",
+    "status-ticker",
+    "working-edge",
+    "prompt-index",
+    "live-log",
+    "json-view",
+    "inline-confirm",
+    "chart-range-brush",
+    "mic-button",
+    "live-captions",
+    "waveform",
+    "audio-player",
+    "transcript-sync",
+    "latency-breakdown",
+    "call-record",
+    "voice-card",
+    "voice-picker",
+    "voice-consent-check",
+    "video-player",
+    "frame-scrubber",
+    "clip-range-selector",
+    "take-card",
+    "take-grid",
+    "take-versions",
+    "shot-settings",
+    "camera-move-picker",
+    "likeness-consent",
+    "scene-strip",
+    "outline-editor",
+    "edit-scope-chip",
+    "slide-rail",
+    "slide-stage",
+    "layout-alternatives",
+    "deck-change-review",
+    "deck-build-progress",
+    "speaker-notes",
+    "export-sheet",
+    "take-picker",
+    "enhance-compare",
+    "section-lane",
+    "stem-mixer",
+    "transcript-audio-editor",
+    "response-compare",
+    "claim-check",
+    "sensitive-data-guard",
+    "connector-permission",
+    "context-panel",
+    "editable-turn",
+    "file-result-card",
+    "share-panel",
+    "continue-notice",
+    "project-panel",
+    "research-run",
+    "file-drop-zone"
+   ]
+  },
+  {
+   "version": "0.23.0",
+   "title": "In Figma, Button and Message resize like the code",
+   "items": [
+    {
+     "text": "Every layer in Button and Message is auto layout, set to Hug, Fill or Fixed the way the code sizes it, with the same max widths. Long words wrap inside the box instead of spilling out, and a wider frame keeps everything in place.",
+     "tag": "updated"
+    },
+    {
+     "text": "A busy Button keeps its width while the spinner stays in the middle. The streaming caret follows the last word of a reply.",
+     "tag": "updated"
+    },
+    {
+     "text": "Message comes in as two sets, Message / User and Message / Assistant, so each shows only the settings that change it. Mark and Streaming are on Assistant only.",
+     "tag": "updated"
+    },
+    {
+     "text": "Layers have plain names, such as Row, Stack, Overlay and Heading, instead of code tags. Inserting Button again after deleting it no longer shows an error.",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": [
+    "button",
+    "message"
+   ]
+  },
+  {
+   "version": "0.22.0",
+   "title": "In Figma, parts are built from Button",
+   "items": [
+    {
+     "text": "Button is now the master in Figma. The first time you insert a part that has buttons, the plugin adds Button once, on a Tattva parts page, and every button inside the part is a linked copy of it. Change Button and the buttons in every part follow, the same way they do in the code.",
+     "tag": "updated"
+    },
+    {
+     "text": "93 parts use it, with 1,524 linked buttons. Each copy keeps its own words, style, size and icons. A button whose icon was drawn just for its part, such as the voice controls, stays a drawing so it never shows the wrong icon.",
+     "tag": "updated"
+    },
+    {
+     "text": "Button grows with its words in Figma, so a longer label no longer spills out, and turning an icon off closes the gap.",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": [
+    "button"
+   ]
+  },
+  {
+   "version": "0.21.0",
+   "title": "Seven parts the best chat apps have",
+   "items": [
+    {
+     "text": "Editable turn: edit a message you sent and send it again. The earlier version stays, and a small pager moves between them. Edit and Copy are always there, not only on hover.",
+     "tag": "new"
+    },
+    {
+     "text": "File result card: a file the AI made, such as a report, a spreadsheet or slides, with its kind in words, a preview, Open and Download. It says when the file is still being made, or could not be made.",
+     "tag": "new"
+    },
+    {
+     "text": "Share panel: who can open a chat (only you, your workspace, or anyone with the link), the link with one-press copy, a line on exactly what the link shows, and Stop sharing.",
+     "tag": "new"
+    },
+    {
+     "text": "Continue notice: one quiet line under a reply that ended early, saying why (length limit, stopped, or connection lost), with Continue or Try again.",
+     "tag": "new"
+    },
+    {
+     "text": "Project panel: chats that share instructions and files. Long instructions fold after three lines, files can be added and removed, and a bar shows how full the project is.",
+     "tag": "new"
+    },
+    {
+     "text": "Research run: a long research task with its phases (done, now, next), sources read, time so far, and Stop. Screen readers hear each new phase, not every source.",
+     "tag": "new"
+    },
+    {
+     "text": "File drop zone: drop files or press Browse files. It says which kinds and sizes work, and names each file it refused and why.",
+     "tag": "new"
+    }
+   ],
+   "added": [
+    "editable-turn",
+    "file-result-card",
+    "share-panel",
+    "continue-notice",
+    "project-panel",
+    "research-run",
+    "file-drop-zone"
+   ],
+   "updated": []
+  },
+  {
+   "version": "0.20.0",
+   "title": "Five new parts for trust and privacy",
+   "items": [
+    {
+     "text": "Response compare: two replies side by side, and the person picks the better one, or says they are about the same.",
+     "tag": "new"
+    },
+    {
+     "text": "Claim check: marks the sentences in a reply that no source backs up, or that a source contradicts, with a reason and a way to ask for a source.",
+     "tag": "new"
+    },
+    {
+     "text": "Sensitive data guard: before a message is sent, warns about a card number, API key, password, email or phone number in it, and offers to take it out. The findSensitive helper finds them on the device; nothing is sent to check.",
+     "tag": "new"
+    },
+    {
+     "text": "Connector permission: one connected app and exactly what the AI can do with it, in plain words, with delete standing out and a disconnect that asks once.",
+     "tag": "new"
+    },
+    {
+     "text": "Context panel: everything the AI can see right now (instructions, the open page, files, apps and memories), each removable, with how full its working memory is.",
+     "tag": "new"
+    }
+   ],
+   "added": [
+    "response-compare",
+    "claim-check",
+    "sensitive-data-guard",
+    "connector-permission",
+    "context-panel"
+   ],
+   "updated": []
+  },
+  {
+   "version": "0.19.2",
+   "title": "Chat replies use the full width",
+   "items": [
+    {
+     "text": "The assistant's replies no longer have a dark mark beside them. The text uses the full width, so there is no empty column on the left, and short replies no longer stack up a row of marks down the thread.",
+     "tag": "updated"
+    },
+    {
+     "text": "The thread still says who wrote what: the person's turns are bubbles and the AI's are open text, and screen readers hear \"Assistant\" before every reply.",
+     "tag": "updated"
+    },
+    {
+     "text": "Message has a new mark setting. Set it to top to show a small AI mark and the name above a reply: once at the start of a thread, or on every reply when more than one assistant speaks. showAvatar still works and now shows the mark above.",
+     "tag": "new"
+    }
+   ],
+   "added": [],
+   "updated": []
+  },
+  {
+   "version": "0.19.1",
+   "title": "Swap the icon on a button in Figma",
+   "items": [
+    {
+     "text": "In Figma, Icon button has an Icon property: pick any of the 62 Tattva icons from the properties panel. Button has the same for its leading and trailing icons.",
+     "tag": "new"
+    },
+    {
+     "text": "A swapped icon keeps the colour of the button's style and state, linked to the theme, because every icon is drawn as one shape. The plugin adds the icons to a Tattva icons page the first time, once per file.",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": []
+  },
+  {
+   "version": "0.19.0",
+   "title": "Every part in Figma switches everything from one instance",
+   "items": [
+    {
+     "text": "In the Figma plugin, each part's properties now come from its React props. Drop in one part and change its style, size, on/off settings and text from the properties panel, without looking for another component.",
+     "tag": "new"
+    },
+    {
+     "text": "Controls like Icon button, Checkbox, Switch, Text field, Select and Tabs also have State: Default, Hover, Pressed, Focus, and Disabled or Busy where the part has them.",
+     "tag": "new"
+    },
+    {
+     "text": "Every combination exists, so switching one property never lands on a missing variant. A setting that does not change how a part looks is left out, so the panel only shows what matters.",
+     "tag": "updated"
+    },
+    {
+     "text": "Each component page has a new In Figma section: every Figma property beside the React prop it sets, so designers and developers use the same names.",
+     "tag": "new"
+    }
+   ],
+   "added": [],
+   "updated": []
+  },
+  {
+   "version": "0.18.1",
+   "title": "A new home page, and Figma buttons with every state",
+   "items": [
+    {
+     "text": "The home page now opens on a real support screen built from Tattva parts. Try a theme, a corner style or dark mode on it and the screen changes in place. A slow reel of real parts follows.",
+     "tag": "new"
+    },
+    {
+     "text": "Links across the site no longer use underlines. They are a little bolder and take the action colour when you point at them.",
+     "tag": "updated"
+    },
+    {
+     "text": "The Figma plugin is on Figma Community, with an Open in Figma button on the Get started page. It shows which parts are free and which are Pro, and it can set corner style as well as colour.",
+     "tag": "new"
+    },
+    {
+     "text": "In Figma, one Button now does everything from its properties panel: Variant, Size and State (default, hover, pressed, focus, disabled, busy), the label text, and a leading and trailing icon you can turn on. Icon button works the same way.",
+     "tag": "new"
+    },
+    {
+     "text": "Hover, pressed and disabled colours are now Figma variables too, so every state follows the theme you pick.",
+     "tag": "updated"
+    },
+    {
+     "text": "On Figma's free plan, the plugin no longer stops with a modes error. It keeps one mode and tells you which.",
+     "tag": "updated"
+    },
+    {
+     "text": "Slide rail: moving to a slide scrolls the rail only. Before, it could scroll the whole page on load.",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": []
+  },
+  {
+   "version": "0.18.0",
+   "title": "Every theme has its own action colour",
+   "items": [
+    {
+     "text": "Each colour theme now has an action colour: a deep shade of its hue for primary buttons, links and the selected state. Pick Plum and every button turns plum; pick Teal and they turn teal. Before, buttons were near-black ink in every theme, so a theme barely reached them.",
+     "tag": "new"
+    },
+    {
+     "text": "The AI colour still marks AI only. The action colour is a different, deeper shade, so a button never looks like an AI mark. White text on every action colour is 4.5:1 or better, in light and dark.",
+     "tag": "updated"
+    },
+    {
+     "text": "Your brand colour goes in one token, --action. Graphite stays ink, as the monochrome theme.",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": [
+    "button",
+    "citation-marker"
+   ]
+  },
+  {
+   "version": "0.17.7",
+   "title": "One-time access codes",
+   "items": [
+    {
+     "text": "The owner can give someone a short one-time code, like TTV-7KQ4-M9XP, instead of a long access pass. The person enters it once on the new Redeem page and gets their pass. A code works once and expires if nobody uses it.",
+     "tag": "new"
+    },
+    {
+     "text": "The pricing page links to Redeem for anyone who has a code.",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": []
+  },
+  {
+   "version": "0.17.6",
+   "title": "Plain answers, and the source in small pieces",
+   "items": [
+    {
+     "text": "When an AI tool is blocked, it now tells the person in plain words: what it could not do, what that means, and the one thing to do next. It no longer shows error codes or words like proxy and registry. A Pro part is called the paid plan, with a simple stand-in so the screen still works.",
+     "tag": "updated"
+    },
+    {
+     "text": "The free source is also available in small pieces, with an index. Some AI tools shorten long pages, and the one-file source was too long for them. Each piece is about 16 KB, so it arrives word for word. The tokens are split the same way.",
+     "tag": "new"
+    }
+   ],
+   "added": [],
+   "updated": []
+  },
+  {
+   "version": "0.17.5",
+   "title": "Access passes",
+   "items": [
+    {
+     "text": "The owner can give someone free Pro or Team access for a set time, one month by default, with one command. The pass is signed, so it cannot be made or changed by anyone else, and it ends on its date or when it is turned off.",
+     "tag": "new"
+    },
+    {
+     "text": "A pass downloads the ready-to-use kit: every part compiled, with types and tokens, stamped with the holder's name. It has no readable source to copy. The readable source is only for bought licences and passes the owner allows it for.",
+     "tag": "new"
+    },
+    {
+     "text": "Each licence or pass can make 20 Pro downloads a day, so a script cannot pull everything.",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": []
+  },
+  {
+   "version": "0.17.4",
+   "title": "Voice panel buttons line up",
+   "items": [
+    {
+     "text": "The voice panel's control row has one height. In hands-free mode, Mute was taller than End, Hold and the rest because it is the main control, so the row looked uneven. Every button in the row is now as tall as the main one, and Mute still leads by its place at the start of the row.",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": [
+    "voice-panel"
+   ]
+  },
+  {
+   "version": "0.17.3",
+   "title": "Accessibility fixes in the parts",
+   "items": [
+    {
+     "text": "A full accessibility check of every part page, in light and dark, found nine kinds of problem. All are fixed. The outline editor's slides are list items, not groups, so a screen reader reads them as a list. The section lane no longer puts a status region inside its listbox, and says when a section starts generating through its own message. The order ticket's summary is a valid description list. The heatmap's direction values sit on a light tag, so they pass 4.5:1. The transcript's timestamps and the layout alternatives' figure use text colours that pass 4.5:1.",
+     "tag": "updated"
+    },
+    {
+     "text": "Scrolling areas can be reached with the keyboard: the ticker tape when motion is reduced, the sheet's body, the prompt index, the glance panel where it scrolls, and the example threads in the docs. Headings are in order: the canvas panel's title is a second-level heading, and a template with no title has no empty first-level heading.",
+     "tag": "updated"
+    },
+    {
+     "text": "The prompt box grows with its text, so the words are not clipped when people increase the line spacing.",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": []
+  },
+  {
+   "version": "0.17.2",
+   "title": "Do and avoid pictures for every part",
+   "items": [
+    {
+     "text": "Every part's page now shows a Do picture and an Avoid picture side by side, each with a one-line caption. Before, only 16 parts had them; now all 211 do. Each pair is built from the real part, so it stays in step with the code, and each Avoid shows the one mistake that part's own guidance warns about, such as two main buttons competing, a progress bar in amber when nothing needs doing, or a whole rewrite offered as one suggestion.",
+     "tag": "new"
+    },
+    {
+     "text": "Where the real part cannot show the mistake (it always draws its own label, or always asks first), the Avoid picture is a plain stand-in built from the same tokens, and the caption says so when the whole screen is only a sketch. Parts that open over the page (dialogs, sheets, menus, tooltips, the command palette) are drawn open in place instead, so they do not cover the page.",
+     "tag": "new"
+    },
+    {
+     "text": "New check for whoever builds Tattva: check:do-avoid opens every part's Usage tab and fails if a part has no pair, a picture is empty or wider than its frame, a caption is not plain and short, or the page logs an error. Its contact sheets (eight parts per image) are the quickest way to look the whole set over.",
+     "tag": "new"
+    }
+   ],
+   "added": [],
+   "updated": []
+  },
+  {
+   "version": "0.17.1",
+   "title": "Parts that keep your place",
+   "items": [
+    {
+     "text": "Twelve parts now move keyboard focus themselves when the control you pressed goes away, instead of leaving it to the app. ToolChip, AttachmentChip, ContextPill and SuggestionCard move to the next item (or the previous one, or the message box) after Remove, Accept or Dismiss. MemoryList returns to the Edit button after Save and to the next memory after a delete. CheckpointList moves into the confirm step and back on Cancel. SuggestionBar follows its buttons and returns to the document after Keep or Discard. VersionHistory moves to the restored version. CanvasPanel returns to what opened it after Close. StarterGallery moves to the message box once a choice is made. Each has a prop to choose a different place.",
+     "tag": "updated"
+    },
+    {
+     "text": "Changes that matter are now read out by the part itself, and nothing is read when it first appears: an upload finishing or failing (AttachmentChip), a memory deleted (MemoryList), a version restored (VersionHistory) or changed (CanvasPanel), new templates after Shuffle (StarterGallery), options generating and arriving (VariantGrid), and generating starting and ending (PromptBox). Every message can be reworded or translated.",
+     "tag": "updated"
+    },
+    {
+     "text": "CanvasPanel's content can now be reached with Tab and scrolled with the arrow keys. ContextPill's clear button can be named for what it clears (clearLabel). The parts' accessibility notes say what each part now does, and the list of what you still have to do is shorter.",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": []
+  },
+  {
+   "version": "0.17",
+   "title": "Every part in Figma",
+   "items": [
+    {
+     "text": "The Figma plugin has a new tab, Insert parts. It adds a part to your file as a real Figma component, with each documented example as a variant (Button has Variant and Size, Badge has Tone, Approval prompt has Risk). Spacing and padding use auto layout wherever it matches the code; text keeps its styles; icons are vectors; and 98.6% of colours are linked to the Tattva variables, so switching theme or Light and Dark recolours the part. The free plugin has the 63 free parts and lists the Pro parts; Tattva Pro for Figma, with all 211 parts, is in the Pro download.",
+     "tag": "new"
+    },
+    {
+     "text": "The parts are copied from how each one draws in the browser, so the Figma copy and the code never drift apart. Native controls the browser draws itself (sliders, checkboxes, progress bars) and images come across as exact pictures. Hover and focus looks and animations are not copied.",
+     "tag": "new"
+    },
+    {
+     "text": "New checks for whoever builds Tattva: capture-figma records every part from Storybook, and check-figma-fidelity redraws each of the 580 variants the way Figma builds them and compares it with the real part, pixel by pixel: 565 are within 4%, and none is more than 12% off. check:plugins now builds every part in a strict stand-in for Figma.",
+     "tag": "new"
+    }
+   ],
+   "added": [],
+   "updated": []
+  },
+  {
+   "version": "0.16",
+   "title": "Plugins for Claude Code and Figma",
+   "items": [
+    {
+     "text": "Claude Code plugin. Inside Claude Code, type /plugin marketplace add LKB00/tattva, then /plugin install tattva@tattva. It connects the Tattva MCP server, adds a skill that teaches Claude to find, read and review real Tattva parts instead of guessing, and adds four commands: /tattva:build, /tattva:find, /tattva:review and /tattva:theme. Pro buyers set TATTVA_LICENSE_KEY and TATTVA_API before starting Claude Code; without them the plugin stays on the free parts.",
+     "tag": "new"
+    },
+    {
+     "text": "Figma plugin (Downloads, For designers). It adds one theme's colours to a Figma file as variables with Light and Dark modes, and can add the corner, spacing and type-size variables and eight text styles (Geist, or Inter when Geist is not installed). Running it again with another theme updates the same variables, so switching theme is safe. It also checks a design for contrast, text size, the AI colour used as text, tap size and colours that are not Tattva colours. It is built from the same token files as the code, so the two never drift.",
+     "tag": "new"
+    },
+    {
+     "text": "The Connect an AI tool page now starts Claude Code users with the plugin. The single server command still works for anyone who wants only the server.",
+     "tag": "updated"
+    },
+    {
+     "text": "New check for whoever builds Tattva: check:plugins runs the Figma plugin against a stand-in for Figma (adding a theme twice must update, not duplicate; a test design must trip each rule exactly where expected) and validates the Claude Code plugin and its marketplace.",
+     "tag": "new"
+    }
+   ],
+   "added": [],
+   "updated": []
+  },
+  {
+   "version": "0.15.1",
+   "title": "Accessibility in every theme",
+   "items": [
+    {
+     "text": "The Accessibility guide has a new table, Results by theme: the axe check on every documentation page in all seven colour themes, in light and dark, with the date and version it ran on. Before, the checks ran in the default theme only, and a colour that passes in one theme can fail in another.",
+     "tag": "new"
+    },
+    {
+     "text": "DiffView: in the Terminal theme's dark mode, the line numbers on added and removed rows were 4.4:1 against the tinted background. They now use the darker grey and pass 4.5:1 in every theme.",
+     "tag": "updated"
+    },
+    {
+     "text": "Four research sources had moved or gone (Vapi, Runway, ElevenLabs, a Hailuo guide). Each now links to a page that exists and says the same thing.",
+     "tag": "updated"
+    },
+    {
+     "text": "New checks for whoever builds Tattva: check:a11y-matrix (every theme, light and dark), check:links (every link in the built site must resolve; outside links must answer) and check:visual (before and after screenshots of every Storybook example). The link check found that the prebuilt pages pointed downloads and Markdown links one folder too deep; that is fixed.",
+     "tag": "new"
+    }
+   ],
+   "added": [],
+   "updated": [
+    "diff-view"
+   ]
+  },
+  {
+   "version": "0.15",
+   "title": "One type scale",
+   "items": [
+    {
+     "text": "Every text size in every part, guide and page now comes from one scale: nano, micro, small, compact, body, body-lg, lead, lead-lg, subhead, title-xs (new, 20px), title-sm and up. Tailwind's own sizes (text-xs, text-sm, text-base, text-lg, text-xl) and the old role sizes (text-note, text-label, text-row, text-input, text-answer, text-panel, text-hero) are gone from the code. Before, two size systems sat side by side, and the same 12px label could be written three ways.",
+     "tag": "updated"
+    },
+    {
+     "text": "Almost nothing moves on screen. Each swap keeps the old line height by adding the matching leading-* (text-xs became text-small leading-4). Every Storybook example was screenshotted before and after: 603 of 624 are pixel-identical. StarterGallery's heading and the large Price example drop from 24px to 22px (title-sm), because the scale has no 24px step. In GlancePanel, ExportSheet, OptionChain, PermissionPrompt, OutlineEditor and VoicePanel, smaller text inside a block now takes a whole-pixel line height (20px instead of 17.14px), so a few lines move by 1 to 3 pixels.",
+     "tag": "updated"
+    },
+    {
+     "text": "Code written for 0.14 or earlier still works: the old role names remain as aliases in tokens.css, marked as old. The Typography guide lists the full scale and how to swap each old name, and a new check (check:docs) fails if a Tailwind size or an old name comes back.",
+     "tag": "new"
+    },
+    {
+     "text": "DiffFileRow: on the selected file, the folder part of the path is now a darker grey, so it reaches 4.5:1 contrast on the selected background (it was 4.43:1).",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": [
+    "starter-gallery",
+    "diff-file-row"
+   ]
+  },
+  {
+   "version": "0.14.2",
+   "title": "Trust and safety guide",
+   "items": [
+    {
+     "text": "New guide, Trust and safety (Resources, Do it well). What a confidence label may and may not measure; what to show when sources disagree, only partly support a claim, fail to load or are old; who decides what between the person, your app, the model and outside content; the rules for an assistant that acts (permissions in your app, least access, untrusted content and prompt injection, ask before it counts, check again before it runs, run it once, re-sign-in, receipts, cost and loop caps, safe stop); risk beyond undo; what the closed frame for generated screens requires; and a list of attacks to try before shipping.",
+     "tag": "new"
+    },
+    {
+     "text": "ConfidenceIndicator's guidance now says what the level may be based on (how well sources support the answer, how much was covered, or a measured success rate), to leave it out when there is no real signal, and never to drive it from the model's own rating of itself or an unmeasured percentage. AI tools read this in components.json and through the MCP server.",
+     "tag": "updated"
+    },
+    {
+     "text": "The Show your sources and Admit uncertainty patterns point to the new rules for disagreeing sources and for where confidence comes from.",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": [
+    "confidence-indicator"
+   ]
+  },
+  {
+   "version": "0.14.1",
+   "title": "AI tools never invent Pro code",
+   "items": [
+    {
+     "text": "components.json now says codeAvailable for every part, and Pro parts carry a short note: the preview and guidance are free, the code comes with Pro or Team, and an AI tool should not write its own version. Before, a Pro example simply had an empty code field, which an assistant could read as an invitation to make one up.",
+     "tag": "updated"
+    },
+    {
+     "text": "The MCP server says Code: locked for a Pro part without a licence key, with the free alternative or the upgrade as the next step, instead of printing empty code blocks. Its description now says exactly what it does: reads Tattva's docs, plans a build and reviews code, and never edits your project.",
+     "tag": "updated"
+    },
+    {
+     "text": "Every part's pageUrl in components.json points at its real page address (/component-<id>/), so links an AI tool shares open the right page even without JavaScript.",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": []
+  },
+  {
+   "version": "0.14",
+   "title": "State, border and inverse colours",
+   "items": [
+    {
+     "text": "New colour tokens for selected, pressed and disabled. A chosen row, option or range now has its own selected colour, so it no longer looks like something the pointer is passing over. Disabled is one look everywhere: disabled text, fill and border colours for controls, and one shared --disabled-opacity for a whole row, instead of fading by 40, 50, 60 or 70 per cent.",
+     "tag": "new"
+    },
+    {
+     "text": "New border tokens for status, attention and AI boxes (success, warning, danger, info, attention and lime), plus a fainter lime wash and the lime wash's hover. New inverse colours for tooltips and value labels, and overlay and glass for controls and labels on pictures and video.",
+     "tag": "new"
+    },
+    {
+     "text": "Every new colour is worked out from the theme's own colours, so all seven themes, dark mode and nested light or dark previews get them with nothing to set. Parts no longer mix transparency into a colour by hand (border-danger/40, bg-lime/25, bg-fg/75); check:docs now fails if one does.",
+     "tag": "updated"
+    },
+    {
+     "text": "The tap utility's invisible touch area now reaches 45px: browsers round its edges, and on a short link it came out at 43.98px, just under the 44px minimum.",
+     "tag": "updated"
+    },
+    {
+     "text": "Switched to the new tokens: Button and IconButton (disabled and pressed), Switch, Select, TextField, NumberField, Checkbox, RadioGroup, Slider, Tabs, Menu, CommandPalette, ModelPicker, Tooltip, ApprovalPrompt, Badge, DataTable, DiffFileRow, ComparisonTable, BudgetControl, QuestionSet, TranscriptSync, PermissionModeSwitcher and the video and audio parts. Selected rows look slightly different (a clearer chosen state) and disabled controls are grey instead of faded.",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": [
+    "button",
+    "icon-button",
+    "switch",
+    "select",
+    "text-field",
+    "number-field",
+    "checkbox",
+    "radio-group",
+    "slider",
+    "tabs",
+    "menu",
+    "command-palette",
+    "model-picker",
+    "tooltip",
+    "approval-prompt",
+    "badge",
+    "data-table",
+    "diff-file-row",
+    "comparison-table",
+    "budget-control",
+    "question-set",
+    "transcript-sync",
+    "permission-mode-switcher",
+    "waveform",
+    "video-player",
+    "take-card",
+    "take-versions",
+    "clip-range-selector",
+    "scene-strip",
+    "transcript-audio-editor",
+    "provenance-popover",
+    "source-card",
+    "suggestion-card",
+    "attachment-chip",
+    "tool-call-card",
+    "voice-panel",
+    "ghost-text",
+    "message-queue",
+    "date-picker",
+    "stem-mixer",
+    "section-lane",
+    "tool-menu",
+    "voice-card",
+    "camera-move-picker",
+    "shot-settings",
+    "composer",
+    "frame-scrubber",
+    "variant-tile"
+   ]
+  },
+  {
+   "version": "0.13.1",
+   "title": "Even controls and steadier menus",
+   "items": [
+    {
+     "text": "IconButton never shrinks in a tight row, so it stays square next to a search field or a long label. Before, a crowded header could squeeze it narrower than its height.",
+     "tag": "updated"
+    },
+    {
+     "text": "Popover in a portal moves focus to its first item only once it has been placed, so keyboard users land inside the menu instead of on the page behind it.",
+     "tag": "updated"
+    },
+    {
+     "text": "SceneStrip's move arrows keep their drawn size on touch screens, with an invisible 44px tap area, so they line up with the Open button beside them.",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": [
+    "icon-button",
+    "popover",
+    "scene-strip"
+   ]
+  },
+  {
+   "version": "0.13",
+   "title": "Audio: takes, sections, stems and speech",
+   "items": [
+    {
+     "text": "New: TakePicker, to listen to several AI takes of the same prompt from the same moment, see what differs and keep one or more; and EnhanceCompare, a clean-up strength from Natural to Clean with an instant Before and After switch at the same position.",
+     "tag": "new"
+    },
+    {
+     "text": "New: SectionLane, a generated song as its sections, where one section can be regenerated or extended and sections out of date after an edit are marked in words; and StemMixer, mute, solo and level for each stem, and which stems to export.",
+     "tag": "new"
+    },
+    {
+     "text": "New: TranscriptAudioEditor. Edit speech by editing its words: delete to cut, mark filler words, change a phrase in a consented voice, keep or revert the new audio, and undo, with the waveform in step.",
+     "tag": "new"
+    },
+    {
+     "text": "GenerationProgress can stream (listen to the start before the rest is ready), be cancelled with a note on whether credits come back, and show a waveform-shaped placeholder for audio. Everything it did before still works.",
+     "tag": "updated"
+    }
+   ],
+   "added": [
+    "take-picker",
+    "section-lane",
+    "stem-mixer",
+    "transcript-audio-editor",
+    "enhance-compare"
+   ],
+   "updated": [
+    "generation-progress"
+   ]
+  },
+  {
+   "version": "0.12",
+   "title": "Slides: outline, build, review and export decks",
+   "items": [
+    {
+     "text": "New Slides group. OutlineEditor: the AI drafts the outline, you edit, reorder, lock and approve it before any slide is made, and every edit says it was yours. EditScopeChip shows and changes what an AI edit will touch, with the cost of a whole-deck change.",
+     "tag": "new"
+    },
+    {
+     "text": "New: SlideRail and SlideStage. Thumbnails you select, reorder by keyboard or drag and undo, each with its state in words (writing, ready, edited by you, failed, needs review), and a large slide view that scales to fit any shape.",
+     "tag": "new"
+    },
+    {
+     "text": "New: LayoutAlternatives, to preview other layouts for a slide and apply one or keep yours, and DeckChangeReview, to keep or undo an AI edit slide by slide before it is saved.",
+     "tag": "new"
+    },
+    {
+     "text": "New: DeckBuildProgress, a deck being made slide by slide with stop that keeps what is done; SpeakerNotes with speaking time worked out in code; and ExportSheet, which says what still needs you before a PDF or PowerPoint goes out.",
+     "tag": "new"
+    }
+   ],
+   "added": [
+    "outline-editor",
+    "slide-rail",
+    "slide-stage",
+    "layout-alternatives",
+    "deck-change-review",
+    "deck-build-progress",
+    "speaker-notes",
+    "export-sheet",
+    "edit-scope-chip"
+   ],
+   "updated": []
+  },
+  {
+   "version": "0.11.1",
+   "title": "Install from npm, connect an AI tool in one line",
+   "items": [
+    {
+     "text": "The MCP server is on npm too: claude mcp add tattva -- npx -y @tattva/mcp. Nothing to download or point at; the zip still works for a local copy.",
+     "tag": "new"
+    },
+    {
+     "text": "Every free part's page now shows its import from @tattva/ui, and Getting started, Start here and the home page lead with npm install @tattva/ui. Pro parts still import from the tattva folder of the Pro download.",
+     "tag": "updated"
+    },
+    {
+     "text": "The MCP server's build plans install the free parts from npm and write a small tattva.css that loads the tokens and lets Tailwind see the package's classes. Free parts' import lines read from \"@tattva/ui\", Pro parts' from \"./tattva\".",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": []
+  },
+  {
+   "version": "0.11",
+   "title": "Now called Tattva, and on npm",
+   "items": [
+    {
+     "text": "Sandstone is now Tattva, which means element: a few basic elements that build AI products. The site lives at lkb00.github.io/tattva and the new mark is three elements and one AI spark.",
+     "tag": "updated"
+    },
+    {
+     "text": "Install the free parts with npm install @tattva/ui, load @tattva/ui/tokens.css, and import from @tattva/ui. Pro parts are never in the package. Copying the free kit still works.",
+     "tag": "new"
+    },
+    {
+     "text": "Renamed with the system: the downloads (tattva-free.zip, tattva-mcp.zip, tattva-free-source.md), the MCP server (tattva), its settings (TATTVA_API, TATTVA_LICENSE_KEY, TATTVA_DATA) and SandboxedFrame's messages (tattva:resize and so on). The old SANDSTONE_ settings and sandstone: messages still work.",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": []
+  },
+  {
+   "version": "0.10.1",
+   "title": "Calmer motion",
+   "items": [
+    {
+     "text": "Moving between pages is softer: the old page fades away, then the new one rises a little out of a faint blur, and the two never overlap. New --dur-page (520ms), the one exception to the 400ms rule, for a whole page or view arriving and never for a control.",
+     "tag": "updated"
+    },
+    {
+     "text": "Tab panels settle in instead of appearing at once (new animate-panel-in), and hover, colour and border changes ease over --dur-base instead of snapping. Presses stay quick, and reduced motion still turns it all off.",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": [
+    "tabs"
+   ]
+  },
+  {
+   "version": "0.10",
+   "title": "Video: make, review and refine takes",
+   "items": [
+    {
+     "text": "New: ShotSettings shows what a video will cost before you press Generate (takes × cost per take, and what is left after), and options a model cannot do stay visible with the reason written. CameraMovePicker picks push in, pan, orbit and more, with small previews that hold still under reduced motion.",
+     "tag": "new"
+    },
+    {
+     "text": "New: TakeCard, TakeGrid and TakeVersions. Every take says where it is (queued, making, done, failed, blocked, cancelled, rate limited) and what it cost: estimated, charged, refunded or not charged. Versions say what they came from, and making one current deletes nothing.",
+     "tag": "new"
+    },
+    {
+     "text": "New: VideoPlayer with FrameScrubber and ClipRangeSelector: frame-by-frame review, actions on a paused frame such as Use as start frame, and a range to extend or redo. Nothing ever plays by itself.",
+     "tag": "new"
+    },
+    {
+     "text": "New: SceneStrip, a storyboard of shots you can reorder by drag, buttons or keyboard, and LikenessConsent, which keeps track of whose face or voice may be used, with consent links that expire, revoke, and the live check from 0.9.",
+     "tag": "new"
+    }
+   ],
+   "added": [
+    "video-player",
+    "frame-scrubber",
+    "clip-range-selector",
+    "take-card",
+    "take-grid",
+    "take-versions",
+    "shot-settings",
+    "camera-move-picker",
+    "scene-strip",
+    "likeness-consent"
+   ],
+   "updated": []
+  },
+  {
+   "version": "0.9",
+   "title": "Voice: talk, listen and consent",
+   "items": [
+    {
+     "text": "VoicePanel is rebuilt on the AI orb with every state a voice call has, each written in words: connecting, listening, thinking, speaking, interrupted, muted, on hold, mic blocked, reconnecting and ended. Push to talk, hold, interrupt and a typed fallback, and all the old props still work.",
+     "tag": "updated"
+    },
+    {
+     "text": "New: MicButton for dictation and starting voice; LiveCaptions with text that is still changing, speech that was cut off, hidden numbers and a size you choose; and a new Voice and audio group.",
+     "tag": "new"
+    },
+    {
+     "text": "New: Waveform, AudioPlayer and TranscriptSync. Listen back to a call with a waveform you can scrub by keyboard or touch, and a transcript that follows the sound and jumps to a line when pressed.",
+     "tag": "new"
+    },
+    {
+     "text": "New: VoiceCard and VoicePicker to hear and choose a voice, and VoiceConsentCheck, the live read-aloud check before a voice or likeness can be cloned.",
+     "tag": "new"
+    },
+    {
+     "text": "New: CallRecord and LatencyBreakdown for teams running voice agents: what happened on a call, whether the AI said it was an AI, what it cost, and where the waiting time went.",
+     "tag": "new"
+    },
+    {
+     "text": "Fixed: the AI orb could draw a circle with a negative size on its first frame.",
+     "tag": "updated"
+    }
+   ],
+   "added": [
+    "mic-button",
+    "live-captions",
+    "waveform",
+    "audio-player",
+    "transcript-sync",
+    "voice-card",
+    "voice-picker",
+    "voice-consent-check",
+    "latency-breakdown",
+    "call-record"
+   ],
+   "updated": [
+    "voice-panel",
+    "ai-presence"
+   ]
+  },
+  {
+   "version": "0.8.1",
+   "title": "Warnings stay readable in dark sections",
+   "items": [
+    {
+     "text": "Fixed: inside a dark section on a light page (data-theme=\"dark\" on any element), the amber of warnings and approvals and the chart grid stayed light, so text on them was hard to read.",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": []
+  },
+  {
+   "version": "0.8",
+   "title": "Pick your corners",
+   "items": [
+    {
+     "text": "Corners now come from four roles: control (buttons, chips), field (text fields), card (cards, panels) and overlay (dialogs, menus, toasts). Choose Round, Soft or Sharp from the Theme button, set data-shape on your page or on any part of it, or set one role yourself.",
+     "tag": "new"
+    },
+    {
+     "text": "Every part was moved onto the roles. Cards now share one corner (they were a mix of 12, 16 and 20px), and every text field shares one too.",
+     "tag": "updated"
+    },
+    {
+     "text": "WorkingEdge follows the card corner by default, so its ring always lines up.",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": []
+  },
+  {
+   "version": "0.7.2",
+   "title": "Small buttons stay small on phones",
+   "items": [
+    {
+     "text": "On a touch screen, buttons, pills and choice controls now keep the size they are drawn at and get an invisible tap area of at least 44px around them. Before, they grew taller and looked swollen, most of all the small size. Rows, tabs, menu items and fields still grow to 44px, which is normal on a phone. New tap utility for small links and chips.",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": []
+  },
+  {
+   "version": "0.7.1",
+   "title": "One accent for everything that is not AI",
+   "items": [
+    {
+     "text": "The accent is ink in every theme, light and dark, so the AI colour only ever means AI. In dark mode primary buttons and the focus ring were the AI colour before.",
+     "tag": "updated"
+    },
+    {
+     "text": "Unused code was removed, and the check for hard-coded values now covers CSS too.",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": []
+  },
+  {
+   "version": "0.7",
+   "title": "Designed for phones, with calmer motion and honest AI status",
+   "items": [
+    {
+     "text": "Phones first: on a touch screen text never drops under 12px and fields stay 16px or more (no zoom on focus), safe areas and the keyboard are handled, and every one of the parts has an On a phone section saying what it does there. New Phones guide and a check that runs on every pull request.",
+     "tag": "new"
+    },
+    {
+     "text": "On a phone, Menu and the model, permission and provenance pickers open as bottom sheets; DataTable can turn rows into cards (responsive=\"stack\"); AppShell opens its side panel from a Menu button.",
+     "tag": "new"
+    },
+    {
+     "text": "Nothing is hard-coded any more: every size, corner, layer and colour comes from a token, and a check fails on raw values.",
+     "tag": "updated"
+    },
+    {
+     "text": "From research into eight UI libraries (decisions in docs/research): closing is a quick plain fade for Dialog, Menu, Popover and Toast; Tabs and SegmentedControl have a sliding indicator; Button sinks on press and has a busy state; Collapsible animates its height; streamed words settle out of a faint blur.",
+     "tag": "updated"
+    },
+    {
+     "text": "Toast now pauses while the page is hidden, stays longer when it has more to read or press, shows the time left on an Undo, and can change in place (Saving, then Saved).",
+     "tag": "updated"
+    },
+    {
+     "text": "New parts: StatusTicker (the real current step of an AI run, without jumping), WorkingEdge (a calm ring while the AI works on something), PromptIndex (jump back to your own questions), LiveLog (a streaming agent log you can pause), JsonView (tool inputs and outputs as a keyboard tree), InlineConfirm (confirm in place, safe choice first) and ChartRangeBrush (narrow a chart with two keyboard handles).",
+     "tag": "new"
+    },
+    {
+     "text": "llms-full.txt: every component page in one file for AI tools.",
+     "tag": "new"
+    }
+   ],
+   "added": [
+    "status-ticker",
+    "working-edge",
+    "prompt-index",
+    "live-log",
+    "json-view",
+    "inline-confirm",
+    "chart-range-brush"
+   ],
+   "updated": [
+    "button",
+    "icon-button",
+    "tabs",
+    "segmented-control",
+    "collapsible",
+    "dialog",
+    "popover",
+    "menu",
+    "toast",
+    "streaming-reveal",
+    "line-chart",
+    "data-table",
+    "app-shell",
+    "provenance-popover",
+    "permission-mode-switcher",
+    "model-picker",
+    "citation-hover-card",
+    "command-palette",
+    "callout",
+    "chart-legend",
+    "budget-control",
+    "permission-prompt",
+    "tool-chip",
+    "number-field",
+    "composer",
+    "tool-call-card",
+    "markdown",
+    "checkpoint-list",
+    "jump-to-latest"
+   ]
+  },
+  {
+   "version": "0.6",
+   "title": "Seven colour themes, and ready for AI tools to build with",
+   "items": [
+    {
+     "text": "Seven colour themes: Lime (the default), Teal, Indigo, Harbor, Plum, Graphite and Terminal. A theme changes the greys and the AI colour in light and dark. Amber and the status colours never change. Pick one from the Theme button in the header.",
+     "tag": "new"
+    },
+    {
+     "text": "Geist and Geist Mono for everything, headings included. The serif voice is now opt-in.",
+     "tag": "updated"
+    },
+    {
+     "text": "The MCP server now guides a build: ask what the person is making, plan the parts, then check the code. New tools: get_themes, start_project, plan_build and review_code.",
+     "tag": "new"
+    },
+    {
+     "text": "Every part now lists its states (loading, empty, error, disabled and so on) in components.json, the Markdown pages and the MCP server.",
+     "tag": "new"
+    },
+    {
+     "text": "Parts can now be deprecated or retired. The page says what to use instead, the MCP server swaps it in, and the code check warns.",
+     "tag": "new"
+    },
+    {
+     "text": "How Tattva is run: what it is not, who decides, and what an AI must do when nothing fits. See docs/GOVERNANCE.md.",
+     "tag": "new"
+    },
+    {
+     "text": "New checks: documentation completeness and an AI-readiness score. All checks now run on every pull request.",
+     "tag": "new"
+    },
+    {
+     "text": "A free kit: tattva-free.zip holds the code for every free part, ready to copy into a React and Tailwind project. The MCP plan now downloads it, writes the setup files and tells an AI tool to import from it.",
+     "tag": "new"
+    },
+    {
+     "text": "Form controls: Field, TextField, NumberField, Select, Checkbox, RadioGroup and Slider, and Switch can now show its own visible label.",
+     "tag": "new"
+    },
+    {
+     "text": "Navigation and overlays: Tabs, Tooltip, Menu, Splitter, Dialog, Toast and CommandPalette.",
+     "tag": "new"
+    },
+    {
+     "text": "For markets and trading screens (from a trading terminal check): Price (flashes when it changes), PriceChange, DataFreshness (live, delayed, stale, simulated), TickerTape, CandlestickChart, Heatmap, PayoffChart, OrderTicket, OptionChain, ActionDraft (a draft the person edits in place, then confirms, then tracks) and RiskLimits with an in-place kill switch. A Terminal colour theme: near-black, dense, with a sky-blue AI colour.",
+     "tag": "new"
+    },
+    {
+     "text": "Also new: ScrollEdge (a soft blur where content scrolls under a header or footer) and GlancePanel (the case at a glance, with a phone sheet). Menus can be drawn on the page itself (portal) so a scrolling side bar cannot clip them, ConversationList gets a row menu with an in-place delete confirm, and Sheet now slides out.",
+     "tag": "new"
+    },
+    {
+     "text": "Downloads are sorted by who they are for (designers, AI tools, developers, advanced), each with a plain line on when to use it. New: tattva-mcp.zip, the MCP helper in two files that needs nothing else, and one Markdown file with the source of every free part for builders that cannot unzip. The Pro download now includes the MCP server with the full code of every Pro part.",
+     "tag": "new"
+    },
+    {
+     "text": "From the Getbaq refund agent: DatePicker, Combobox and InlineEdit for forms; QuestionSet (ask every missing fact in one card), ActivityTrace (the agent's steps, each tagged AI, rule sheet, calculated or safety check) and Receipt (a settled card folded to one line); Sheet, DraftPreview, Countdown, StatusLine and Money.",
+     "tag": "new"
+    },
+    {
+     "text": "New text roles for app screens, a calm Unsure colour and Badge tone, one reserved Celebrate colour, sheet and arrive easing curves. Message can show the person's turns as plain serif text, and Composer can rotate example placeholders.",
+     "tag": "new"
+    },
+    {
+     "text": "DataTable now sorts, has dense rows, shows up and down markers and lets a row be chosen.",
+     "tag": "updated"
+    },
+    {
+     "text": "New up and down colours for prices and changes, separate from success and error, with a blue and orange option for people who cannot tell green from red (data-direction=\"cb\").",
+     "tag": "new"
+    },
+    {
+     "text": "Plain-language search in the MCP server is better: filler words are ignored and rare words count more.",
+     "tag": "updated"
+    }
+   ],
+   "added": [
+    "price",
+    "price-change",
+    "data-freshness",
+    "ticker-tape",
+    "candlestick-chart",
+    "heatmap",
+    "payoff-chart",
+    "order-ticket",
+    "option-chain",
+    "action-draft",
+    "risk-limits",
+    "scroll-edge",
+    "glance-panel",
+    "date-picker",
+    "combobox",
+    "inline-edit",
+    "question-set",
+    "activity-trace",
+    "receipt",
+    "sheet",
+    "draft-preview",
+    "countdown",
+    "status-line",
+    "money",
+    "field",
+    "text-field",
+    "number-field",
+    "select",
+    "checkbox",
+    "radio-group",
+    "slider",
+    "tabs",
+    "tooltip",
+    "menu",
+    "splitter",
+    "dialog",
+    "toast",
+    "command-palette"
+   ],
+   "updated": [
+    "button",
+    "popover",
+    "conversation-list",
+    "message",
+    "composer",
+    "badge",
+    "data-table",
+    "switch"
+   ]
+  },
+  {
+   "version": "0.5",
+   "title": "Learn how to design, not just what to use",
+   "items": [
+    {
+     "text": "AvatarStack: a few overlapping avatars, a plus and how many more people there are, for viewers, voters or people in a shared chat.",
+     "tag": "new"
+    },
+    {
+     "text": "Accessibility checks you can run: a keyboard walk, text spacing, narrow-screen reflow, forced colors and touch target size, on top of the existing automatic audit.",
+     "tag": "new"
+    },
+    {
+     "text": "Storybook: a workshop where developers try every part, change its settings with controls, switch light and dark, and run an accessibility check. It is part of this site.",
+     "tag": "new"
+    },
+    {
+     "text": "Four new patterns: let the agent ask, come back after time away, set how much it can do, and generate screens safely. A new guide on generative UI says when not to use it.",
+     "tag": "new"
+    },
+    {
+     "text": "Nine new parts for supervising agents: a take-over bar, an agent question card, a needs-you inbox, a background run chip, a while-you-were-away recap, an action log with timed undo, a who-approved mark, a budget control and an altitude toggle. Permission prompts can now allow for this session.",
+     "tag": "new"
+    },
+    {
+     "text": "Generative UI: a renderer that draws a screen an assistant wrote using only approved parts, a frame that labels it and lets people pin, redo or report it, and a sandboxed frame for third-party apps.",
+     "tag": "new"
+    },
+    {
+     "text": "For AI tools: components.json, design tokens in the DTCG standard, a ready-made system prompt for generated screens, a read-only MCP server and an agent skill.",
+     "tag": "new"
+    },
+    {
+     "text": "Better on phones: buttons in task lists, queues, version lists, the composer and canvas no longer get cut off. A new check, npm run check:mobile, tests every page at phone width.",
+     "tag": "updated"
+    },
+    {
+     "text": "Tokens: every color, size and timing in one table, with what it is for, copy buttons and a contrast check in light and dark.",
+     "tag": "new"
+    },
+    {
+     "text": "Do and avoid shown as pictures side by side, for sixteen parts.",
+     "tag": "new"
+    },
+    {
+     "text": "Three more patterns: watching what an assistant does on screen, group chats, and marking an area to change.",
+     "tag": "new"
+    },
+    {
+     "text": "Every part now has its own page: live examples, do and avoid, accessibility, properties, history and feedback, with a menu of all parts beside it.",
+     "tag": "new"
+    },
+    {
+     "text": "Parts are marked Stable or Experimental.",
+     "tag": "new"
+    },
+    {
+     "text": "llms.txt and a Markdown file for every part, for AI tools.",
+     "tag": "new"
+    },
+    {
+     "text": "Patterns: eight moments every AI product faces, each with a live demo and clear steps.",
+     "tag": "new"
+    },
+    {
+     "text": "Case studies: weak first versions next to improved ones.",
+     "tag": "new"
+    },
+    {
+     "text": "Downloads: tokens as JSON and CSS, and every icon as an SVG.",
+     "tag": "new"
+    },
+    {
+     "text": "Rules: when to bend the system, how to ask for a new part, who owns it.",
+     "tag": "new"
+    },
+    {
+     "text": "Guides rewritten in plain language.",
+     "tag": "updated"
+    },
+    {
+     "text": "On touch screens every button, tab and field is at least 44 pixels tall.",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": []
+  },
+  {
+   "version": "0.4",
+   "title": "One corner scale",
+   "items": [
+    {
+     "text": "One corner-radius scale for every part.",
+     "tag": "updated"
+    }
+   ],
+   "added": [],
+   "updated": []
+  },
+  {
+   "version": "0.3",
+   "title": "Visual communication",
+   "items": [
+    {
+     "text": "Layout and grid, motion, AI identity and icons, illustration, and data visualization."
+    },
+    {
+     "text": "A chart palette tested for color-blind readers."
+    }
+   ],
+   "added": [],
+   "updated": []
+  },
+  {
+   "version": "0.2",
+   "title": "Researched AI patterns",
+   "items": [
+    {
+     "text": "Agents, trust and feedback, and generated content: 119 parts in total."
+    }
+   ],
+   "added": [],
+   "updated": []
+  },
+  {
+   "version": "0.1",
+   "title": "Foundations",
+   "items": [
+    {
+     "text": "Color, type, shape, light and dark themes, and the first conversation parts."
+    }
+   ],
+   "added": [],
+   "updated": []
+  }
+ ]
+}
