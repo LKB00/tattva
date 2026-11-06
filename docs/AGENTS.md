@@ -54,6 +54,7 @@ In Claude Code the same flow is a ready-made prompt: type `/mcp__tattva__build`.
 | `list_patterns` | Short answers to common situations, such as asking before an action that cannot be undone. |
 | `get_themes` | The colour themes (lime, teal, indigo, harbor, plum, graphite, terminal): each theme's AI color in light and dark, paper and ink, soft wash colors, and how to switch to it. |
 | `get_tokens` | Colors, timing, sizes and shadows, with what each is for. Light or dark, and optionally for one colour theme. `query` finds tokens by purpose, such as "text on lime". |
+| `check_screen` | Opens the running app (a local address only) at phone and desktop sizes, saves screenshots, and reports what reading code cannot: text that spills, sideways scrolling, controls on top of each other, tap targets too small, buttons with no name, images with no alt, invisible links still reachable with Tab, browser errors, failed requests, missing focus outlines and content that jumps after loading. Needs Playwright in the project. |
 | `whats_new` | The parts added and updated in each release since a version (by default the installed one), and the upgrade command. |
 
 Mistakes come back with a fix. Ask for a misspelled component and the server replies with the closest names.

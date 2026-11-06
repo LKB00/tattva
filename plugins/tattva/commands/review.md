@@ -5,7 +5,7 @@ argument-hint: [file or folder, optional]
 
 Review UI code against the Tattva design system rules. Target: $ARGUMENTS (if empty, use the files changed in this session or the current git diff).
 
-Call the tattva MCP server's `review_code` with `paths` listing the files, so it reads each one whole. Then:
+Call the tattva MCP server's `review_code` with `paths` listing the files, so it reads each one whole. If the app can run, start it (for example `npm run dev`) and call `check_screen` with its local address, then open the screenshots it saves and look at them. Then:
 
 1. List every finding with the file, the line and the rule, grouped by file.
 2. Fix the findings that are safe to fix (hard-coded colours, missing accessible names, deep imports, lime used as text, deprecated parts, wrong or missing props, and parts that need a newer `@tattva/ui`) and say what you changed.

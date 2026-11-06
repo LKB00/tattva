@@ -10,5 +10,6 @@ Follow the build-with-tattva skill. Use the tattva MCP server:
 1. If this is a new product or the request is vague, call `start_project` and ask the user its questions one at a time, with AskUserQuestion so they can click an answer. Skip what the request already says; "defaults" ends the questions. Otherwise go straight on.
 2. Call `plan_build` (or `search_components` for each need) to choose the parts. Read every chosen part with `get_component` before using it.
 3. Write the screen from those parts only. Tokens only, no hex, lime only for AI, amber only where a person must act.
-4. Call `review_code` on what you wrote and fix every finding. Then run `npx tsc --noEmit` if the project has TypeScript.
-5. Finish with a short list: the parts used, and anything you could not do.
+4. Call `review_code` with `paths` on what you wrote and fix every finding. Then run `npx tsc --noEmit` if the project has TypeScript.
+5. Look at it. Start the app in the background (for example `npm run dev`), call `check_screen` with its local address, fix what it reports, and open the phone and desktop screenshots it saves to see the screen yourself. If check_screen says no browser is installed, ask the user before installing one.
+6. Finish with a short list: the parts used, what you checked on screen, and anything you could not do.

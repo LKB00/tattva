@@ -20,6 +20,7 @@ The plugin connects the **tattva** MCP server. Its tools are the source of truth
 | `review_code` | check finished code against Tattva's rules, props included. Pass `paths` so it reads whole files itself |
 | `get_themes`, `get_tokens` | colour themes, light and dark tokens, sizes and timing; `query` finds a token by what it is for |
 | `whats_new` | what changed since a version, before upgrading `@tattva/ui` |
+| `check_screen` | open the running app at phone and desktop sizes: screenshots plus what code cannot show (spills, sideways scroll, overlaps, small targets, unnamed buttons, browser errors) |
 
 ## Steps
 
@@ -29,6 +30,7 @@ The plugin connects the **tattva** MCP server. Its tools are the source of truth
 4. **Check the stage.** `stable` is safe. `experimental` rests on design reasoning only: tell the user. Never use `deprecated` or `retired` parts; use the `replacedBy` part.
 5. **Build bottom up**: smaller parts inside larger ones; check `composedOf` and `related`.
 6. **Review.** Run `review_code` with `paths` on every file you wrote (never a shortened copy), fix every finding, then type-check (`npx tsc --noEmit`). A `needs-upgrade` finding means the installed `@tattva/ui` is older than the part: run `npm install @tattva/ui@latest`.
+7. **Look at the screen.** Start the app, call `check_screen` with its local address, fix what it finds and open its screenshots. Code that passes review can still spill, overlap or scroll sideways on a phone; never finish with "I have not looked at it".
 
 ## Setup in a new project
 
