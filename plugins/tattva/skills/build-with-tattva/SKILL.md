@@ -16,6 +16,7 @@ The plugin connects the **tattva** MCP server. Its tools are the source of truth
 | `get_component` | read a part: props, examples, when to use it, what to avoid, accessibility. Pass `ids` for several at once and `brief: true` for props and import only |
 | `list_patterns` | see the 15 patterns, such as Ask before acting or Show your sources |
 | `start_project` | ask the questions for a new product |
+| `plan_sitemap` | propose the screens, navigation, main journey and each screen's empty, loading and error states, for the person to approve before building |
 | `plan_build` | turn the answers and the idea in the person's words into parts in order, with setup steps and a `tattva.md` brief |
 | `review_code` | check finished code against Tattva's rules, props included. Pass `paths` so it reads whole files itself |
 | `get_themes`, `get_tokens` | colour themes, light and dark tokens, sizes and timing; `query` finds a token by what it is for |

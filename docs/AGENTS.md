@@ -36,9 +36,10 @@ Cursor (`.cursor/mcp.json`):
 The easiest way to use the server is to let it lead:
 
 1. **Ask.** The agent calls `start_project` and asks the person a few plain questions, one at a time, as clickable choices where the tool has them. It skips what the request already says, and "defaults" ends the questions.
-2. **Plan.** It calls `plan_build` with the answers and gets the setup commands, the setup files to write exactly as given (`tattva.md`, and for a new Vite app `vite.config.ts`, `index.html` and `src/main.tsx`), and the parts in order. Later sessions read that file first, so the product stays consistent.
-3. **Build.** For each part it calls `get_component`, then writes the code.
-4. **Check.** Before finishing it calls `review_code` on every file and fixes the errors.
+2. **Map.** It calls `plan_sitemap` and shows the person the screens, how they move between them, the main journey and each screen's empty, loading and error states. The person approves it or says what to change.
+3. **Plan.** It calls `plan_build` with the answers and the approved map, and gets the setup commands, the setup files to write exactly as given (`tattva.md`, and for a new Vite app `vite.config.ts`, `index.html` and `src/main.tsx`), and the parts in order. Later sessions read that file first, so the product stays consistent.
+4. **Build.** For each part it calls `get_component`, then writes the code.
+5. **Check.** Before finishing it calls `review_code` on every file and fixes the errors.
 
 In Claude Code the same flow is a ready-made prompt: type `/mcp__tattva__build`.
 
@@ -47,6 +48,7 @@ In Claude Code the same flow is a ready-made prompt: type `/mcp__tattva__build`.
 | Tool | What it does |
 |---|---|
 | `start_project` | Call first. Returns short questions for the agent to ask the person (what they are building, framework, colour theme, light or dark, trust behaviours, plan), each with a default. |
+| `plan_sitemap` | Proposes the site map: screens, navigation on a phone and a desktop, the main journey, and each screen's empty, loading and error states. The approved map is saved in `tattva.md`. |
 | `plan_build` | Turns the answers, and the idea in the person's words, into a build plan: setup commands, ready-to-write setup files (including the `tattva.md` brief), the parts to use in build order, patterns to read and warnings. |
 | `review_code` | Checks a file against the Tattva rules before the agent finishes: hex colours, deep imports, clickable divs, icon buttons without labels, images without alt text, lime used as text, removed focus outlines, vague destructive buttons, parts that do not exist, props a part does not have, missing required props, values outside a part's options, placeholder text, and parts newer than the installed `@tattva/ui`. Pass `paths` and it reads the files itself, only inside the project. |
 | `search_components` | Find components by what they are for, with the words each matched. Optional category and status filters. |
